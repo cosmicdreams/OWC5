@@ -1,0 +1,294 @@
+/**
+ * @file
+ * Node Styling
+ *
+ * Style anything that isn't in the $content variable.
+ */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
+/* line 125, ../sass/_custom.scss */
+nav#secondary-menu {
+  margin-top: 1em;
+}
+/* line 127, ../sass/_custom.scss */
+nav#secondary-menu a {
+  color: #ff9900;
+  font-size: .75em;
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  -o-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+}
+/* line 131, ../sass/_custom.scss */
+nav#secondary-menu a:hover {
+  color: white;
+}
+/* line 135, ../sass/_custom.scss */
+nav#secondary-menu li.last a {
+  color: #c5c5c5;
+}
+
+/* line 11, ../sass/nodes.scss */
+.node {
+  /* Node wrapper */
+}
+/* line 13, ../sass/nodes.scss */
+.preview .node {
+  /* Preview of the content before submitting new or updated content */
+  /* background-color: #ffffea; */
+  /* Drupal core uses a #ffffea background */
+}
+/* line 17, ../sass/nodes.scss */
+.node .node-title {
+  /* Node title */
+}
+/* line 20, ../sass/nodes.scss */
+.node .user-picture {
+  /* The picture of the node author */
+}
+/* line 23, ../sass/nodes.scss */
+.node .submitted {
+  /* The "posted by" information */
+  color: #777777;
+  font-style: italic;
+}
+/* line 28, ../sass/nodes.scss */
+.node .content {
+  /* Node's content wrapper */
+}
+/* line 31, ../sass/nodes.scss */
+.node ul.links {
+  /* Node links. See also the ul.links declaration in the pages.css. */
+}
+
+/* line 36, ../sass/nodes.scss */
+.node-promoted {
+  /* A node that has been promoted to the front page */
+}
+
+/* line 39, ../sass/nodes.scss */
+.node-sticky {
+  /* A sticky node (displayed before others in a list) */
+}
+
+/* line 42, ../sass/nodes.scss */
+.node-by-viewer {
+  /* A node created by the current user */
+}
+
+/* line 45, ../sass/nodes.scss */
+.node-teaser {
+  /* A node displayed as teaser */
+  margin-bottom: 4em;
+}
+
+/*
+ * All nodes are given a node-FOO class that describes the type of content that
+ * it is. If you create a new content type called "my-custom-type", it will
+ * receive a "node-my-custom-type" class.
+ */
+/* line 55, ../sass/nodes.scss */
+.node-page {
+  /* Page content node */
+}
+
+/* line 58, ../sass/nodes.scss */
+.node-article {
+  /* Article content node */
+}
+
+/* line 61, ../sass/nodes.scss */
+.node-unpublished {
+  /* Unpublished nodes */
+  /* background-color: #fff4f4; */
+  /* Drupal core uses a #fff4f4 background */
+}
+/* line 64, ../sass/nodes.scss */
+.node-unpublished p.unpublished {
+  /* The word "Unpublished" displayed underneath the content. */
+  height: 0;
+  overflow: visible;
+  color: #d8d8d8;
+  font-size: 75px;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* line 70, ../sass/nodes.scss */
+.node-readmore a {
+  background: white;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6e6e6));
+  background-image: -webkit-linear-gradient(#ffffff, #e6e6e6);
+  background-image: -moz-linear-gradient(#ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(#ffffff, #e6e6e6);
+  background-image: linear-gradient(#ffffff, #e6e6e6);
+  color: #676767;
+  padding: .4em .5em .5em .5em;
+  border: 1px solid #e1e1e1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: "Open Sans Condensed", Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  -o-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+  padding: .1em .3em .2em;
+  text-transform: lowercase;
+}
+/* line 110, ../sass/_custom.scss */
+.node-readmore a:hover {
+  background: #e6e6e6;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f7f7f7), color-stop(100%, #dedede));
+  background-image: -webkit-linear-gradient(#f7f7f7, #dedede);
+  background-image: -moz-linear-gradient(#f7f7f7, #dedede);
+  background-image: -o-linear-gradient(#f7f7f7, #dedede);
+  background-image: linear-gradient(#f7f7f7, #dedede);
+}
+/* line 114, ../sass/_custom.scss */
+.node-readmore a:active {
+  background: #e6e6e6;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e6e6e6), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(#e6e6e6, #ffffff);
+  background-image: -moz-linear-gradient(#e6e6e6, #ffffff);
+  background-image: -o-linear-gradient(#e6e6e6, #ffffff);
+  background-image: linear-gradient(#e6e6e6, #ffffff);
+}
+
+/* line 78, ../sass/nodes.scss */
+.node .field {
+  margin-bottom: 1em;
+}
+
+/* Comment Styles */
+/* line 85, ../sass/nodes.scss */
+.node ul.links {
+  overflow: hidden;
+  display: block;
+  padding: 20px;
+}
+
+/* line 91, ../sass/nodes.scss */
+li.comment-add {
+  float: right;
+}
+/* line 93, ../sass/nodes.scss */
+li.comment-add a {
+  background: #0099e5;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0099e5), color-stop(100%, #0079b5));
+  background-image: -webkit-linear-gradient(#0099e5, #0079b5);
+  background-image: -moz-linear-gradient(#0099e5, #0079b5);
+  background-image: -o-linear-gradient(#0099e5, #0079b5);
+  background-image: linear-gradient(#0099e5, #0079b5);
+  color: white;
+  padding: .4em .5em .5em .5em;
+  border: 1px solid #0072ab;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-family: "Open Sans Condensed", Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  -o-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+}
+/* line 110, ../sass/_custom.scss */
+li.comment-add a:hover {
+  background: #0079b5;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #008fd6), color-stop(100%, #006fa6));
+  background-image: -webkit-linear-gradient(#008fd6, #006fa6);
+  background-image: -moz-linear-gradient(#008fd6, #006fa6);
+  background-image: -o-linear-gradient(#008fd6, #006fa6);
+  background-image: linear-gradient(#008fd6, #006fa6);
+}
+/* line 114, ../sass/_custom.scss */
+li.comment-add a:active {
+  background: #0079b5;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0079b5), color-stop(100%, #0099e5));
+  background-image: -webkit-linear-gradient(#0079b5, #0099e5);
+  background-image: -moz-linear-gradient(#0079b5, #0099e5);
+  background-image: -o-linear-gradient(#0079b5, #0099e5);
+  background-image: linear-gradient(#0079b5, #0099e5);
+}
+
+/* line 98, ../sass/nodes.scss */
+.comment-wrapper {
+  margin-top: 10em;
+  border-top: 1px solid #ebebeb;
+  padding: 1em;
+}
+/* line 103, ../sass/nodes.scss */
+.comment-wrapper h3 {
+  font-size: 1.8em;
+}
+
+/* line 108, ../sass/nodes.scss */
+.comment {
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 2em;
+  font-size: .9em;
+}
+/* line 112, ../sass/nodes.scss */
+.comment ul.links.inline {
+  float: right;
+}
+/* line 114, ../sass/nodes.scss */
+.comment ul.links.inline li {
+  padding-right: .5em;
+}
+/* line 117, ../sass/nodes.scss */
+.comment ul.links.inline a {
+  background: white;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6e6e6));
+  background-image: -webkit-linear-gradient(#ffffff, #e6e6e6);
+  background-image: -moz-linear-gradient(#ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(#ffffff, #e6e6e6);
+  background-image: linear-gradient(#ffffff, #e6e6e6);
+  color: #333333;
+  padding: .4em .5em .5em .5em;
+  border: 1px solid #e1e1e1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-family: "Open Sans Condensed", Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  -o-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+  padding: 1px 5px 2px;
+}
+/* line 110, ../sass/_custom.scss */
+.comment ul.links.inline a:hover {
+  background: #e6e6e6;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f7f7f7), color-stop(100%, #dedede));
+  background-image: -webkit-linear-gradient(#f7f7f7, #dedede);
+  background-image: -moz-linear-gradient(#f7f7f7, #dedede);
+  background-image: -o-linear-gradient(#f7f7f7, #dedede);
+  background-image: linear-gradient(#f7f7f7, #dedede);
+}
+/* line 114, ../sass/_custom.scss */
+.comment ul.links.inline a:active {
+  background: #e6e6e6;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e6e6e6), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(#e6e6e6, #ffffff);
+  background-image: -moz-linear-gradient(#e6e6e6, #ffffff);
+  background-image: -o-linear-gradient(#e6e6e6, #ffffff);
+  background-image: linear-gradient(#e6e6e6, #ffffff);
+}
+/* line 121, ../sass/nodes.scss */
+.comment ul.links.inline .comment-reply a {
+  text-transform: uppercase;
+}
