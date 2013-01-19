@@ -113,7 +113,7 @@ function media_menu() {
     'description' => 'Configure the behavior and display of the media browser.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('media_admin_config_browser'),
-    'access arguments' => array('administer media browser'),
+    'access arguments' => array('administer files'),
     'file' => 'includes/media.admin.inc',
   );
 
@@ -243,10 +243,6 @@ function media_admin_paths() {
  */
 function media_permission() {
   return array(
-    'administer media browser' => array(
-      'title' => t('Administer media browser'),
-      'description' => t('Access media browser settings.'),
-    ),
     'import media' => array(
       'title' => t('Import media files from the local filesystem'),
       'description' => t('Simple file importer'),
@@ -582,7 +578,7 @@ function media_form_file_entity_add_upload_alter(&$form, &$form_state) {
 
     // If the list of allowed extensions is the default provided by file_entity
     // then change the default to the more permissive media extension list.
-    if (isset($validators['file_validate_extensions']) && $validators['file_validate_extensions'] == array(variable_get('file_entity_default_allowed_extensions', 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp'))) {
+    if (isset($validators['file_validate_extensions']) && $validators['file_validate_extensions'] == array(FILE_ENTITY_DEFAULT_ALLOWED_EXTENSIONS)) {
       $validators['file_validate_extensions'] = array(media_variable_get('file_extensions'));
     }
   }
@@ -934,15 +930,13 @@ function media_element_process(&$element, &$form_state, $form) {
     '#prefix' => '<div class="preview launcher">',
     '#suffix' => '</div>',
     '#weight' => 0,
-    'content' => $file ? media_get_thumbnail_preview($file) : array(),
+    'content' => !empty($file) ? media_get_thumbnail_preview($file) : array(),
   );
 
-  // @todo: Perhaps this language logic should be handled by JS since the state
-  // changes on client side after choosing an item.
   $element['select'] = array(
     '#type' => 'link',
     '#href' => '',
-    '#title' => $file ? t('Replace') : t('Add'),
+    '#title' => t('Select media'),
     '#attributes' => array('class' => array('button', 'launcher')),
     '#options' => array('fragment' => FALSE, 'external' => TRUE),
     '#weight' => 10,
@@ -951,7 +945,7 @@ function media_element_process(&$element, &$form_state, $form) {
   $element['edit'] = array(
     '#type' => 'link',
     '#href' => 'media/' . $fid . '/edit/nojs',
-    '#title' => t('Edit'),
+    '#title' => t('Edit media'),
     '#attributes' => array(
       'class' => array(
         'ctools-use-modal', 'use-ajax', // Required for CTools modal to work.
@@ -964,7 +958,7 @@ function media_element_process(&$element, &$form_state, $form) {
   $element['remove'] = array(
     '#type' => 'link',
     '#href' => '',
-    '#title' => t('Remove'),
+    '#title' => t('Remove media'),
     '#attributes' => array('class' => array('button', 'remove')),
     '#options' => array('fragment' => FALSE, 'external' => TRUE),
     '#weight' => 30,

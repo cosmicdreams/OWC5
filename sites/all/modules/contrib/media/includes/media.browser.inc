@@ -12,7 +12,22 @@ function media_browser($selected = NULL) {
   $output = array();
   $output['#attached']['library'][] = array('media', 'media_browser_page');
 
-  $params = media_set_browser_params();
+  // Build out browser settings. Permissions- and security-related behaviors
+  // should not rely on these parameters, since they come from the HTTP query.
+  // @TODO make sure we treat parameters as user input.
+  $params = drupal_get_query_parameters() + array(
+    'types' => array(),
+    'multiselect' => FALSE,
+  );
+
+  // Transform text 'true' and 'false' to actual booleans.
+  foreach ($params as $k => $v) {
+    if ($v === 'true') { $params[$k] = TRUE; }
+    elseif ($v === 'false') { $params[$k] = FALSE; }
+  }
+
+  array_walk_recursive($params, 'media_recursive_check_plain');
+  $params = media_set_browser_params($params);
 
   // If one or more files have been selected, the browser interaction is now
   // complete. Return empty page content to the dialog which now needs to close,
@@ -155,35 +170,22 @@ function media_browser($selected = NULL) {
  *
  * It also offers a chance for some meddler to meddle with them.
  *
+ * @param array $params
+ *   An array of parameters provided when a media_browser is launched.
+ *
  * @see media_browser()
  */
- function media_set_browser_params() {
-   $params = &drupal_static(__FUNCTION__, array());
+function media_set_browser_params(array $params = NULL) {
+  $stored_params = &drupal_static(__FUNCTION__, array());
 
-   if (empty($params)) {
-     // Build out browser settings. Permissions- and security-related behaviors
-     // should not rely on these parameters, since they come from the HTTP query.
-     // @TODO make sure we treat parameters as user input.
-     $params = drupal_get_query_parameters() + array(
-       'types' => array(),
-       'multiselect' => FALSE,
-     );
+  if (isset($params)) {
+    $stored_params = $params;
+    // Allow modules to alter the parameters.
+    drupal_alter('media_browser_params', $stored_params);
+  }
 
-     // Transform text 'true' and 'false' to actual booleans.
-     foreach ($params as $k => $v) {
-       if ($v === 'true') { $params[$k] = TRUE; }
-       elseif ($v === 'false') { $params[$k] = FALSE; }
-     }
-
-     array_walk_recursive($params, 'media_recursive_check_plain');
-
-     // Allow modules to alter the parameters.
-     drupal_alter('media_browser_params', $params);
-   }
-
-   return $params;
- }
-
+  return $stored_params;
+}
 
 /**
  * For sanity in grammar.

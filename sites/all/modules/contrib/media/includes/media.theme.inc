@@ -20,6 +20,61 @@ function theme_media_file_list($element) {
   return '<div class="media-file-list">' . theme('form_element', $element, $element['#children']) . '</div>';
 }
 
+/**
+ * Default theming function for creating the browser frame.
+ *
+ * Assumes an array of file objects as $files and an
+ * array of $parameters
+ *
+ * @param $variables
+ *   array of variables
+ * @return unknown_type
+ */
+function theme_media_browser_content_frame($variables) {
+  // Pull out all the variables into a usable form
+  extract($variables);
+  // Did we get any files back?
+  if (! count($files)) {
+    // @TODO display no files found
+  }
+
+  $html = array();
+
+  // On the first invocation, load javascript and build the browser frame
+  if ($invoke) {
+
+
+  }
+   // Render the results limiter
+  $html[] = theme('media_browser_control_result_limit', array('parameters' => $parameters));
+  // Render the actual content
+  $form = drupal_get_form('media_file_listing_form', $files, $parameters);
+  $html[] = drupal_render($form);
+
+  // Make sure to close the wrapping div
+  if ($invoke) {
+    $html[] = '</div>';
+  }
+  return implode("\n", $html);
+}
+
+/**
+ * Display a item list of files as thumbnails. Implements
+ * the admin thumbnail theme for now- serves as a wrapper
+ *
+ *  @param $files
+ *    An array of file objects to display.
+ *  @return
+ */
+function theme_media_browser_thumbnails($variables) {
+  $files = $variables['files'];
+  $style_name = $variables['style_name'];
+  $thumbnails = array();
+  foreach ($files as $file) {
+    $thumbnails[] = theme('media_admin_thumbnail', array('file' => $file, 'style_name' => $style_name));
+  }
+  return theme('item_list', array('items' => $thumbnails, 'attributes' => array('class' => 'media_content_navigator results')));
+}
 
 
 /**
@@ -71,6 +126,49 @@ function theme_media_admin_thumbnail($variables) {
  */
 function template_preprocess_media_dialog_page(&$variables) {
   $variables['messages'] = theme('status_messages');
+}
+
+/* ******************************************** */
+/* Content navigation controls                  */
+/* ******************************************** */
+
+
+/**
+ * Theme function to display the results limiting- 10, 30, 50 results
+ * per page.
+ *
+ * @param $variables
+ *   array parameters
+ * @return unknown
+ */
+function theme_media_browser_control_result_limit($variables) {
+  // Pull out all the variables into a usable form
+  extract($variables);
+
+  if (!isset($limits)) {
+    $limits = array(10, 30, 50);
+  }
+
+  // @NOTE these do not need to be aware of the current
+  //       page because clicking them will reset the
+  //       display to 1 -> $limit
+  $parameters['page'] = 0;
+  // save the active limit
+  $current_limit = $parameters['limit'];
+  $per_display = array();
+  foreach ($limits as $limit) {
+    if ($limit == $current_limit) {
+      $class = 'active';
+    }
+    else {
+      $class = '';
+    }
+    // set the value of this limit parameter to this limit value
+    $parameters['limit'] = $limit;
+    $per_display[] = l($limit, $limit, array('query' => $parameters, 'attributes' => array('class' => $class)));
+  }
+
+  return theme('item_list', array('items' => $per_display, 'attributes' => array('class' => 'result_limit')));
 }
 
 /**

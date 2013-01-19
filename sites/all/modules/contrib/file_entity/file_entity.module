@@ -6,6 +6,13 @@
  */
 
 /**
+ * The default list of file extensions allowed by file_save_upload().
+ *
+ * Adds support for docx, xlsx, pptx and ppsx.
+ */
+define('FILE_ENTITY_DEFAULT_ALLOWED_EXTENSIONS', 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp');
+
+/**
  * Modules should return this value from hook_file_entity_access() to allow
  * access to a file.
  */
@@ -465,42 +472,10 @@ function file_entity_entity_info_alter(&$entity_info) {
     );
   }
 
-  // Enable Metatag support.
-  $entity_info['file']['metatags'] = TRUE;
-
   // Ensure some of the Entity API callbacks are supported.
   $entity_info['file']['creation callback'] = 'entity_metadata_create_object';
   $entity_info['file']['view callback'] = 'file_view_multiple';
   $entity_info['file']['edit callback'] = 'file_entity_metadata_form_file';
-  $entity_info['file']['access callback'] = 'file_entity_access';
-
-  // Add integration with the Title module for file name replacement support.
-  $entity_info['file']['field replacement'] = array(
-    'filename' => array(
-      'field' => array(
-        'type' => 'text',
-        'cardinality' => 1,
-        'translatable' => TRUE,
-      ),
-      'instance' => array(
-        'label' => t('File name'),
-        'description' => t('A field replacing file name.'),
-        'required' => TRUE,
-        'settings' => array(
-          'text_processing' => 0,
-        ),
-        'widget' => array(
-          'weight' => -5,
-        ),
-        'display' => array(
-          'default' => array(
-            'type' => 'hidden',
-          ),
-        ),
-      ),
-      'preprocess_key' => 'filename',
-    ),
-  );
 }
 
 /**
@@ -580,17 +555,11 @@ function file_entity_file_formatter_info() {
   // Allow file field formatters to be reused for displaying the file entity's
   // file pseudo-field.
   foreach (field_info_formatter_types() as $field_formatter_type => $field_formatter_info) {
-    $is_file_formatter = in_array('file', $field_formatter_info['field types']);
-    $is_image_formatter = in_array('image', $field_formatter_info['field types']);
-
-    if ($is_file_formatter || $is_image_formatter) {
+    if (in_array('file', $field_formatter_info['field types'])) {
       $formatters['file_field_' . $field_formatter_type] = array(
         'label' => $field_formatter_info['label'],
         'view callback' => 'file_entity_file_formatter_file_field_view',
       );
-      if (!$is_file_formatter) {
-        $formatters['file_field_' . $field_formatter_type]['file types'] = array('image');
-      }
       if (!empty($field_formatter_info['settings'])) {
         $formatters['file_field_' . $field_formatter_type] += array(
           'default settings' => $field_formatter_info['settings'],
@@ -1162,7 +1131,7 @@ function file_entity_access($op, $file = NULL, $account = NULL) {
   $rights = &drupal_static(__FUNCTION__, array());
 
   if (!$file && !in_array($op, array('view', 'update', 'delete', 'create'), TRUE)) {
-    // If there was no file to check against, and the $op was not one of the
+    // If there was no file to check against, or the $op was not one of the
     // supported ones, we return access denied.
     return FALSE;
   }

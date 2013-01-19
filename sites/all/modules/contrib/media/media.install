@@ -845,9 +845,11 @@ function media_update_7208() {
 
     include_once DRUPAL_ROOT . '/includes/file.mimetypes.inc';
     $mapping = file_mimetype_mapping();
-    // We do not migrate this type, since there is no way to handle its weight.
-    unset($existing_types['default']);
     foreach ($existing_types as $type) {
+      if ($type->name == 'default') {
+        // We do not migrate this type, since there is no way to handle its weight.
+        continue;
+      }
       $extensions = isset($type->type_callback_args['extensions']) ? $type->type_callback_args['extensions'] : array();
       $mimetypes = isset($type->type_callback_args['mimetypes']) ? $type->type_callback_args['mimetypes'] : array();
       // Add mimetypes by extensions.
@@ -872,9 +874,6 @@ function media_update_7208() {
         $new_type->mimetypes = array_merge($type->mimetypes, $new_type->mimetypes);
         $new_type->streams = array_merge($type->streams, $new_type->streams);
       }
-      else {
-        $new_type = $type;
-      }
       file_type_save($new_type);
     }
     db_drop_table('media_type');
@@ -882,9 +881,6 @@ function media_update_7208() {
     // Special treatment for old media application type to new file_entity
     // document one. Add some more mimetypes to document.
     $document_type = file_type_load('document');
-    if (!$document_type) {
-      return;
-    }
     foreach($mapping['mimetypes'] as $mimetype) {
       $is_document = strpos($mimetype, 'document') !== FALSE || strpos($mimetype, 'application/vnd.ms-') !== FALSE;
       if ($is_document && !in_array($mimetype, $document_type->mimetypes)) {

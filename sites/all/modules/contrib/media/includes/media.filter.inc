@@ -180,29 +180,14 @@ function media_token_to_markup($match, $wysiwyg = FALSE) {
     // Display the field elements.
     $element = array();
     $element['content']['file'] = media_get_file_without_label($file, $tag_info['view_mode'], $settings);
-    // Overwrite or set the file #alt attribute if it has been set in this instance.
-    if (!empty($element['content']['file']['#attributes']['alt'])) {
-      $element['content']['file']['#alt'] = $element['content']['file']['#attributes']['alt'];
-    }
-    // Overwrite or set the file #title attribute if it has been set in this instance.
-    if (!empty($element['content']['file']['#attributes']['title'])) {
-      $element['content']['file']['#title'] = $element['content']['file']['#attributes']['title'];
-    }
     field_attach_prepare_view('file', array($file->fid => $file), $tag_info['view_mode']);
     entity_prepare_view('file', array($file->fid => $file));
     $element['content'] += field_attach_view('file', $file, $tag_info['view_mode']);
     if (count(element_children($element['content'])) > 1) {
       // Add surrounding divs to group them together.
-      // We dont want divs when there are no additional fields to allow files
-      // to display inline with text, without breaking p tags.
-      $attributes = array(
-        'class' => array(
-          'media',
-          'media-element-container',
-          'media-' . $element['content']['file']['#view_mode'],
-        ),
-      );
-      $element['content']['#prefix'] = '<div ' . drupal_attributes($attributes) . '>';
+      // We dont want divs when there are no additional fields to allow them
+      // to display inline.
+      $element['content']['#prefix'] = '<div>';
       $element['content']['#suffix'] = '</div>';
     }
   }
@@ -394,22 +379,6 @@ function media_format_form($form, $form_state, $file) {
     '#options' => $options,
     '#default_value' => $default_view_mode
   );
-
-  if ($file->type === 'image') {
-    $form['options']['alt'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Alternate text'),
-      '#description' => t('This text will be used by screen readers, search engines, or when the image cannot be loaded.'),
-      '#default_value' => isset($file->field_file_image_alt_text['und'][0]['safe_value']) ? $file->field_file_image_alt_text['und'][0]['safe_value'] : '',
-    );
-
-    $form['options']['title'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Title'),
-      '#description' => t('The title is used as a tool tip when the user hovers the mouse over the image.'),
-      '#default_value' => isset($file->field_file_image_title_text['und'][0]['safe_value']) ? $file->field_file_image_title_text['und'][0]['safe_value'] : '',
-    );
-  }
 
   // Similar to a form_alter, but we want this to run first so that media.types.inc
   // can add the fields specific to a given type (like alt tags on media).

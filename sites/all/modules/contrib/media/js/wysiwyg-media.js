@@ -171,8 +171,7 @@ InsertMedia.prototype = {
   insert: function (formatted_media) {
     var element = create_element(formatted_media.html, {
           fid: this.mediaFile.fid,
-          view_mode: formatted_media.type,
-          attributes: formatted_media.options
+          view_mode: formatted_media.type
         });
 
     var markup = outerHTML(element),
