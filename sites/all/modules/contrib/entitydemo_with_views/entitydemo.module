@@ -1,0 +1,190 @@
+<?php
+/**
+ * @file
+ * entitydemo module
+ */
+
+/**
+ * Implements hook_entity_info().
+ */
+function entitydemo_entity_info() {
+  $return = array(
+    'entitydemo' => array(
+      'label' => t('Entity Demo'),
+      // Controller declared in entitydemo.info
+      'controller class' => 'EntityDemoController',
+      // Default controller to use Entity Demo in Views.
+      'views controller class' => 'EntityDefaultViewsController',
+      // Base table in entitydemo_schema() (entitydemo.install).
+      'base table' => 'entity_demo',
+      // Entity demo allow new fields.
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        // Primary key in base table.
+        'id' => 'entitydemo_id',
+      ),
+      'bundles' => array(
+        'entitydemo' => array(
+          'label' => t('Entity Demo (bundle)'),
+        ),
+      ),
+    ),
+  );
+
+  return $return;
+}
+
+/**
+ * Load a insurance (wildcard %entity_demo in hook_menu).
+ */
+function entitydemo_load($edid, $reset = FALSE) {
+  $entitydemos = entitydemo_load_multiple(array($edid), array(), $reset);
+  return reset($entitydemos);
+}
+
+/**
+ * Load multiple entity demo based on certain conditions.
+ */
+function entitydemo_load_multiple($edids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('entitydemo', $edids, $conditions, $reset);
+}
+
+/**
+ * Returns an initialized entity demo object.
+ *
+ * @return object
+ *   An entity demo object with all default fields initialized.
+ */
+function entitydemo_new() {
+  return entity_get_controller('entitydemo')->create();
+}
+
+/**
+ * Save entity demo.
+ */
+function entitydemo_save($entitydemo) {
+  entity_save('entitydemo', $entitydemo);
+}
+
+/**
+ * Delete single entity demo.
+ */
+function entitydemo_delete($entitydemo) {
+  return entity_delete('entitydemo', $entitydemo->entitydemo_id);
+}
+
+/**
+ * Delete multiple entity demo.
+ */
+function entitydemo_delete_multiple($entitydemo_ids) {
+  return entity_delete_multiple('entitydemo', $entitydemo_ids);
+}
+
+/**
+ * Entity uri callback.
+ *
+ * Gives modules a chance to specify a path for an entity demo.
+ */
+function entitydemo_uri($entitydemo) {
+  // Allow modules to specify a path, returning the first one found.
+  foreach (module_implements('entitydemo_uri') as $module) {
+    $uri = module_invoke($module, 'entitydemo_uri', $entitydemo);
+
+    // If the implementation returned data, use that now.
+    if (!empty($uri)) {
+      return $uri;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Delete all instances of $entity_type field.
+ *
+ * @param string $entity_type
+ *   Entity type
+ * @param string $bundle
+ *   Bundle of entitydemo
+ */
+function entitydemo_delete_instances($entity_type, $bundle = NULL) {
+  // Prepare a parameters array to load the specified instances.
+  $params = array(
+    'entity_type' => $entity_type,
+  );
+
+  if (!empty($bundle)) {
+    $params['bundle'] = $bundle;
+  }
+
+  // Read and delete the matching field instances.
+  foreach (field_read_instances($params, array('include_inactive' => TRUE)) as $instance) {
+    entitydemo_delete_instance($instance);
+  }
+
+  // Since this is a function called on uninstall, now is a good time
+  // to clear bundle display settings.
+  $settings = variable_get('field_bundle_settings', array());
+  if (isset($settings[$entity_type])) {
+    if (isset($bundle)) {
+      unset($settings[$entity_type][$bundle]);
+    }
+    else {
+      unset($settings[$entity_type]);
+    }
+    variable_set('field_bundle_settings', $settings);
+  }
+}
+
+/**
+ * Delete field instance.
+ *
+ * @param array $instance
+ *   Instance of field
+ */
+function entitydemo_delete_instance($instance) {
+  // First activate the instance's field if necessary.
+  $field_name = $instance['field_name'];
+  $activated = entitydemo_activate_field($field_name);
+
+  // Then delete the instance.
+  field_delete_instance($instance, FALSE);
+
+  // Now check to see if there are any other instances of the field left.
+  $field = field_info_field($field_name);
+
+  if (count($field['bundles']) == 0) {
+    field_delete_field($field_name);
+  }
+  elseif ($activated) {
+    // If there are remaining instances but the field was originally disabled,
+    // disabled it again now.
+    $field['active'] = 0;
+    field_update_field($field);
+  }
+}
+
+/**
+ * Activate field.
+ *
+ * @param string $field_name
+ *   field name.
+ *
+ * @return bool
+ *   true if field is active
+ */
+function entitydemo_activate_field($field_name) {
+  // Set it to active via a query because field_update_field() does
+  // not work on inactive fields.
+  $updated = db_update('field_config')
+    ->fields(array('active' => 1))
+    ->condition('field_name', $field_name, '=')
+    ->execute();
+
+  // If a row was actually updated...
+  if ($updated) {
+    // Clear the field cache to refresh the field info data.
+    field_cache_clear();
+    return TRUE;
+  }
+  return FALSE;
+}

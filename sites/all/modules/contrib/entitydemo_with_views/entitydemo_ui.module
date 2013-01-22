@@ -1,0 +1,161 @@
+<?php
+
+/**
+ * @file
+ * User interface to create, edit and delete entity demo
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function entitydemo_ui_permission() {
+  return array(
+    'administer entity demo ui' => array(
+      'title' => t('Administer Entity Demo ui'),
+      'description' => t('Administer Entity Demo UI'),
+    ),
+    'create entitydemo entities' => array(
+      'title' => t('Create entitydemo entities'),
+      'description' => t('Create entitydemo entities'),
+    ),
+    'update entitydemo entities' => array(
+      'title' => t('Update entitydemo entities'),
+      'description' => t('Update entitydemo entities'),
+    ),
+    'delete entitydemo entities' => array(
+      'title' => t('Delete entitydemo entities'),
+      'description' => t('Delete entitydemo entities'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * @param array $entity_info
+ *   entity info
+ */
+function entitydemo_ui_entity_info_alter(&$entity_info) {
+  $entity_info['entitydemo']['bundles']['entitydemo']['admin'] = array(
+    'path'             => 'admin/structure/entity_demo_type',
+    'real path'        => 'admin/structure/entity_demo_type',
+    'access arguments' => array('administer entity demo ui'),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function entitydemo_ui_menu() {
+  $items['admin/structure/entity_demo_type'] = array(
+    'title' => 'Entity demo type',
+    'description' => 'Manage Entity Demo type (manage fields & manage display)',
+    'access arguments' => array('administer entity demo ui'),
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('admin/structure/entity_demo_type/fields'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  // Add an entity demo.
+  $items['admin/content/entitydemo-list/add'] = array(
+    'title' => 'Create an entity demo',
+    'description' => 'Create a new entity demo',
+    'page callback' => 'entitydemo_ui_add_edit_form_wrapper',
+    'page arguments' => array(entitydemo_new()),
+    'access arguments' => array('create entitydemo entities'),
+    'type' => MENU_LOCAL_ACTION,
+    'context' => MENU_CONTEXT_PAGE,
+    'weight' => 10,
+  );
+
+  // Edit an entity demo.
+  $items['admin/content/entitydemo-list/%entitydemo/edit'] = array(
+    'title' => 'Edit an entity demo',
+    'description' => 'Edit an insurance.',
+    'page callback'    => 'entitydemo_ui_add_edit_form_wrapper',
+    'page arguments'   => array(3),
+    'access arguments' => array('update entitydemo entities'),
+    'type'             => MENU_CALLBACK,
+  );
+
+  // Delete an entity demo.
+  $items['admin/content/entitydemo-list/%entitydemo/delete'] = array(
+    'title' => 'Delete',
+    'page callback' => 'entitydemo_ui_delete_form_wrapper',
+    'page arguments' => array(3),
+    'access arguments' => array('delete entitydemo entities'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Form callback wrapper: create or edit an entity demo.
+ *
+ * @param object $entitydemo
+ *   The entity demo object to edit through the form.
+ * @param array $account
+ *   For new entity demo, the customer's user account.
+ *
+ * @return string
+ *   HTML of form
+ */
+function entitydemo_ui_add_edit_form_wrapper($entitydemo, $account = NULL) {
+  // Set the page title and a default customer if necessary.
+  if (empty($entitydemo->entitydemo_id)) {
+    drupal_set_title(t('Create an entity demo'));
+  }
+
+  // Add the breadcrumb for the form's location.
+  entitydemo_set_breadcrumb();
+
+  // Include the forms file from the entity demo module.
+  // This line is very important.
+  module_load_include('inc', 'entitydemo', 'includes/entitydemo.form');
+
+  return drupal_get_form('entitydemo_ui_add_edit_form', $entitydemo);
+}
+
+/**
+ * Sets the breadcrumb for administrative entity demo pages.
+ */
+function entitydemo_set_breadcrumb() {
+  $breadcrumb = array(
+    l(t('Home'), '<front>'),
+    l(t('Administration'), 'admin'),
+    l(t('Content'), 'admin/content'),
+    l(t('Entity demo list'), 'admin/content/entitydemo-list'),
+  );
+
+  drupal_set_breadcrumb($breadcrumb);
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function entitydemo_ui_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'entitydemo_ui') . '/includes/views',
+  );
+}
+
+/**
+ * Form callback wrapper: confirmation form for deleting an entity demo.
+ *
+ * @param object $entitydemo
+ *   The entity demo object to delete through the form.
+ *
+ * @return string
+ *   HTML form
+ */
+function entitydemo_ui_delete_form_wrapper($entitydemo) {
+  // Add the breadcrumb for the form's location.
+  entitydemo_set_breadcrumb();
+
+  // This line is very important.
+  module_load_include('inc', 'entitydemo', 'includes/entitydemo.form');
+
+  return drupal_get_form('entitydemo_ui_delete_form', $entitydemo);
+}
