@@ -1,0 +1,61 @@
+name = OWC5
+description = An installation profile to prepare Redhen and other settings
+core = 7.x
+
+; Core modules required by RedHen and Drupal
+dependencies[] = block
+dependencies[] = field
+dependencies[] = field_ui
+dependencies[] = menu
+dependencies[] = taxonomy
+
+; Core modules for demonstration purposes
+dependencies[] = contextual
+dependencies[] = dblog
+dependencies[] = help
+dependencies[] = list
+
+; Required contrib
+dependencies[] = addressfield
+dependencies[] = ctools
+dependencies[] = entity
+dependencies[] = entityreference
+dependencies[] = relation
+dependencies[] = registration
+
+; Demo contrib
+dependencies[] = admin_menu
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = token
+dependencies[] = r4032login
+dependencies[] = views
+dependencies[] = views_ui
+dependencies[] = message
+
+; Developer tools
+dependencies[] = devel
+dependencies[] = devel_generate
+dependencies[] = diff
+
+; RedHen module suite
+dependencies[] = redhen
+dependencies[] = redhen_contact
+dependencies[] = redhen_org
+dependencies[] = redhen_org_group
+dependencies[] = redhen_relation
+dependencies[] = redhen_membership
+dependencies[] = redhen_note
+dependencies[] = redhen_engagement
+dependencies[] = redhen_registration
+dependencies[] = redhen_activity
+
+; RedHen demo features
+dependencies[] = redhen_features
+
+; Information added by drupal.org packaging script on 2012-10-18
+version = "7.x-1.0-alpha2"
+core = "7.x"
+project = "redhen_demo"
+datestamp = "1350582112"
+
