@@ -4,16 +4,22 @@ core = 7.x
 
 ; Core modules required by RedHen and Drupal
 dependencies[] = block
-dependencies[] = field
-dependencies[] = field_ui
-dependencies[] = menu
-dependencies[] = taxonomy
-
-; Core modules for demonstration purposes
+dependencies[] = color
+dependencies[] = comment
 dependencies[] = contextual
-dependencies[] = dblog
 dependencies[] = help
+dependencies[] = image
 dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = dblog
+dependencies[] = search
+dependencies[] = shortcut
+dependencies[] = field_ui
+dependencies[] = file
 
 ; Required contrib
 dependencies[] = addressfield
