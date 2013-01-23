@@ -32,6 +32,8 @@ dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = relation
 dependencies[] = registration
+dependencies[] = configuration
+dependencies[] = configuration_ui
 
 ; Demo contrib
 dependencies[] = admin_menu
