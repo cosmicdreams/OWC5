@@ -7,6 +7,7 @@
 $api = '2.0.0';
 
 $data = array(
+  'name' => 'large',
   'effects' => array(
     0 => array(
       'label' => 'Scale',
@@ -22,10 +23,9 @@ $data = array(
         'height' => 480,
         'upscale' => 0,
       ),
-      'weight' => 0,
+      'weight' => '0',
     ),
   ),
-  'name' => 'large',
 );
 
 $dependencies = array();

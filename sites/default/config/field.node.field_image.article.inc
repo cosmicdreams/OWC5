@@ -112,7 +112,7 @@ $data = array(
       'type' => 'image_image',
       'settings' => array(
         'progress_indicator' => 'throbber',
-        'preview_image_style' => 'thumbnail',
+        'preview_image_style' => '',
       ),
       'weight' => -1,
       'module' => 'image',
@@ -122,7 +122,7 @@ $data = array(
         'label' => 'hidden',
         'type' => 'image',
         'settings' => array(
-          'image_style' => 'large',
+          'image_style' => '',
           'image_link' => '',
         ),
         'weight' => -1,
@@ -132,7 +132,7 @@ $data = array(
         'label' => 'hidden',
         'type' => 'image',
         'settings' => array(
-          'image_style' => 'medium',
+          'image_style' => '',
           'image_link' => 'content',
         ),
         'weight' => -1,
@@ -148,8 +148,6 @@ $data = array(
 
 $dependencies = array(
   'content_type.article' => 'content_type.article',
-  'image_style.large' => 'image_style.large',
-  'image_style.medium' => 'image_style.medium',
 );
 
 $optional = array();

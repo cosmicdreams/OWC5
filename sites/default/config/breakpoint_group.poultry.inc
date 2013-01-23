@@ -20,7 +20,7 @@ $breakpoint_group->api_version = 1;
 $breakpoint_group->machine_name = 'poultry';
 $breakpoint_group->name = 'poultry';
 $breakpoint_group->breakpoints = $breakpoints;
-$breakpoint_group->type = 'theme';
+$breakpoint_group->type = 'custom';
 $breakpoint_group->overridden = 0;
 
 

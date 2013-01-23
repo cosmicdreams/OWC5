@@ -135,10 +135,10 @@ features[] = secondary_menu
 
 ; Once this module or the theme is enabled, the settings are read from the info
 ; file and stored into the database.
-breakpoints[mobile] = (min-width: 0px)
-breakpoints[narrow] = (min-width: 560px)
-breakpoints[wide] = (min-width: 851px)
-breakpoints[tv] = only screen and (min-width: 3456px)
+;breakpoints[mobile] = (min-width: 0px)
+;breakpoints[narrow] = (min-width: 560px)
+;breakpoints[wide] = (min-width: 851px)
+;breakpoints[tv] = only screen and (min-width: 3456px)
 
 ; Set the default values of settings on the theme-settings.php form.
 
