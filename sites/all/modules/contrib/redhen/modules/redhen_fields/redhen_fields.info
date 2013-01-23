@@ -4,9 +4,9 @@ package = RedHen
 core = 7.x
 
 
-; Information added by drupal.org packaging script on 2013-01-03
-version = "7.x-1.0-beta3+15-dev"
+; Information added by drupal.org packaging script on 2013-01-23
+version = "7.x-1.0-beta3+16-dev"
 core = "7.x"
 project = "redhen"
-datestamp = "1357220870"
+datestamp = "1358904969"
 

@@ -2,6 +2,10 @@ name = OWC5
 description = An installation profile to prepare Redhen and other settings
 core = 7.x
 
+; The exclusive flag auto-selects the profile during installation, if there
+; are no other exclusive ones.
+exclusive = TRUE
+
 ; Core modules required by RedHen and Drupal
 dependencies[] = block
 dependencies[] = color
