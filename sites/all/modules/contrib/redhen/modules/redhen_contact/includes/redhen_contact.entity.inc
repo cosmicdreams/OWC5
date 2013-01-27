@@ -22,14 +22,6 @@ class RedhenContact extends Entity {
 
   public function __construct(array $values = array()) {
     parent::__construct($values, 'redhen_contact');
-
-    // ensure all field values are loaded
-    // @todo: Figure out why we need this here.
-    if ($this->contact_id) {
-      field_attach_load('redhen_contact', array($this->contact_id => $this));
-    }
-
-    $this->email = $this->defaultEmail();
   }
 
   /**
@@ -39,7 +31,7 @@ class RedhenContact extends Entity {
 
     $wrapper = entity_metadata_wrapper('redhen_contact', $this);
     $user = $wrapper->user->value();
-    
+
     $content['redhen_state'] = array(
       '#theme' => 'redhen_property_field',
       '#label' => t('State'),
@@ -80,26 +72,20 @@ class RedhenContact extends Entity {
   }
 
   /**
-   * Specifify URI
+   * Specify URI
    */
   protected function defaultUri() {
     return array('path' => 'redhen/contact/' . $this->identifier());
   }
 
   /**
-   * Return default email from email field.
+   * Return all emails and their properties in an array..
    *
-   * @return string
+   * @return array
    */
-  public function defaultEmail() {
-    if (!empty($this->{REDHEN_CONTACT_EMAIL_FIELD})) {
-      foreach ($this->{REDHEN_CONTACT_EMAIL_FIELD}[LANGUAGE_NONE] as $email) {
-        if ($email['default']) {
-          return $email['value'];
-        }
-      }
-    }
-    return '';
+  public function email() {
+    $wrapper = entity_metadata_wrapper($this->entityType(), $this);
+    return $wrapper->email->value();
   }
 
   /**
@@ -192,6 +178,15 @@ class RedhenContactMetadataController extends EntityDefaultMetadataController {
     $info = parent::entityPropertyInfo();
     $properties = &$info[$this->type]['properties'];
 
+    $properties['email'] = array(
+      'label' => t("Default email"),
+      'description' => t("The default email for this contact."),
+      'type' => 'text',
+      'getter callback' => 'redhen_contact_property_email_get',
+      'computed' => TRUE,
+      'entity views field' => TRUE,
+      'filter' => TRUE,
+    );
     $properties['created'] = array(
       'label' => t("Created"),
       'description' => t("The date the contact was created."),
@@ -208,13 +203,13 @@ class RedhenContactMetadataController extends EntityDefaultMetadataController {
     );
 
     $properties['first_name'] = array_merge($properties['first_name'], array(
-      'label' => t('First Name'),
+      'label' => t('First name'),
       'filter' => TRUE,
       'field_type' => 'textfield',
       'setter callback' => 'entity_property_verbatim_set',
     ));
     $properties['last_name'] = array_merge($properties['last_name'], array(
-      'label' => t('Last Name'),
+      'label' => t('Last name'),
       'filter' => TRUE,
       'field_type' => 'textfield',
       'setter callback' => 'entity_property_verbatim_set',
@@ -286,53 +281,62 @@ class RedhenContactViewsController extends EntityDefaultViewsController {
       ),
     );
 
-    // Add user relationship to contacts
-    $data['redhen_contact']['table']['join'] = array(
-      'users' => array(
-        'left_table' => 'redhen_contact_user',
-        'left_field' => 'contact_id',
-        'field' => 'contact_id',
-
+    $data['redhen_contact_user']['uid'] = array(
+      'group' => t('User'),
+      'title' => t('Contact User UID'),
+      'help' => t('The user id associated with this contact via redhen_contact_user'),
+      'relationship' => array(
+        'base' => 'users',
+        'base field' => 'uid',
+        'handler' => 'views_handler_relationship',
+        'label' => t('User'),
+        'title' => t('Contact User'),
+        'help' => t('The user associated with this contact via redhen_contact_user'),
+        'extra' => array(
+          // Only join where the linkage is active
+          array('field' => 'status', 'value' => '1', 'operator' => '='),
+        ),
       ),
-      'redhen_contact_user' => array(
-        'left_field' => 'contact_id',
-        'field' => 'contact_id',
+      'field' => array(
+        'handler' => 'views_handler_field_numeric',
+        'click sortable' => TRUE,
+      ),
+      'filter' => array(
+        'handler' => 'views_handler_filter_numeric',
+      ),
+      'sort' => array(
+        'handler' => 'views_handler_sort',
       ),
     );
 
-    $data['users']['table']['join'] = array(
-      'redhen_contact' => array(
-        'left_table' => 'redhen_contact_user',
-        'left_field' => 'uid',
-        'field' => 'uid',
+    $data['redhen_contact_user']['contact_id'] = array(
+      'group' => t('Contact'),
+      'title' => t('User Contact ID'),
+      'help' => t('The contact id associated with this user via redhen_contact_user'),
+      'relationship' => array(
+        'base' => 'redhen_contact',
+        'base field' => 'contact_id',
+        'handler' => 'views_handler_relationship',
+        'label' => t('Contact'),
+        'title' => t('User Contact'),
+        'help' => t('The contact associated with this user via redhen_contact_user'),
+        'extra' => array(
+          // Only join where the linkage is active
+          array('field' => 'status', 'value' => '1', 'operator' => '='),
+        ),
       ),
-      'redhen_contact_user' => array(
-        'left_field' => 'uid',
-        'field' => 'uid',
+      'field' => array(
+        'handler' => 'views_handler_field_numeric',
+        'click sortable' => TRUE,
+      ),
+      'filter' => array(
+        'handler' => 'views_handler_filter_numeric',
+      ),
+      'sort' => array(
+        'handler' => 'views_handler_sort',
       ),
     );
 
     return $data;
-  }
-}
-
-/*
- * Callback to get $contact->full_name
- */
-function redhen_contact_property_full_name_get(RedhenContact $contact, array $options, $property_name, $entity_type) {
-  $name = $contact->first_name . ' ' . $contact->last_name;
-  $context = array(
-    'contact' => clone $contact,
-  );
-  drupal_alter('redhen_contact_name', $name, $context);
-  return $name;
-}
-
-/**
- * Callback to get $contact->user.
- */
-function redhen_contact_property_user_get(RedhenContact $contact, array $options, $property_name, $entity_type) {
-  if (is_numeric($contact->uid)) {
-    return entity_load_single('user', $contact->uid);
   }
 }

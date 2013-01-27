@@ -19,7 +19,81 @@ function redhen_fields_field_info() {
       'default_widget' => 'redhen_email_widget',
       'default_formatter' => 'redhen_email_formatter',
       'default_token_formatter' => 'redhen_email_primary',
+      // Integrate with the Entity Metadata module.
+      'property_type' => 'redhen_email',
+      'property_callbacks' => array('redhen_fields_email_property_info_callback'),
     ),
+  );
+}
+
+/**
+ * Property callback for redhen_email field
+ */
+function redhen_fields_email_property_info_callback(&$info, $entity_type, $field, $instance, $field_type) {
+  $name = $field['field_name'];
+  $property = &$info[$entity_type]['bundles'][$instance['bundle']]['properties'][$name];
+
+  $property['type'] = ($field['cardinality'] != 1) ? 'list<redhen_email>' : 'redhen_email';
+  $property['getter callback'] = 'entity_metadata_field_verbatim_get';
+  $property['setter callback'] = 'entity_metadata_field_verbatim_set';
+  $property['auto creation'] = 'redhen_fields_email_default_values';
+  $property['property info'] = redhen_fields_email_data_property_info();
+
+  unset($property['query callback']);
+}
+
+/**
+ * Defines info for the properties of the redhen_email field structure
+ */
+function redhen_fields_email_data_property_info($name = NULL) {
+
+  $properties = array();
+
+  $properties['value'] = array(
+    'type' => 'text',
+    'label' => t('Email'),
+    'description' => 'Email address',
+    'setter callback' => 'entity_property_verbatim_set',
+  );
+  $properties['default'] = array(
+    'type' => 'integer',
+    'label' => t('Default'),
+    'description' => 'Is this value the default email',
+    'setter callback' => 'entity_property_verbatim_set',
+  );
+  $properties['hold'] = array(
+    'type' => 'integer',
+    'label' => t('Hold'),
+    'description' => 'Hold on this email address',
+    'setter callback' => 'entity_property_verbatim_set',
+  );
+  $properties['bulk'] = array(
+    'type' => 'integer',
+    'label' => t('Bulk'),
+    'description' => 'Bulk mailing address',
+    'setter callback' => 'entity_property_verbatim_set',
+  );
+  $properties['label_id'] = array(
+    'type' => 'integer',
+    'label' => t('Label'),
+    'description' => 'Label ID for this address',
+    'setter callback' => 'entity_property_verbatim_set',
+  );
+
+  return $properties;
+}
+
+/**
+ * Default values for new redhen fields
+ */
+function redhen_fields_email_default_values() {
+  return array(
+    'value' => '',
+    'default' => 1,
+    'hold' => NULL,
+    'bulk' => NULL,
+    'label_id' => NULL,
+
   );
 }
 
@@ -36,7 +110,7 @@ function redhen_fields_field_settings_form($field, $instance, $has_data) {
       '#rows' => 10,
       '#title' => t('Labels'),
       '#default_value' => redhen_fields_allowed_labels_string($settings['labels']),
-      '#required' => TRUE,
+      '#required' => FALSE,
       '#description' => t('The possible labels for values in this field. Enter one value per line, in the format key|label. Key must be an integer.'),
       '#element_validate' => array('redhen_fields_allowed_labels_setting_validate'),
       '#field_has_data' => $has_data,
@@ -85,8 +159,8 @@ function redhen_fields_allowed_labels_setting_validate($element, &$form_state) {
   else {
     // Check that keys are valid for the field type.
     foreach ($values as $key => $value) {
-      if (!preg_match('/^-?\d+$/', $key)) {
-        form_error($element, t('Allowed labels list: keys must be integers.'));
+      if (!preg_match('/^-?\d+$/', $key) || $key === 0) {
+        form_error($element, t('Allowed labels list: keys must be positive integers greater than zero.'));
         break;
       }
     }
@@ -297,7 +371,8 @@ function redhen_fields_email_in_use($field, $entity_type, $entity, $value) {
 function redhen_fields_field_load($entity_type, $entities, $field, $instances, $langcode, &$items) {
   foreach ($entities as $id => $entity) {
     foreach ($items[$id] as $delta => $item) {
-      $items[$id][$delta]['label'] = $field['settings']['labels'][$item['label_id']];
+      (isset($field['settings']['labels'][$item['label_id']])) ?
+        $items[$id][$delta]['label'] = $field['settings']['labels'][$item['label_id']] : '';
     }
   }
 }
@@ -422,11 +497,13 @@ function redhen_fields_field_widget_form(&$form, &$form_state, $field, $instance
         ),
         '#weight' => 1,
       );
+      $label_options[0] = '- None -';
+      $label_options = $label_options + $field['settings']['labels'];
       $element['options']['label_id'] = array(
         '#title' => t('Label'),
         '#type' => 'select',
         '#multiple' => FALSE,
-        '#options' => $field['settings']['labels'],
+        '#options' => $label_options,
         '#default_value' => isset($items[$delta]['label_id']) ? $items[$delta]['label_id'] : NULL,
         '#weight' => 1
       );
@@ -484,13 +561,14 @@ function template_preprocess_redhen_fields_email_formatter_row(&$variables) {
   $item = $variables['item'];
 
   $image = theme('image', array(
-    'path' => '/misc/watchdog-ok.png',
+    'path' => 'misc/watchdog-ok.png',
     'alt' => t('Enabled')
   ));
 
   $variables['default'] = ($item['default']) ? $image : '&nbsp;';
   $variables['hold'] = ($item['hold']) ? $image : '&nbsp;';
   $variables['bulk'] = ($item['bulk']) ? $image : '&nbsp;';
+  $variables['label'] = $item['label_id'] ? $item['label'] : '&nbsp;';
 }
 
 
@@ -706,11 +784,11 @@ function redhen_fields_email_action($entity, $context) {
     case 'redhen_org':
       // If we have a primary contact, send email to them
       if (isset($entity->primary_contact)) {
-        $recipient = $entity->primary_contact->email;
+        $recipient = $entity->primary_contact->email();
       }
       break;
     case 'redhen_contact':
-      $recipient = $entity->email;
+      $recipient = $entity->email();
       break;
   }
 
@@ -735,3 +813,11 @@ function redhen_fields_email_action($entity, $context) {
     }
   }
 }
+
+/**
+ * Implements hook_field_info_alter().
+ * Defines default property types for core field types.
+ */
+//function redhen_fields_field_info_alter(&$field_info) {
+//  $field_info['redhen_email']['property_type'] = 'text';
+//}

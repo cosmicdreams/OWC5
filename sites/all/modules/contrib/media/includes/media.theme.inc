@@ -13,57 +13,13 @@
  *
  * @param array $element
  *   The form element.
+ *
  * @return string
+ *   HTML of the file list
  */
 function theme_media_file_list($element) {
   // Add the CSS for our display.
   return '<div class="media-file-list">' . theme('form_element', $element, $element['#children']) . '</div>';
-}
-
-
-
-/**
- * Theme a thumbnail.
- * @param $variables
- *   array items being passed in
- */
-function theme_media_admin_thumbnail($variables) {
-  $path = drupal_get_path('module', 'media');
-  $file = $variables['file'];
-  $style_name = $variables['style_name'];
-  if (isset($file)) {
-    $file_url = file_create_url($file->uri);
-  }
-  else {
-    return '';
-  }
-  $output = '';
-  // Display a thumbnail for images.
-  if (strstr($file->filemime, 'image')) {
-    $thumbnail = theme('image_style',
-      array(
-        'style_name' => 'thumbnail',
-        'path' => $file->uri,
-        'alt' => t('Thumbnail for !filename.', array('!filename' => $file->filename)),
-      )
-    );
-  }
-  // Display the 'unknown' icon for other file types.
-  else {
-    $thumbnail = theme('image',
-      array(
-        'path' => $path . '/images/file-unknown.png',
-        'alt' => t('Thumbnail for !filename.', array('!filename' => $file->filename)),
-        'attributes' => array('class' => 'file-unknown'),
-      ));
-  }
-  $output .= l($thumbnail,
-    $file_url,
-    array(
-      'html' => TRUE,
-      'attributes' => array('class' => 'media-thumbnail'),
-    ));
-  return $output;
 }
 
 /**
@@ -75,30 +31,32 @@ function template_preprocess_media_dialog_page(&$variables) {
 
 /**
  * Adds a wrapper around a preview of a media file.
- * @param unknown_type $element
- * @return unknown_type
  */
 function theme_media_thumbnail($variables) {
   $label = '';
   $element = $variables['element'];
   $destination = drupal_get_destination();
 
-  // Wrappers to go around the thumbnail
+  // Wrappers to go around the thumbnail.
   $prefix = '<div class="media-item" title="' . $element['#name'] . '"><div class="media-thumbnail">';
   $suffix = '</div></div>';
 
-  // Arguments for the thumbnail link
+  // Arguments for the thumbnail link.
   $thumb = $element['#children'];
   $target = 'file/' . $element['#file']->fid . '/edit';
-  $options = array('query' => $destination, 'html' => TRUE, 'attributes' => array('title' => t('Click to edit details')));
+  $options = array(
+    'query' => $destination,
+    'html' => TRUE,
+    'attributes' => array('title' => t('Click to edit details')),
+  );
 
-  // Element should be a field renderable array... This is a little wonky - admitted.
+  // Element should be a field renderable array. This should be improved.
   if (!empty($element['#show_names']) && $element['#name']) {
     $label = '<div class="label-wrapper"><label class="media-filename">' . $element['#name'] . '</label></div>';
   }
 
-  // How can I attach CSS here?
-  //$element['#attached']['css'][] = drupal_get_path('module', 'media') . '/css/media.css';
+  // @todo should CSS be attached to the form element here?
+  // $element['#attached']['css'][] = drupal_get_path('module', 'media') . '/css/media.css';
   drupal_add_css(drupal_get_path('module', 'media') . '/css/media.css');
 
   $output = $prefix;
@@ -112,6 +70,9 @@ function theme_media_thumbnail($variables) {
   return $output;
 }
 
+/**
+ * Preprocess the media thumbnail.
+ */
 function template_preprocess_media_thumbnail(&$variables) {
   // Set the name for the thumbnail to be the filename.  This is done here so
   // that other modules can hijack the name displayed if it should not be the

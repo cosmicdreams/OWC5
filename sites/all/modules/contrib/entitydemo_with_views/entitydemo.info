@@ -1,0 +1,8 @@
+name = Entity demo
+description = Create an entity demo with fields. Module created by <a href="http://florianlebrenn.fr">Florian LE BRENN</a>
+core = 7.x
+
+dependencies[] = entity
+
+; Controllers
+files[] = includes/entitydemo.controller.inc

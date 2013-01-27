@@ -1,0 +1,17 @@
+name = Entity demo ui
+description = User interface for entity demo. Module created by <a href="http://florianlebrenn.fr">Florian LE BRENN</a>
+core = 7.x
+
+dependencies[] = entitydemo
+dependencies[] = views
+dependencies[] = views_ui
+
+; Forms
+files[] = includes/entitydemo.form.inc
+
+; Views & handlers
+files[] = includes/views/entitydemo_ui.views.inc
+files[] = includes/views/entitydemo_ui.views_default.inc
+files[] = includes/views/handlers/entitydemo_ui_handler_link_field.inc
+files[] = includes/views/handlers/entitydemo_ui_handler_delete_link_field.inc
+files[] = includes/views/handlers/entitydemo_ui_handler_edit_link_field.inc

@@ -1,0 +1,2 @@
+In this directory we can see all exported configuration 
+It is necessary to have the configuration be placed outside of the files directory because the files directory is ignored by git.
