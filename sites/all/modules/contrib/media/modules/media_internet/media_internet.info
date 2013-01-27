@@ -6,8 +6,8 @@ dependencies[] = media
 files[] = includes/MediaBrowserInternet.inc
 
 ; Information added by drupal.org packaging script on 2013-01-27
-version = "7.x-2.0-unstable7+19-dev"
+version = "7.x-2.0-unstable7+20-dev"
 core = "7.x"
 project = "media"
-datestamp = "1359250102"
+datestamp = "1359292428"
 
