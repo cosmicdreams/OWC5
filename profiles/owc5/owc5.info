@@ -9,7 +9,6 @@ exclusive = TRUE
 ; Core modules required by RedHen and Drupal
 dependencies[] = block
 dependencies[] = color
-dependencies[] = comment
 dependencies[] = contextual
 dependencies[] = help
 dependencies[] = image
