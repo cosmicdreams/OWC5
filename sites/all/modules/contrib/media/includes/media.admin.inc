@@ -72,7 +72,7 @@ function media_import_validate($form, &$form_state) {
           array_push($dirs, $path);
         }
         else {
-          if (!in_array($path, $dirs) && (strlen($dirs[0]) < strlen($path))) {
+          if (!in_array($path, $dirs) && (strlen(realpath($directory)) <= strlen($path))) {
             array_push($dirs, $path);
           }
         }
