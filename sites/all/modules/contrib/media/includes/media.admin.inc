@@ -62,7 +62,30 @@ function media_import_validate($form, &$form_state) {
       form_set_error('directory', t('The provided directory does not exist.'));
     }
     $pattern = !empty($pattern) ? $pattern : '*';
-    $files = glob("$directory/$pattern");
+
+    $dirs = array();
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory), RecursiveIteratorIterator::SELF_FIRST);
+    foreach ($iterator as $file) {
+      if ($file->isDir()) {
+        $path = $file->getRealpath();
+        if (!count($dirs)) {
+          array_push($dirs, $path);
+        }
+        else {
+          if (!in_array($path, $dirs) && (strlen($dirs[0]) < strlen($path))) {
+            array_push($dirs, $path);
+          }
+        }
+      }
+    }
+    $files = array();
+    foreach ($dirs as $dir) {
+      $files = array_merge($files, glob("$dir/$pattern"));
+      if ($key = array_search($dir, $files)) {
+        unset($files[$key]);
+      }
+    }
+
     if (empty($files)) {
       form_set_error('pattern', t('No files were found in %directory matching %pattern', array('%directory' => $directory, '%pattern' => $pattern)));
     }
