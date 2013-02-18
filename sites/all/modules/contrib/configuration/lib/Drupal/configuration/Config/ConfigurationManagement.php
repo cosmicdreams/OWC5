@@ -51,7 +51,7 @@ class ConfigurationManagement {
     // During the install process strema wrappers are to available so this is
     // a work around.
     if (!file_stream_wrapper_get_instance_by_uri($temp_stream)) {
-      $temp_stream = variable_get('configuration_config_path', conf_path() . '/files/config/');
+      $temp_stream = variable_get('configuration_config_path', conf_path() . '/files/config');
     }
     return $temp_stream;
   }
@@ -148,8 +148,8 @@ class ConfigurationManagement {
         $to_install[] = $module_name;
       }
     }
-    $settings->setInfo('modules_to_install', array_unique($to_install));
-    $settings->setInfo('modules_missing', array_unique($missing));
+    $settings->setInfo('modules_to_install', array_filter(array_unique($to_install)));
+    $settings->setInfo('modules_missing', array_filter(array_unique($missing)));
 
     return $settings;
   }
@@ -532,7 +532,7 @@ class ConfigurationManagement {
     }
     $file_content .= ");\n";
     if (Storage::checkFilePermissions('tracked.inc')) {
-      file_put_contents(static::getStream() . 'tracked.inc', $file_content);
+      file_put_contents(static::getStream() . '/tracked.inc', $file_content);
     }
   }
 
@@ -540,8 +540,8 @@ class ConfigurationManagement {
    * Returns a list of files that are listed in the config://tracked.inc file.
    */
   static public function readTrackingFile() {
-    if (file_exists(static::getStream() . 'tracked.inc')) {
-      $file_content = drupal_substr(file_get_contents(static::getStream() . 'tracked.inc'), 6);
+    if (file_exists(static::getStream() . '/tracked.inc')) {
+      $file_content = drupal_substr(file_get_contents(static::getStream() . '/tracked.inc'), 6);
       @eval($file_content);
       return array(
         'tracked' => $tracked,
@@ -586,11 +586,12 @@ class ConfigurationManagement {
 
     $modules_results = ConfigurationManagement::discoverRequiredModules($modules);
 
-    $missing_modules = $modules_results->getInfo('missing_modules');
+    $missing_modules = $modules_results->getInfo('modules_missing');
 
+    $error = FALSE;
     if (!empty($missing_modules)) {
       drupal_set_message(t('Configurations cannot be syncronized because the following modules are not available to install: %modules', array('%modules' => implode(', ', $missing_modules))), 'error');
-      return;
+      return $modules_results;
     }
     else {
       $modules_to_install = $modules_results->getInfo('modules_to_install');

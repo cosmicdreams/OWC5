@@ -37,8 +37,13 @@ function theme_media_thumbnail($variables) {
   $element = $variables['element'];
   $destination = drupal_get_destination();
 
-  // Wrappers to go around the thumbnail.
-  $prefix = '<div class="media-item" title="' . $element['#name'] . '"><div class="media-thumbnail">';
+ // Wrappers to go around the thumbnail.
+  $attributes = array(
+    'title' => $element['#name'],
+    'class' => 'media-item',
+    'data-fid' => $element['#file']->fid,
+  );
+  $prefix = '<div ' . drupal_attributes($attributes) . '><div class="media-thumbnail">';
   $suffix = '</div></div>';
 
   // Arguments for the thumbnail link.

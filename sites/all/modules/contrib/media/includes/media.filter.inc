@@ -204,7 +204,6 @@ function media_field_attach_delete_revision($entity_type, $entity) {
  * @TODO check for security probably pass text through filter_xss
  */
 function media_filter($text) {
-  $text = ' ' . $text . ' ';
   $text = preg_replace_callback(MEDIA_TOKEN_REGEX, 'media_token_to_markup', $text);
   return $text;
 }
@@ -375,15 +374,12 @@ function media_token_to_markup($match, $wysiwyg = FALSE) {
       // Add surrounding divs to group them together.
       // We dont want divs when there are no additional fields to allow files
       // to display inline with text, without breaking p tags.
-      $attributes = array(
-        'class' => array(
-          'media',
-          'media-element-container',
-          'media-' . $element['content']['file']['#view_mode'],
-        ),
+      $element['content']['#type'] = 'container';
+      $element['content']['#attributes']['class'] = array(
+        'media',
+        'media-element-container',
+        'media-' . $element['content']['file']['#view_mode']
       );
-      $element['content']['#prefix'] = '<div ' . drupal_attributes($attributes) . '>';
-      $element['content']['#suffix'] = '</div>';
     }
   }
   drupal_alter('media_token_to_markup', $element, $tag_info, $settings);

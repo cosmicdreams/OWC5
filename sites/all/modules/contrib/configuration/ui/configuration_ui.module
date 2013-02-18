@@ -77,19 +77,28 @@ function configuration_ui_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['admin/config/configuration/view/%'] = array(
+  $items['admin/config/system/configuration/view/%'] = array(
     'title' => 'Configuration Management',
     'page callback' => 'configuration_ui_config_info',
-    'page arguments' => array(4),
+    'page arguments' => array(5),
     'file' => 'configuration_ui.admin.inc',
     'access arguments' => array('administer configuration management'),
   );
 
+  $items['admin/config/system/configuration/status/%'] = array(
+    'title' => 'Configuration Management',
+    'page callback' => 'configuration_ui_config_status',
+    'page arguments' => array(5),
+    'file' => 'configuration_ui.admin.inc',
+    'access arguments' => array('administer configuration management'),
+    'type' => MENU_CALLBACK,
+  );
+
   if (module_exists('diff')) {
-    $items['admin/config/configuration/diff/%'] = array(
+    $items['admin/config/system/configuration/diff/%'] = array(
       'title' => 'Configuration Management',
       'page callback' => 'configuration_ui_config_diff',
-      'page arguments' => array(4),
+      'page arguments' => array(5),
       'file' => 'configuration_ui.admin.inc',
       'access arguments' => array('administer configuration management'),
     );
@@ -132,18 +141,21 @@ function configuration_ui_menu() {
 }
 
 /**
- * Get a list of components to be processed.
+ * Implements hook_theme().
  */
-function configuration_ui_get_form_components($form, &$form_state) {
-  $component_list = array();
-  foreach ($form_state['values'] as $component) {
-    if (is_array($component) && isset($component['tracked'])) {
-      foreach ($component['tracked'] as $key => $value) {
-        if ($key === $value) {
-          $component_list[] = $key;
-        }
-      }
-    }
-  }
-  return $component_list;
+function configuration_ui_theme($existing, $type, $theme, $path) {
+  $base = array(
+    'path' => drupal_get_path('module', 'configuration_ui') . '/theme',
+    'file' => 'theme.inc',
+  );
+  $items = array();
+  $items['configuration_ui_form_buttons'] = array(
+    'render element' => 'element',
+  ) + $base;
+
+  $items['configuration_table'] = array(
+    'render element' => 'form',
+  ) + $base;
+
+  return $items;
 }
