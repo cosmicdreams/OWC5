@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
 /**
  * @file
  * Tabs Styling
@@ -7,30 +9,6 @@
  * Compare this with default CSS found in the system module's stylesheet (a copy
  * of which is in drupal7-reference.css.)
  */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
-/* line 125, ../sass/_custom.scss */
-nav#secondary-menu {
-  margin-top: 1em;
-}
-/* line 127, ../sass/_custom.scss */
-nav#secondary-menu a {
-  color: #ff9900;
-  font-size: .75em;
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
-  -o-transition: 0.1s linear all;
-  transition: 0.1s linear all;
-}
-/* line 131, ../sass/_custom.scss */
-nav#secondary-menu a:hover {
-  color: white;
-}
-/* line 135, ../sass/_custom.scss */
-nav#secondary-menu li.last a {
-  color: #c5c5c5;
-}
-
 /*
  * Basic positioning styles shared by primary and secondary tabs.
  */
@@ -107,7 +85,7 @@ ul.primary a:focus {
 /*
  * Secondary tabs
  */
-/* line 49, ../sass/tabs.scss */
+/* line 50, ../sass/tabs.scss */
 ul.secondary {
   margin-top: 1em;
   margin-bottom: 50px;
@@ -116,7 +94,7 @@ ul.secondary {
   margin-left: 0;
   padding: 0;
 }
-/* line 58, ../sass/tabs.scss */
+/* line 59, ../sass/tabs.scss */
 ul.secondary li.active a {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f8f8f8), color-stop(50%, #ececec), color-stop(100%, #f8f8f8));
   background-image: -webkit-linear-gradient(#f8f8f8, #ececec, #f8f8f8);
@@ -125,11 +103,11 @@ ul.secondary li.active a {
   background-image: linear-gradient(#f8f8f8, #ececec, #f8f8f8);
   color: #444;
 }
-/* line 62, ../sass/tabs.scss */
+/* line 63, ../sass/tabs.scss */
 ul.secondary li.active a:hover {
-  color: #444;
+  color: #444444;
 }
-/* line 67, ../sass/tabs.scss */
+/* line 68, ../sass/tabs.scss */
 ul.secondary a {
   font-family: "Open Sans Condensed", Helvetica, Arial, "Nimbus Sans L", sans-serif;
   -webkit-border-radius: 2px;
@@ -152,7 +130,7 @@ ul.secondary a {
   display: block;
   margin-left: 5px;
 }
-/* line 81, ../sass/tabs.scss */
+/* line 82, ../sass/tabs.scss */
 ul.secondary a:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f8f8f8), color-stop(50%, #eeeeee), color-stop(100%, #fefefe));
   background-image: -webkit-linear-gradient(#f8f8f8, #eeeeee, #fefefe);
@@ -163,7 +141,7 @@ ul.secondary a:hover {
   border: 1px solid #c6c6c6;
   text-decoration: none;
 }
-/* line 88, ../sass/tabs.scss */
+/* line 89, ../sass/tabs.scss */
 ul.secondary a:active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ebebeb), color-stop(50%, #ececec), color-stop(100%, #ebebeb));
   background-image: -webkit-linear-gradient(#ebebeb, #ececec, #ebebeb);
