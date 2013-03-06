@@ -107,9 +107,4 @@ features[variable][] = theme_poultry_settings
 features[variable][] = theme_settings
 features[views_view][] = registrations
 
-; Information added by drupal.org packaging script on 2012-10-18
-version = "7.x-1.0-alpha2"
-core = "7.x"
-project = "redhen_demo"
-datestamp = "1350582112"
 
