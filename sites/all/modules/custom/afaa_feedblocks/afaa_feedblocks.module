@@ -5,31 +5,38 @@
  */
 
 /**
- * Implements hook_block_block_info()
- * @return array
+ * Implements hook_block_info()
  */
 function afaa_feedblocks_block_info() {
-  // TODO: Pull blocks defined.
-  return array(
-    'feedblock' => array(
-      'info' => 'Feedblock 1',
-      'cache' => DRUPAL_CACHE_GLOBAL,
-    ),
+  $defaults = array(
+    'count' => 2,
   );
-}
+  $settings = variable_get('afaa_feedblocks', $defaults);
 
+  for ($i = 1; $i <= $settings['count']; $i++) {
+    $blocks['afaa_feedblocks_'. $i] = array(
+      'info' => t('Feed Block'),
+      'cache' => DRUPAL_NO_CACHE,
+    );
+  }
+
+  return $blocks;
+}
 
 /**
  * Implements hook_block_block_save()
  * @param string $delta
  * @param array $edit
  */
-function afaa_feedblocks_configure_save($delta = '', $edit = array()) {
-  variable_set('afaa_feedblocks_' . $delta, $edit['settings']);
+function afaa_feedblocks_block_save($delta = '', $edit = array()) {
+  if (strpos($delta, 'afaa_feedblocks_') !== 0) {
+    return;
+  }
+
+  variable_set($delta, $edit['settings']);
   $parameters = array(
     '@name' => $edit['title'],
   );
-  drupal_set_message('Feedblock: "@name" saved!', $parameters);
 }
 
 
@@ -39,40 +46,54 @@ function afaa_feedblocks_configure_save($delta = '', $edit = array()) {
  */
 function afaa_feedblocks_menu() {
   $items = array();
-  $items['admin/structure/block/add-feedblock'] = array(
-    'title' => 'Add Feed Block',
+  $items['admin/config/services/feedblocks'] = array(
+    'title' => 'Configure Feed Blocks',
+    'description' => 'Configures a module which displays blocks from XML/JSON feeds.',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('afaa_feedblocks_block_add'),
+    'page arguments' => array('afaa_feedblocks_admin_settings_form'),
     'access arguments' => array('administer blocks'),
-    'description' => 'Create a new block which displays data from an XML/JSON feed.',
-    'type' => MENU_LOCAL_ACTION,
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'afaa_feedblocks.admin.inc',
   );
   return $items;
 }
 
 
 /**
- * Generates the form for a feedblock.
- * @param array $form
- * @param array $form_state
- * @return array
+ * Allows the block to be configured.
+ * @param string $delta
+ * @param array $edit
  */
-function afaa_feedblocks_block_add($form, &$form_state) {
-  module_load_include('inc', 'block', 'block.admin');
-  // TODO: Use the correct block #
+function afaa_feedblocks_block_configure($delta = '') {
+  if (strpos($delta, 'afaa_feedblocks_') !== 0) {
+    return;
+  }
+
+  $defaults = array(
+    'url' => null,
+    'count' => 5,
+    'type' => 'application/rss+xml',
+  );
+
+  $settings = variable_get($delta, $defaults);
+  $form['settings'] = array(
+    '#tree' => true,
+  ); 
+
   $form['settings']['url'] = array(
     '#title' => t('URL'),
     '#description' => t('The location of the feed you want to pull in.'),
     '#type' => 'textfield',
     '#size' => 100,
-    '#default_value' => '',
+    '#default_value' => $settings['url'],
   );
   $form['settings']['count'] = array(
     '#title' => t('Count'),
     '#description' => t('The number of items you want to display from the feed.'),
     '#type' => 'textfield',
     '#size' => 2,
-    '#default_value' => 5,
+    '#default_value' => $settings['count'],
+    '#element_validate' => array('element_validate_integer_positive'),
   );
   $form['settings']['type'] = array(
     '#title' => t('Type'),
@@ -83,12 +104,25 @@ function afaa_feedblocks_block_add($form, &$form_state) {
       'application/atom+xml' => 'ATOM+XML',
       'application/json' => 'JSON',
     ),
-    '#default_value' => 'application/rss+xml',
+    '#default_value' => $settings['type'],
   );
+  return $form;
+}
 
-  $form['#submit'] = array(
-    'afaa_feedblocks_configure_save'
-  );
 
-  return block_admin_configure($form, $form_state, 'block', NULL);
+/**
+ * Generates the data needed to display the block.
+ * @param string $delta
+ * @return array
+ *  array(
+ *    'title' => string,
+ *    'content' => string|array
+ *  )
+ */
+function afaa_feedblocks_block_view($delta = '') {
+  if (strpos($delta, 'afaa_feedblocks_') !== 0) {
+    return array();
+  }
+  // TODO: The magic happens here.
+  
 }
