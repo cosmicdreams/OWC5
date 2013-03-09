@@ -3,3 +3,92 @@
  * @file
  *  Generates blocks that display content from custom RSS sources.
  */
+
+/**
+ * Implements hook_block_block_info()
+ * @return array
+ */
+function afaa_feedblocks_block_info() {
+  // TODO: Pull blocks defined.
+  return array(
+    'feedblock' => array(
+      'info' => 'Feedblock 1',
+      'cache' => DRUPAL_CACHE_GLOBAL,
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_block_save()
+ * @param string $delta
+ * @param array $edit
+ */
+function afaa_feedblocks_configure_save($delta = '', $edit = array()) {
+  variable_set('afaa_feedblocks_' . $delta, $edit['settings']);
+  $parameters = array(
+    '@name' => $edit['title'],
+  );
+  drupal_set_message('Feedblock: "@name" saved!', $parameters);
+}
+
+
+/**
+ * Implements hook_menu()
+ * @return array
+ */
+function afaa_feedblocks_menu() {
+  $items = array();
+  $items['admin/structure/block/add-feedblock'] = array(
+    'title' => 'Add Feed Block',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('afaa_feedblocks_block_add'),
+    'access arguments' => array('administer blocks'),
+    'description' => 'Create a new block which displays data from an XML/JSON feed.',
+    'type' => MENU_LOCAL_ACTION,
+  );
+  return $items;
+}
+
+
+/**
+ * Generates the form for a feedblock.
+ * @param array $form
+ * @param array $form_state
+ * @return array
+ */
+function afaa_feedblocks_block_add($form, &$form_state) {
+  module_load_include('inc', 'block', 'block.admin');
+  // TODO: Use the correct block #
+  $form['settings']['url'] = array(
+    '#title' => t('URL'),
+    '#description' => t('The location of the feed you want to pull in.'),
+    '#type' => 'textfield',
+    '#size' => 100,
+    '#default_value' => '',
+  );
+  $form['settings']['count'] = array(
+    '#title' => t('Count'),
+    '#description' => t('The number of items you want to display from the feed.'),
+    '#type' => 'textfield',
+    '#size' => 2,
+    '#default_value' => 5,
+  );
+  $form['settings']['type'] = array(
+    '#title' => t('Type'),
+    '#description' => t('The type of feed to read. If you dont know what this is, please contact a site administrator.'),
+    '#type' => 'select',
+    '#options' => array(
+      'application/rss+xml' => 'RSS+XML',
+      'application/atom+xml' => 'ATOM+XML',
+      'application/json' => 'JSON',
+    ),
+    '#default_value' => 'application/rss+xml',
+  );
+
+  $form['#submit'] = array(
+    'afaa_feedblocks_configure_save'
+  );
+
+  return block_admin_configure($form, $form_state, 'block', NULL);
+}
