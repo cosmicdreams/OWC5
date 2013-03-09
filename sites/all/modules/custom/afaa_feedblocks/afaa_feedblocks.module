@@ -1,0 +1,5 @@
+<?php
+/**
+ * @file
+ *  Generates blocks that display content from custom RSS sources.
+ */
