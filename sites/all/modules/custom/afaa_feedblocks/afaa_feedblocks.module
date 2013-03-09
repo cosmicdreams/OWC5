@@ -141,6 +141,7 @@ function afaa_feedblocks_block_view($delta = '') {
   }
 
   return array(
+     'subject' => t('Feed Block'),
      'content' => $content,
   );
 }
@@ -173,9 +174,17 @@ function afaa_feedblocks_read_xml($data, $items = 5) {
   $content = array_slice($content, 0, $items);
   $return = array();
   foreach ($content as $item) {
-    $return[] = (array) $item;
+    $item = (array) $item;
+    foreach ($item as $key => $value) {
+      $key = '#' . $key;
+      $item[$key] = $value;
+    }
+
+    $return[] = $item;
   }
 
   // TODO: Unmangle the format.
-  return $return;
+  return array(
+     '#children' => $return
+  );
 }
