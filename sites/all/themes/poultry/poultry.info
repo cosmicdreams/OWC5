@@ -133,12 +133,7 @@ features[] = favicon
 features[] = main_menu
 features[] = secondary_menu
 
-; Once this module or the theme is enabled, the settings are read from the info
-; file and stored into the database.
-;breakpoints[mobile] = (min-width: 0px)
-;breakpoints[narrow] = (min-width: 560px)
-;breakpoints[wide] = (min-width: 851px)
-;breakpoints[tv] = only screen and (min-width: 3456px)
+
 
 ; Set the default values of settings on the theme-settings.php form.
 
@@ -152,7 +147,7 @@ settings[zen_skip_link_text]       = Jump to navigation
 settings[zen_html5_respond_meta][] = respond
 settings[zen_html5_respond_meta][] = html5
 settings[zen_html5_respond_meta][] = meta
-settings[zen_rebuild_registry]     = 1
+settings[zen_rebuild_registry]     = 0
 settings[zen_wireframes]           = 0
 
 ; To make this sub-theme an admin theme with shortcut links next to titles,
@@ -164,9 +159,9 @@ settings[zen_wireframes]           = 0
 ; the line below and see the documentation at: http://drupal.org/node/495654
 ;plugins[panels][layouts] = layouts
 
-; Information added by drupal.org packaging script on 2012-08-10
-version = "7.x-1.0-beta1"
+; Information added by drupal.org packaging script on 2013-01-29
+version = "7.x-1.0"
 core = "7.x"
 project = "poultry"
-datestamp = "1344641236"
+datestamp = "1359420873"
 

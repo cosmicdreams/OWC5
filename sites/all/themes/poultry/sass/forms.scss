@@ -58,6 +58,7 @@
 
 .form-textarea-wrapper textarea {
   padding: .2em .5em;
+  border: 1px solid #d2d2d2;
 }
 
 .form-submit, input[type="submit"], #edit-cancel { 
@@ -189,7 +190,7 @@ td.menu-disabled {
   }
 }
 
-
+// Replaced Zen collapsed triangle with modified
 ul li.collapsed {
   list-style-image: url('../images/menu-collapsed.png') no-repeat;
 }
@@ -216,12 +217,11 @@ html.js input.throbbing {
   }
 }
 
-
-
 #redhen-filter-form {
   margin-bottom: 20px;
 }
 
+// Fieldset styles
 fieldset {
   margin: 0;
   padding-left: 0;
@@ -250,7 +250,6 @@ legend {
     min-height: 12px;
   }
 }
-
 
 html.js fieldset.collapsed .fieldset-legend, html.js fieldset.collapsible .fieldset-legend {
   display: block;
@@ -377,6 +376,44 @@ fieldset.collapsed {
 }
 
 
+
+// Nested fieldsets style
+fieldset fieldset .fieldset-wrapper {
+  @include border-radius(4px);
+  margin-right: 4%;
+  border: none;
+  background: white;
+
+  .form-item:nth-child(1) {
+    margin-top: 3px;
+  }
+}
+
+
+// Remove Blue Header on nested fieldsets
+html.js fieldset.collapsed fieldset .fieldset-legend, html.js fieldset.collapsible fieldset .fieldset-legend {
+  margin-right: 4%;
+  border: none;
+  background: none;
+  background-image: none;
+  color: #444;
+  font-size: 14px;
+  font-family: $header-font-family;
+  
+  &:hover {
+    background: none;
+    background-image: none;
+    color: #444;
+  }
+}
+
+// Make tables within fieldset not 100%
+.fieldset-wrapper {
+  table {
+    width: 80%;
+  }
+}
+
 .form-item input[type="password"] {
   &.password-field, &.password-confirm {
     width: 45%;
@@ -390,12 +427,9 @@ div.password-strength, div.password-confirm {
 }
 
 .ok {
-  color: $status; //TODO variable for green
+  color: $status;
   font-weight: bold;
   text-transform: uppercase;
-  &:after {
-    content: "!";
-  }
 }
 
 .password-confirm .error {
@@ -409,5 +443,3 @@ div.form-item div.password-suggestions {
   padding: .7em 1em;
   background: #fdfdfd;
 }
-
-

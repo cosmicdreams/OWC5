@@ -34,8 +34,8 @@ class Storage {
    * Returns TRUE if the file for a configuration exists
    * in the config:// directory.
    */
-  static public function configFileExists($component, $identifier) {
-    return file_exists(ConfigurationManagement::getStream() . $component . '.' . $identifier . '.' . static::$file_extension);
+  static public function configFileExists($filename) {
+    return file_exists(ConfigurationManagement::getStream() . '/' . $filename);
   }
 
   /**
@@ -44,8 +44,8 @@ class Storage {
    */
   static public function checkFilePermissions($filename) {
     $dir_path = ConfigurationManagement::getStream();
-    $full_path = $dir_path . $filename;
-    if (is_writable($dir_path) || drupal_chmod($dir_path)) {
+    $full_path = $dir_path . '/' . $filename;
+    if (static::checkDirectory($dir_path)) {
       if (file_exists($full_path)) {
         if (is_writable($full_path) || drupal_chmod($full_path)) {
           return TRUE;
@@ -58,7 +58,28 @@ class Storage {
         return TRUE;
       }
     }
+    return FALSE;
+  }
+
+  /**
+   * Returns TRUE if the path is a directory or we can create one in that path.
+   */
+  static public function checkDirectory($dir_path) {
+    if (!is_dir($dir_path)) {
+      if (drupal_mkdir($dir_path, NULL, TRUE)) {
+        return TRUE;
+      }
+      else {
+        // If the directory does not exists and cannot be created.
+        drupal_set_message(st('The directory %directory does not exist and could not be created.', array('%directory' => $dir_path)), 'error');
+        watchdog('file system', 'The directory %directory does not exist and could not be created.', array('%directory' => $dir_path), WATCHDOG_ERROR);
+        return FALSE;
+      }
+    }
     else {
+      if (is_writable($dir_path) || drupal_chmod($dir_path)) {
+        return TRUE;
+      }
       watchdog('configuration', 'The current user do not have write permissions in the directory %dir.', array('%dir' => $dir_path), WATCHDOG_ERROR);
       drupal_set_message(t('The current user do not have write permissions in the directory %dir.', array('%dir' => $dir_path)), 'error', FALSE);
     }
@@ -105,7 +126,7 @@ class Storage {
   }
 
   public function setFileName($filename) {
-    $this->filename = $filename . static::$file_extension;
+    $this->filename = $filename;
     return $this;
   }
 
@@ -179,6 +200,10 @@ class Storage {
 
   public function getHash() {
     return $this->hash;
+  }
+
+  static public function getFileExtension() {
+    return static::$file_extension;
   }
 
 }

@@ -103,3 +103,25 @@
 .views-displays .secondary a:hover, .views-displays .secondary .active a {
   color: $link-color;
 }
+
+.page-admin-reports-updates {
+
+  .version-links {
+    li {
+      list-style: none;
+      margin-bottom: 1em;
+    }
+  }
+
+  .update table.version .version-title {
+    padding-left: 1em;
+    width: 9em;
+  }
+
+  .info {
+    .placeholder {
+      color: $body-font-color;
+      text-transform: capitalize
+    }
+  }
+}

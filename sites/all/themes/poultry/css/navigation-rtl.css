@@ -1,31 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
 /**
  * @file
  * RTL companion for the navigation.css file.
  */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
-/* line 125, ../sass/_custom.scss */
-nav#secondary-menu {
-  margin-top: 1em;
-}
-/* line 127, ../sass/_custom.scss */
-nav#secondary-menu a {
-  color: #ff9900;
-  font-size: .75em;
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
-  -o-transition: 0.1s linear all;
-  transition: 0.1s linear all;
-}
-/* line 131, ../sass/_custom.scss */
-nav#secondary-menu a:hover {
-  color: white;
-}
-/* line 135, ../sass/_custom.scss */
-nav#secondary-menu li.last a {
-  color: #c5c5c5;
-}
-
 /* line 9, ../sass/navigation-rtl.scss */
 ul li.collapsed {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABNJREFUCB1j4GASYFJgcmD+A4IADUIDfIUMT4wAAAAASUVORK5CYII=');

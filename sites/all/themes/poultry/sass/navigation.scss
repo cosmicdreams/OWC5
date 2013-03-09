@@ -40,14 +40,14 @@ li a.active {
   color: #000;
 }
 
-/*
- * Navigation bar
- */
+
 
 #navigation {
   /* overflow: hidden; */ /* Sometimes you want to prevent overlapping with main div. */
 
   background: darken($md-grey, 15%);
+  height: auto;
+  padding: 1%;
 
   .block {
     margin-bottom: 0;
@@ -66,76 +66,69 @@ li a.active {
 
     li { /* A simple method to get navigation links to appear in one line. */
       float: left; /* LTR */
-      padding: 0 10px 0 0; /* LTR */
+      padding: 0 10px; 
+      margin: 0 1%;
       list-style-type: none;
       list-style-image: none;
-    }
-  }
 
-  a {
-    font-size: 1.4em;
-    color: white;
-    font-family: $header-font-family;
-    padding: 0 10px 3px 10px;
-    line-height: 1.9;
-
-    
-    @media all and (min-width: 481px) {
-      &:hover, &.active {
-        background: darken($md-grey, 25%);
-        @include border-radius(5px);
+      @media all and (min-width: 481px) {
+        &:hover, &.active {
+          background: darken($md-grey, 25%);
+          @include border-radius(5px);
+        }
       }
     }
-    
-    @media all and (min-width: 481px) and (max-width: 720px) {
-      font-size: 1.2em;
-      line-height: 2.3;
-      padding: 0 5px 3px 5px;
+
+    a {
+      color: white;
+      font-family: $header-font-family;
+      font-size: 1.4em;
+      display: inline;
+      
+      // Decrease size for Tablet - Portrait
+      @media all and (min-width: 481px) and (max-width: 720px) {
+        font-size: 1.1em;
+      }
     }
   }
 }
 
-.region-navigation {
-}
 
-@media all and (max-width: 720px) {
-  #navigation {
-    height:auto;
-  }
-}
-
+// Navigation bar and Responses
 
 @media all and (max-width: 480px) {
   #navigation {
     margin-bottom: 20px;
     height:auto;
     background: none;
+    width: 100%;
   }
 
   #navigation ul.links li, #navigation ul.menu li {
-    float: none;
-    display: block;
-    margin: 0 0 0 0;
-    padding: 5px 0;
+    width: 100%;
+    margin: 0 auto 10px auto;
     text-align: center;  
-
-
+    padding: 0;
+    
     a {
-      width:  %;
-      position: relative;
-      display: block;
-      padding: 4px 3% 5px 3%;
-      margin: 0;
-      text-transform: uppercase;
       @include border-radius(5px);
       background: darken($md-grey, 25%);
+      display: block;
       font-size: 1.5em;
-
+      margin: 0;
+      padding: 5px 0;
+      position: relative;
+      text-transform: uppercase;
+      
       &:focus {
         background: darken($md-grey, 45%);
       }
     }
   }
+}
+
+
+.region-navigation {
 }
 
 /*
@@ -146,12 +139,12 @@ li a.active {
 #main-menu {
 }
 
-#secondary-wrapper {
-  float: right; /* LTR */
-  width: auto;
+#header {
+  position: relative;
 }
+
 #secondary-menu {
-  float: left; /* LTR */
+  float: right; /* LTR */
 }
 
 #toggle-wrapper {
@@ -180,8 +173,7 @@ li a.active {
 .block-menu-block {
 }
 
-/*  =Pager Overrides and Styles
-  ------------------------------------------------------ */
+// Pager Overrides and Styles
 
 @mixin pager($radius: 2px, $background_1: #F8F8F8, $background_2: #ECECEC, $border: #c6c6c6, $font-color: #999) {
 
@@ -204,24 +196,26 @@ li a.active {
 
   // Pager link style
  a {
-    @include border-radius($radius);
-    @include background-image(linear-gradient($background_1,$background_2,$background_1));
     padding: 3px 1%;
     border: 1px solid $border;
-    font-size: 12px;
     color: $font-color;
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 12px;
+    @include border-radius($radius);
+    @include background-image(linear-gradient($background_1,$background_2,$background_1));
+    @include transition(.1s linear all);
+
     &:hover {
       @include background-image(linear-gradient($background_2,$background_1,$background_2));
       color: $link-color;
       border: 1px solid $border;
       text-decoration: none;
     }
+    
     &:active {
       @include background-image(linear-gradient(darken($background_2, 5%),$background_1,darken($background_1, 3%)));
-  }
-    @include transition(.1s linear all);
+    }
   }
 
 }
@@ -229,4 +223,94 @@ li a.active {
 .item-list .pager {
   text-align: left;
   @include pager;
+}
+
+#secondary-menu {
+  margin: 1em 0;
+  float: right;
+  
+  a {
+    color: $orange;
+    font-size: .75em;
+    @include transition(.1s linear all);
+    
+    &:hover {
+      color: white;
+    }
+  }
+  
+  li.last a {
+    color: $md-grey;
+  }
+}
+
+#secondary-wrapper {
+  
+  #secondary-menu {
+    margin: .1em 0;
+  }
+  
+  @media all and (max-width: 720px) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: none;
+    width: 100%;
+  }
+
+  @media all and (min-width: 720px) {
+    #secondary-wrapper {
+      width: 25%;
+      float: left;
+    }
+  }
+}
+
+#name-and-slogan {
+  @media all and (max-width: 480px) {
+    margin: 0 0 20px 0;
+    width: 100%;
+  } 
+   @media all and (min-width: 481px) and (max-width: 720px) {
+    margin: 30px 0 0 10px;
+  } 
+}
+
+#logo {  
+  float: left;
+   
+  @media all and (max-width: 480px) {
+    float: none;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+  } 
+  
+  @media all and (min-width: 481px) and (max-width: 720px) {
+    margin: 25px 0 20px 0;
+  } 
+
+}
+
+#site-name {
+  float: left;
+}
+
+nav#secondary-menu {
+  margin-top: 1em;
+  
+  a {
+    color: $orange;
+    font-size: .75em;
+    @include transition(.1s linear all);
+  
+    &:hover {
+      color: white;
+    }
+  }
+  
+  li.last a {
+    color: $md-grey;
+  }
 }

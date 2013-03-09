@@ -10,9 +10,9 @@ dependencies[] = redhen_org
 dependencies[] = message
 dependencies[] = entityreference
 
-; Information added by drupal.org packaging script on 2013-01-23
-version = "7.x-1.0-beta3+16-dev"
+; Information added by drupal.org packaging script on 2013-02-06
+version = "7.x-1.0"
 core = "7.x"
 project = "redhen"
-datestamp = "1358904969"
+datestamp = "1360191746"
 

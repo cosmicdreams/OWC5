@@ -12,7 +12,7 @@ files[] = handlers/TestMenuConfiguration.test
 files[] = handlers/TestFieldConfiguration.test
 files[] = handlers/TestVariableConfiguration.test
 files[] = handlers/TestPermissionConfiguration.test
-;files[] = handlers/TestRoleConfiguration.test
+files[] = handlers/TestRoleConfiguration.test
 files[] = handlers/TestViewConfiguration.test
 ;files[] = handlers/TestPageManagerConfiguration.test
 
@@ -26,9 +26,9 @@ dependencies[] = features
 dependencies[] = role_export
 
 
-; Information added by drupal.org packaging script on 2012-12-11
-version = "7.x-2.0-alpha1"
+; Information added by drupal.org packaging script on 2013-01-31
+version = "7.x-2.0-alpha2"
 core = "7.x"
 project = "configuration"
-datestamp = "1355254605"
+datestamp = "1359667321"
 

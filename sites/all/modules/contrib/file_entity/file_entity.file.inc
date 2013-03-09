@@ -102,6 +102,14 @@ function file_entity_file_delete($file) {
 
   // Delete image dimensions from the {image_dimensions} table
   db_query('DELETE FROM {image_dimensions} WHERE fid = :fid', array(':fid' => $file->fid));
+
+  // Remove this file from the search index if needed.
+  // This code is implemented in file entity module rather than in search module,
+  // because file entity module is implementing search module's API, not the other
+  // way around.
+  if (module_exists('search')) {
+    search_reindex($file->fid, 'file');
+  }
 }
 
 /**
@@ -137,19 +145,6 @@ function file_entity_file_mimetype_mapping_alter(&$mapping) {
     $index = array_search($mime_type, $mapping['mimetypes']);
     $mapping['extensions'][$extension] = $index;
   }
-}
-
-/**
- * Implements hook_file_operation_info().
- */
-function file_entity_file_operation_info() {
-  $info['delete'] = array(
-    'label' => t('Delete selected files'),
-    'callback' => 'file_entity_multiple_delete_confirm_operation',
-    'confirm' => TRUE,
-  );
-
-  return $info;
 }
 
 /**

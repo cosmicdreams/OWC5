@@ -98,19 +98,21 @@
 
 // ThinkShout button mixins authored by @andreaburton
 
-@mixin button($color1:white, $color2:#e6e6e6, $font-color: #333, $font-size: 1.2em, $font: $header-font-family, $border-radius: 5px) {
-  background: $color1;
+@mixin button($color1:#0099e5, $color2:#0079b5, $font-color: white, $font-size: 1.1em, $font: $header-font-family, $border-radius: 5px) {
   @include background-image(linear-gradient($color1, $color2));
-  color:$font-color;
-  padding: .4em .5em .5em .5em;
-  border: 1px solid darken($color2, 2%);
   @include border-radius($border-radius);
+  padding: 1px 5px 3px 5px;
+  border: 1px solid darken($color2, 2%);
+  background: $color1;
+  color: $font-color;
   font-size: $font-size;
   font-family: $font;
+
   &:hover {
     background: $color2;
     @include background-image(linear-gradient(darken($color1, 3%), darken($color2, 3%)));
   }
+
   &:active {
     background: $color2;
     @include background-image(linear-gradient($color2, $color1));
@@ -121,21 +123,3 @@
 @mixin blue-button {
   @include button(#0099e5, #0079b5, white);
 }
-
-nav#secondary-menu {
-  margin-top: 1em;
-  a {
-    color: $orange;
-    font-size: .75em;
-    @include transition(.1s linear all);
-    &:hover {
-      color: white;
-    }
-  }
-  li.last a {
-    color: $md-grey;
-  }
-}
-
-
-

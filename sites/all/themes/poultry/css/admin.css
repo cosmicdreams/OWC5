@@ -1,47 +1,25 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
-/* line 125, ../sass/_custom.scss */
-nav#secondary-menu {
-  margin-top: 1em;
-}
-/* line 127, ../sass/_custom.scss */
-nav#secondary-menu a {
-  color: #ff9900;
-  font-size: .75em;
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
-  -o-transition: 0.1s linear all;
-  transition: 0.1s linear all;
-}
-/* line 131, ../sass/_custom.scss */
-nav#secondary-menu a:hover {
-  color: white;
-}
-/* line 135, ../sass/_custom.scss */
-nav#secondary-menu li.last a {
-  color: #c5c5c5;
-}
-
 /* line 4, ../sass/admin.scss */
 .section-admin table {
   width: 100%;
 }
 /* line 7, ../sass/admin.scss */
 .section-admin table td.menu-operations a {
-  background: white;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6e6e6));
-  background-image: -webkit-linear-gradient(#ffffff, #e6e6e6);
-  background-image: -moz-linear-gradient(#ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(#ffffff, #e6e6e6);
-  background-image: linear-gradient(#ffffff, #e6e6e6);
-  color: #333333;
-  padding: .4em .5em .5em .5em;
-  border: 1px solid #e1e1e1;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0099e5), color-stop(100%, #0079b5));
+  background-image: -webkit-linear-gradient(#0099e5, #0079b5);
+  background-image: -moz-linear-gradient(#0099e5, #0079b5);
+  background-image: -o-linear-gradient(#0099e5, #0079b5);
+  background-image: linear-gradient(#0099e5, #0079b5);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
+  padding: 1px 5px 3px 5px;
+  border: 1px solid #0072ab;
+  background: #0099e5;
+  color: white;
   font-size: 1.1em;
   font-family: "Open Sans Condensed", Helvetica, Arial, "Nimbus Sans L", sans-serif;
   -webkit-transition: 0.1s linear all;
@@ -50,23 +28,23 @@ nav#secondary-menu li.last a {
   transition: 0.1s linear all;
   padding: .2em .5em;
 }
-/* line 110, ../sass/_custom.scss */
+/* line 111, ../sass/_custom.scss */
 .section-admin table td.menu-operations a:hover {
-  background: #e6e6e6;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f7f7f7), color-stop(100%, #dedede));
-  background-image: -webkit-linear-gradient(#f7f7f7, #dedede);
-  background-image: -moz-linear-gradient(#f7f7f7, #dedede);
-  background-image: -o-linear-gradient(#f7f7f7, #dedede);
-  background-image: linear-gradient(#f7f7f7, #dedede);
+  background: #0079b5;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #008fd6), color-stop(100%, #006fa6));
+  background-image: -webkit-linear-gradient(#008fd6, #006fa6);
+  background-image: -moz-linear-gradient(#008fd6, #006fa6);
+  background-image: -o-linear-gradient(#008fd6, #006fa6);
+  background-image: linear-gradient(#008fd6, #006fa6);
 }
-/* line 114, ../sass/_custom.scss */
+/* line 116, ../sass/_custom.scss */
 .section-admin table td.menu-operations a:active {
-  background: #e6e6e6;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e6e6e6), color-stop(100%, #ffffff));
-  background-image: -webkit-linear-gradient(#e6e6e6, #ffffff);
-  background-image: -moz-linear-gradient(#e6e6e6, #ffffff);
-  background-image: -o-linear-gradient(#e6e6e6, #ffffff);
-  background-image: linear-gradient(#e6e6e6, #ffffff);
+  background: #0079b5;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0079b5), color-stop(100%, #0099e5));
+  background-image: -webkit-linear-gradient(#0079b5, #0099e5);
+  background-image: -moz-linear-gradient(#0079b5, #0099e5);
+  background-image: -o-linear-gradient(#0079b5, #0099e5);
+  background-image: linear-gradient(#0079b5, #0099e5);
 }
 
 /* line 19, ../sass/admin.scss */
@@ -164,4 +142,20 @@ nav#secondary-menu li.last a {
 /* line 103, ../sass/admin.scss */
 .views-displays .secondary a:hover, .views-displays .secondary .active a {
   color: #0088cc;
+}
+
+/* line 110, ../sass/admin.scss */
+.page-admin-reports-updates .version-links li {
+  list-style: none;
+  margin-bottom: 1em;
+}
+/* line 116, ../sass/admin.scss */
+.page-admin-reports-updates .update table.version .version-title {
+  padding-left: 1em;
+  width: 9em;
+}
+/* line 122, ../sass/admin.scss */
+.page-admin-reports-updates .info .placeholder {
+  color: #444444;
+  text-transform: capitalize;
 }

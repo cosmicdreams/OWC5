@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
 /**
  * @file
  * Positioning for responsive layout .
@@ -8,30 +10,6 @@
  *
  * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
  */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
-/* line 125, ../../sass/_custom.scss */
-nav#secondary-menu {
-  margin-top: 1em;
-}
-/* line 127, ../../sass/_custom.scss */
-nav#secondary-menu a {
-  color: #ff9900;
-  font-size: .75em;
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
-  -o-transition: 0.1s linear all;
-  transition: 0.1s linear all;
-}
-/* line 131, ../../sass/_custom.scss */
-nav#secondary-menu a:hover {
-  color: white;
-}
-/* line 135, ../../sass/_custom.scss */
-nav#secondary-menu li.last a {
-  color: #c5c5c5;
-}
-
 /*
  * Center the page.
  */
@@ -240,9 +218,9 @@ nav#secondary-menu li.last a {
   .two-sidebars .region-sidebar-second .block:nth-child(3n+1) {
     /* Span 1 column, starting in the 1st column from left. */
     float: left;
-    width: 33.333%;
+    width: 33.33333%;
     margin-left: 0%;
-    margin-right: -33.333%;
+    margin-right: -33.33333%;
     padding-left: 20px;
     padding-right: 20px;
     -moz-box-sizing: border-box;
@@ -256,9 +234,9 @@ nav#secondary-menu li.last a {
   .two-sidebars .region-sidebar-second .block:nth-child(3n+2) {
     /* Span 1 column, starting in the 2nd column from left. */
     float: left;
-    width: 33.333%;
-    margin-left: 33.333%;
-    margin-right: -66.667%;
+    width: 33.33333%;
+    margin-left: 33.33333%;
+    margin-right: -66.66667%;
     padding-left: 20px;
     padding-right: 20px;
     -moz-box-sizing: border-box;
@@ -271,8 +249,8 @@ nav#secondary-menu li.last a {
   .two-sidebars .region-sidebar-second .block:nth-child(3n) {
     /* Span 1 column, starting in the 3rd column from left. */
     float: left;
-    width: 33.333%;
-    margin-left: 66.667%;
+    width: 33.33333%;
+    margin-left: 66.66667%;
     margin-right: -100%;
     padding-left: 20px;
     padding-right: 20px;
