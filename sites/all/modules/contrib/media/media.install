@@ -833,6 +833,9 @@ function media_update_7207() {
  * Drop the media_types table and migrate files to file_entity types.
  */
 function media_update_7208() {
+  // Reset static cache to ensure our new file types are recognized
+  drupal_static_reset('ctools_export_load_object_table_exists');
+
   if (!db_table_exists('media_type')) {
     // No types to migrate.
     return;
@@ -908,6 +911,9 @@ function media_update_7208() {
  * Update {file_managed}.type with the new file types provided by file_entity.
  */
 function media_update_7209() {
+  // Reset static cache to ensure our new file types are recognized
+  drupal_static_reset('ctools_export_load_object_table_exists');
+
   // Go through file_managed table and update files with the new type names.
   $enabled_types = file_type_get_enabled_types();
 
