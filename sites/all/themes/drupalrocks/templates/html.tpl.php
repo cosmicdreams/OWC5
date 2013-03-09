@@ -88,6 +88,7 @@
 
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  <link href='http://fonts.googleapis.com/css?family=Muli:400,400italic|Merriweather+Sans:400,700' rel='stylesheet' type='text/css'>
   <?php if ($add_respond_js): ?>
     <!--[if lt IE 9]>
     <script src="<?php print $base_path . $path_to_zen; ?>/js/html5-respond.js"></script>

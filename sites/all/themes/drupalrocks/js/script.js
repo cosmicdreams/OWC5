@@ -13,7 +13,7 @@
 (function ($, Drupal, window, document, undefined) {
 
 
-// Place your code here.
+alert('hi');
 
 
 })(jQuery, Drupal, this, this.document);
