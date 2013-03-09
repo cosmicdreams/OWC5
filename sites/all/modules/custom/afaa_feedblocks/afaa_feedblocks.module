@@ -1,0 +1,190 @@
+<?php
+/**
+ * @file
+ *  Generates blocks that display content from custom RSS sources.
+ */
+
+/**
+ * Implements hook_block_info()
+ */
+function afaa_feedblocks_block_info() {
+  $defaults = array(
+    'count' => 2,
+  );
+  $settings = variable_get('afaa_feedblocks', $defaults);
+
+  for ($i = 1; $i <= $settings['count']; $i++) {
+    $blocks['afaa_feedblocks_'. $i] = array(
+      'info' => t('Feed Block ' . $i),
+      'cache' => DRUPAL_NO_CACHE,
+    );
+  }
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_block_save()
+ * @param string $delta
+ * @param array $edit
+ */
+function afaa_feedblocks_block_save($delta = '', $edit = array()) {
+  if (strpos($delta, 'afaa_feedblocks_') !== 0) {
+    return;
+  }
+
+  variable_set($delta, $edit['settings']);
+  $parameters = array(
+    '@name' => $edit['title'],
+  );
+}
+
+
+/**
+ * Implements hook_menu()
+ * @return array
+ */
+function afaa_feedblocks_menu() {
+  $items = array();
+  $items['admin/config/services/feedblocks'] = array(
+    'title' => 'Configure Feed Blocks',
+    'description' => 'Configures a module which displays blocks from XML/JSON feeds.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('afaa_feedblocks_admin_settings_form'),
+    'access arguments' => array('administer blocks'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'afaa_feedblocks.admin.inc',
+  );
+  return $items;
+}
+
+
+/**
+ * Allows the block to be configured.
+ * @param string $delta
+ * @param array $edit
+ */
+function afaa_feedblocks_block_configure($delta = '') {
+  if (strpos($delta, 'afaa_feedblocks_') !== 0) {
+    return;
+  }
+
+  $defaults = array(
+    'url' => null,
+    'count' => 5,
+    'type' => 'application/rss+xml',
+  );
+
+  $settings = variable_get($delta, $defaults);
+  $form['settings'] = array(
+    '#tree' => true,
+  ); 
+
+  $form['settings']['url'] = array(
+    '#title' => t('URL'),
+    '#description' => t('The location of the feed you want to pull in.'),
+    '#type' => 'textfield',
+    '#size' => 100,
+    '#default_value' => $settings['url'],
+  );
+  $form['settings']['count'] = array(
+    '#title' => t('Count'),
+    '#description' => t('The number of items you want to display from the feed.'),
+    '#type' => 'textfield',
+    '#size' => 2,
+    '#default_value' => $settings['count'],
+    '#element_validate' => array('element_validate_integer_positive'),
+  );
+  $form['settings']['type'] = array(
+    '#title' => t('Type'),
+    '#description' => t('The type of feed to read. If you dont know what this is, please contact a site administrator.'),
+    '#type' => 'select',
+    '#options' => array(
+      'application/rss+xml' => 'RSS+XML',
+      'application/atom+xml' => 'ATOM+XML',
+      // TODO: Support JSON formats.
+    ),
+    '#default_value' => $settings['type'],
+  );
+  return $form;
+}
+
+
+/**
+ * Generates the data needed to display the block.
+ * @param string $delta
+ * @return array
+ *  array(
+ *    'title' => string,
+ *    'content' => string|array
+ *  )
+ */
+function afaa_feedblocks_block_view($delta = '') {
+  if (strpos($delta, 'afaa_feedblocks_') !== 0) {
+    return array();
+  }
+
+  $settings = variable_get($delta, false); 
+
+  if (empty($settings) || empty($settings['url'])) {
+    return array();
+  }
+
+  $data = afaa_feedblocks_load_url($settings['url']);
+  switch ($settings['type']) {
+     case 'application/rss+xml':
+     case 'application/atom+xml':
+       $content = afaa_feedblocks_read_xml($data, $settings['count']);
+       break;
+     default:
+       return array();
+  }
+
+  return array(
+     'subject' => t('Feed Block'),
+     'content' => $content,
+  );
+}
+
+/**
+ * Gets the data from CURL.
+ * @param string $url
+ * @return string
+ */
+function afaa_feedblocks_load_url($url) {
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  // Timeout is 3 seconds.
+  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+  $data = curl_exec($ch);
+  curl_close($ch);
+  return $data;
+}
+
+
+/**
+ * @param string $data
+ * @param int $items
+ * @return array
+ */
+function afaa_feedblocks_read_xml($data, $items = 5) {
+  $content = new SimpleXMLElement($data);
+  $content = $content->xpath('//channel/item');
+  $content = array_slice($content, 0, $items);
+  $return = array();
+  foreach ($content as $item) {
+    $item = (array) $item;
+    foreach ($item as $key => $value) {
+      $key = '#' . $key;
+      $item[$key] = $value;
+    }
+
+    $return[] = $item;
+  }
+
+  // TODO: Unmangle the format.
+  return array(
+     '#children' => $return
+  );
+}
