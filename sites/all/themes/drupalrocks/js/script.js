@@ -12,9 +12,19 @@
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
 
-	$(function(){
-		alert('hi!');
+$(function(){
+	//Main Menu things
+	$('#navigation nav li').hover(function(){
+		if(!$(this).hasClass('active-trail')){
+			$(this).find('.menu').slideDown();
+			console.log($(this).attr('class'));
+		}
+	}, function(){
+		if(!$(this).hasClass('active-trail')){
+			$(this).find('.menu').hide();
+		}
 	});
 
+});
 
 })(jQuery, Drupal, this, this.document);
