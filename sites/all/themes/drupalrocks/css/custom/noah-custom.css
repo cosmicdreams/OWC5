@@ -1,0 +1,65 @@
+
+
+/* 
+ * Form Styles
+ */
+
+fieldset legend {
+    background: #e8e8e8;
+    width: 100%;
+}
+
+fieldset {
+    border: none;
+    font-size: 20px;
+}
+
+fieldset a {
+    color: black;
+    text-decoration: none;
+}
+
+.fieldset-legend {
+    background-image: none;
+    padding: 0
+;
+}
+
+fieldset legend:after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    top: -1px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.fieldset-title {
+    width: 100%;
+    display: block;
+}
+
+.fieldset-legend .summary {
+    display: none;
+}
+
+input[type="checkbox"]{
+    opacity:0;
+    width: 18px;
+    margin-left:-22px;
+}
+input[type='checkbox'] + label{
+    margin: 0;
+    clear: none;
+    padding: 5px 0 4px 24px;
+    cursor: pointer;
+    background:transparent url(../../images/checkbox_off.png) 0 50% no-repeat;
+}
+input[type='checkbox'] + label{
+}
+
+input[type='checkbox']:checked + label {
+background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
+}
+
+
