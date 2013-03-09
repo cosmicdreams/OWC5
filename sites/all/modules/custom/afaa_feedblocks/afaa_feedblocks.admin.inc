@@ -8,13 +8,17 @@
  * Implements hook_admin_settings()
  */
 function afaa_feedblocks_admin_settings_form($form_state) {
-  $form = array();
+  $form = array(
+    'settings' => array(
+      '#tree' => true,
+    ),
+  );
   $defaults = array(
     'count' => 2,
   );
   $settings = variable_get('afaa_feedblocks', $defaults);
 
-  $form['count'] = array(
+  $form['settings']['count'] = array(
     '#title' => t('Number of blocks'),
     '#type'  => 'select',
     '#default_value' => $settings['count'],
@@ -48,7 +52,7 @@ function afaa_feedblocks_admin_settings_form($form_state) {
  * @param array $form_state
  */
 function afaa_feedblocks_admin_settings_form_submit($form = array(), $form_state = array()) {
-  variable_set('afaa_feedblocks', $form_state['values']);
+  variable_set('afaa_feedblocks', $form_state['values']['settings']);
   drupal_set_message('Settings Saved', 'status');
 }
 
