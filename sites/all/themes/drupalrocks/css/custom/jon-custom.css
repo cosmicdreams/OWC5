@@ -79,16 +79,43 @@ header nav ul li.last a {
 header .socialandsearch {
 	position: absolute;
 	top: 80px; right: 0;
-	width: 50%;
+	width: 470px;
 }
 header .socialandsearch input[type=text]{
 	background: url(../../images/sprite.png) no-repeat 5px -317px;
 	border: 1px solid #c9c9c9;
-	padding: 3px;
+	padding: 4px;
 	position: relative;
 	right: -6px;
 	width: 200px;
 }
+header .socialandsearch form {
+	position: absolute;
+	top: 0; right: 0;
+}
+header .socialandsearch li {
+	width: 33px; height: 33px;
+	display: block;
+	float: left;
+	margin-left: 16px;
+	list-style: none;
+	text-indent: -999em;
+}
+header .socialandsearch li a {
+	background: url(../../images/sprite.png) no-repeat;
+	width: 33px; height: 33px;
+	display: block;
+}
+header .socialandsearch li a.fb{
+	background-position: 0 -161px;
+}
+header .socialandsearch li a.tw {
+	background-position: -39px -161px;
+}
+header .socialandsearch li a.yt {
+	background-position: -77px -161px;
+}
+
 header .socialandsearch input.form-submit {
 	background: #c1e047; /* Old browsers */
 	background: -moz-linear-gradient(top,  #c1e047 1%, #90c82f 100%); /* FF3.6+ */
@@ -100,30 +127,38 @@ header .socialandsearch input.form-submit {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1e047', endColorstr='#90c82f',GradientType=0 ); /* IE6-9 */
 	border: 1px solid #afc6cd;
 	color: white;
-	padding: 3px 7px;;
+	padding: 4px 7px;;
 }
 
 
-#main nav {
-	padding: 10px 40px;
+#main #navigation nav {
+	padding: 10px 20px 0;
 	background: #004a8d;
+	height: 30px;
+	overflow: visible;
 }
-#main nav ul {
+#main #navigation nav ul {
 	padding: 0; margin: 0;
 }
 
-#main nav ul li:first-child {
+#main #navigation nav ul li:first-child {
 	margin: 0;
 }
-#main nav ul li {
+#main #navigation nav ul li {
 	display: block;
 	float: left;
-	margin-left: 20px;
+	padding: 0 37px;
 }
-#main nav a {
+#main #navigation nav ul li.active {
+	background: url(../../images/active.png) no-repeat 0 24px;
+	height: 50px;
+}
+
+#main #navigation nav a {
 	color: white;
 	text-transform: uppercase;
 	text-decoration: none;
 	text-shadow: 0 -1px 1px #07294b;
 	font-weight: bold;
+	font-size: 16px;
 }
