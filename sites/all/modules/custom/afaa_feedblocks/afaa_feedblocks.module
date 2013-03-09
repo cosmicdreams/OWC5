@@ -15,7 +15,7 @@ function afaa_feedblocks_block_info() {
 
   for ($i = 1; $i <= $settings['count']; $i++) {
     $blocks['afaa_feedblocks_'. $i] = array(
-      'info' => t('Feed Block'),
+      'info' => t('Feed Block ' . $i),
       'cache' => DRUPAL_NO_CACHE,
     );
   }
@@ -102,7 +102,7 @@ function afaa_feedblocks_block_configure($delta = '') {
     '#options' => array(
       'application/rss+xml' => 'RSS+XML',
       'application/atom+xml' => 'ATOM+XML',
-      'application/json' => 'JSON',
+      // TODO: Support JSON formats.
     ),
     '#default_value' => $settings['type'],
   );
@@ -123,6 +123,59 @@ function afaa_feedblocks_block_view($delta = '') {
   if (strpos($delta, 'afaa_feedblocks_') !== 0) {
     return array();
   }
-  // TODO: The magic happens here.
-  
+
+  $settings = variable_get($delta, false); 
+
+  if (empty($settings) || empty($settings['url'])) {
+    return array();
+  }
+
+  $data = afaa_feedblocks_load_url($settings['url']);
+  switch ($settings['type']) {
+     case 'application/rss+xml':
+     case 'application/atom+xml':
+       $content = afaa_feedblocks_read_xml($data, $settings['count']);
+       break;
+     default:
+       return array();
+  }
+
+  return array(
+     'content' => $content,
+  );
+}
+
+/**
+ * Gets the data from CURL.
+ * @param string $url
+ * @return string
+ */
+function afaa_feedblocks_load_url($url) {
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  // Timeout is 3 seconds.
+  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+  $data = curl_exec($ch);
+  curl_close($ch);
+  return $data;
+}
+
+
+/**
+ * @param string $data
+ * @param int $items
+ * @return array
+ */
+function afaa_feedblocks_read_xml($data, $items = 5) {
+  $content = new SimpleXMLElement($data);
+  $content = $content->xpath('//channel/item');
+  $content = array_slice($content, 0, $items);
+  $return = array();
+  foreach ($content as $item) {
+    $return[] = (array) $item;
+  }
+
+  // TODO: Unmangle the format.
+  return $return;
 }
