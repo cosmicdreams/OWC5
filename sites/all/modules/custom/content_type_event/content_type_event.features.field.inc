@@ -50,7 +50,7 @@ function content_type_event_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '6',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -124,7 +124,7 @@ function content_type_event_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -149,6 +149,75 @@ function content_type_event_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-event-field_address'.
+  $fields['node-event-field_address'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_address',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The postal address of this location.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_address',
+      'label' => 'Address',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '80',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
       ),
     ),
   );
@@ -236,89 +305,6 @@ function content_type_event_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_event_location'.
-  $fields['node-event-field_event_location'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_event_location',
-      'foreign keys' => array(
-        'node' => array(
-          'columns' => array(
-            'target_id' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'entityreference',
-      'settings' => array(
-        'handler' => 'base',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'event_location' => 'event_location',
-          ),
-        ),
-        'target_type' => 'node',
-      ),
-      'translatable' => '0',
-      'type' => 'entityreference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'event',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Select the location for this event, or leave this page and <a href="/add/event-location">Add a New Event Location</a>.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'entityreference',
-          'settings' => array(
-            'links' => 0,
-            'view_mode' => 'teaser',
-          ),
-          'type' => 'entityreference_entity_view',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_event_location',
-      'label' => 'Event Location',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '2',
-      ),
-    ),
-  );
-
   // Exported field: 'node-event-field_event_type'.
   $fields['node-event-field_event_type'] = array(
     'field_config' => array(
@@ -363,7 +349,7 @@ function content_type_event_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -432,7 +418,7 @@ function content_type_event_field_default_fields() {
             'file_view_mode' => 'default',
           ),
           'type' => 'file_rendered',
-          'weight' => '5',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -521,10 +507,10 @@ function content_type_event_field_default_fields() {
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => '',
+            'image_style' => 'gallery_image',
           ),
           'type' => 'image',
-          'weight' => '7',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -618,7 +604,7 @@ function content_type_event_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '8',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -696,7 +682,7 @@ function content_type_event_field_default_fields() {
           'module' => 'sharethis_field',
           'settings' => array(),
           'type' => 'sharethis_field_default_formatter',
-          'weight' => '9',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -722,87 +708,6 @@ function content_type_event_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event_location-field_address'.
-  $fields['node-event_location-field_address'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_address',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'event_location',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'The postal address of this location.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'simple_gmap',
-          'settings' => array(
-            'iframe_height' => '300',
-            'iframe_width' => '300',
-            'include_link' => 0,
-            'include_map' => 1,
-            'include_text' => 0,
-            'information_bubble' => 1,
-            'langcode' => 'en',
-            'link_text' => 'View larger map',
-            'map_type' => 'm',
-            'zoom_level' => '14',
-          ),
-          'type' => 'simple_gmap',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_address',
-      'label' => 'Address',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '80',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '-3',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('A link to an external website (such as <a href="http://www.eventbrite.com/" target="_blank">Eventbrite</a>) where users can RSVP for the event.');
@@ -811,12 +716,10 @@ function content_type_event_field_default_fields() {
   t('Address');
   t('Event Date');
   t('Event Description');
-  t('Event Location');
   t('Event Type');
   t('Featured Media');
   t('Gallery Image');
   t('Registration Link');
-  t('Select the location for this event, or leave this page and <a href="/add/event-location">Add a New Event Location</a>.');
   t('Share This');
   t('The postal address of this location.');
   t('Use this free-form text field for additional event info (eg. price).');

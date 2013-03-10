@@ -34,14 +34,6 @@ function content_type_event_node_info() {
       'title_label' => t('Event Name'),
       'help' => '',
     ),
-    'event_location' => array(
-      'name' => t('Event Location'),
-      'base' => 'node_content',
-      'description' => t('An address that can be associated with an Event.'),
-      'has_title' => '1',
-      'title_label' => t('Location Name'),
-      'help' => '',
-    ),
   );
   return $items;
 }
