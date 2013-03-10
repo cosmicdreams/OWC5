@@ -8,4 +8,7 @@
     border-radius: 0;
 }
 
+.view .date-nav-wrapper .date-prev a:hover {
+    text-decoration: underline;
+}
 .block-constant-contact h2 {display: none;}
