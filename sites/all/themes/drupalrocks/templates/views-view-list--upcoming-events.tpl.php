@@ -15,7 +15,7 @@
        The core date type handler doesn't allow us to specify two date formats that would otherwise be case sensitively different.
        As such, we've created a date format that includes doublequotes.
        This will strip them. */ ?>
-    <h3><?php print str_replace('"', $title); ?></h3>
+    <h3><?php print str_replace('"', '', $title); ?></h3>
   <?php endif; ?>
   <?php print $list_type_prefix; ?>
     <?php foreach ($rows as $id => $row): ?>
