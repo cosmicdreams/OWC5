@@ -89,130 +89,6 @@ The link URL can be any link, including a URL from this website.',
     ),
   );
 
-  // Exported field: 'field_collection_item-field_slideshow_slide-field_slide_button_link'.
-  $fields['field_collection_item-field_slideshow_slide-field_slide_button_link'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_slide_button_link',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_slideshow_slide',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'This is the URL the user will be redirected to if they click on the slide or the button on top of the slide (if supplied).',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '3',
-        ),
-      ),
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_slide_button_link',
-      'label' => 'Button Link',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '1',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_slideshow_slide-field_slide_button_text'.
-  $fields['field_collection_item-field_slideshow_slide-field_slide_button_text'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_slide_button_text',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_slideshow_slide',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Displays a button on top of the slide, with this text.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '2',
-        ),
-      ),
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_slide_button_text',
-      'label' => 'Button Text',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
-      ),
-    ),
-  );
-
   // Exported field: 'field_collection_item-field_slideshow_slide-field_slide_heading'.
   $fields['field_collection_item-field_slideshow_slide-field_slide_heading'] = array(
     'field_config' => array(
@@ -498,10 +374,7 @@ The link URL can be any link, including a URL from this website.',
   // Translatables
   // Included for use with string extractors like potx.
   t('Button');
-  t('Button Link');
-  t('Button Text');
   t('Defines how each slide will appear in the slideshow.');
-  t('Displays a button on top of the slide, with this text.');
   t('Displays a heading on top of the slide.');
   t('Displays a subheading on top of the slide.');
   t('Heading');
@@ -510,7 +383,6 @@ The link URL can be any link, including a URL from this website.',
   t('Subheading');
   t('The link title here will serve as the button\'s title when displayed.
 The link URL can be any link, including a URL from this website.');
-  t('This is the URL the user will be redirected to if they click on the slide or the button on top of the slide (if supplied).');
 
   return $fields;
 }

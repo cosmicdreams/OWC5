@@ -50,17 +50,9 @@
 			}
 		});
 
-		console.log(windowSize);
-
 		//Mobile Shit
 		responsiveMenus();
 		$(window).resize(responsiveMenus);
-		
-
-
-
-
-
 
 		$('#page').before('<div style="color:white;background-color:black;padding:10px 15px;position:fixed;left:0;bottom:0">Script loaded</div>')
 		//$('.form-select').hide();
@@ -94,8 +86,6 @@
 			}).attr('selected', true);
 
 		});
-
-
 	});
 
 })(jQuery, Drupal, this, this.document);

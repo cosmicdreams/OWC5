@@ -160,6 +160,7 @@ header .socialandsearch input.form-submit {
 	padding: 0 20px; 
 	margin: 0;
 	position: relative;
+	z-index: 5000;
 }
 #main #navigation nav ul li:first-child {
 	margin: 0;
@@ -187,19 +188,20 @@ header .socialandsearch input.form-submit {
 #main #navigation nav ul li ul.menu {
 	display: none;
 	background: #cc6633;
-	padding: 5px 0 0 10px;
+	padding: 5px 5px 0 10px;
 	position: absolute;
 	top: 30px; left: 2px;
 	z-index: 200;
 	box-shadow: 2px 3px 6px rgba(0,0,0,0.5);
 	moz-box-shadow: 2px 3px 6px rgba(0,0,0,0.5);
-	width: 100%;
+	width: auto;
 }
 #main #navigation nav ul li ul.menu li {
 	height: auto;
 	width: 100%;
 	float: none;
 	padding: 0;
+	white-space: nowrap;
 }
 #main #navigation nav ul li ul.menu li a {
 	color: white;
@@ -311,9 +313,13 @@ footer .copywrite {
 
 
 
+@media all and (max-width: 935px) {
+	.rotator .blurb {
+		top: 50%;
+	}
+}
 
-
-@media all and (max-width: 850px) {
+@media all and (max-width: 880px) {
 	#page {
 		padding: 10px;
 	}
@@ -355,6 +361,13 @@ footer .copywrite {
 	header nav li:first-child {
 		position: absolute;
 		left: 20px; top: 0;
+	}
+	.rotator {
+		height: 200px !important;
+	}
+	.rotator .blurb {
+		top: 18%;
+		height: 80px;
 	}
 	#main #navigation nav {
 		height: auto;

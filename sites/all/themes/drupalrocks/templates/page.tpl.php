@@ -105,9 +105,9 @@
    
     <div class="socialandsearch">
       <ul>
-        <li><a href="" class="fb">facebook</a></li>
-        <li><a href="" class="tw">twitter</a></li>
-        <li><a href="" class="yt">youtube</a></li>
+        <li><a href="http://www.facebook.com/minnesotafoodallergy" class="fb" target="_blank">facebook</a></li>
+        <li><a href="" class="tw" target="_blank">twitter</a></li>
+        <li><a href="" class="yt" target="_blank">youtube</a></li>
       </ul>
      <?php print render($page['header']); ?>
    </div>
@@ -122,11 +122,8 @@
       </nav>
     </div><!-- /#navigation -->
 
-    <div id ="featured" class="column">
-      <?php print render($page['featured']); ?>
-    </div>
-    
       <div id="content" class="column" role="main">
+
       <?php print render($page['highlighted']); ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
@@ -140,7 +137,6 @@
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
-
       <?php print render($page['content']); ?>
       <?php print $feed_icons; ?>
     </div><!-- /#content -->

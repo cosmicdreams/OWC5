@@ -44,7 +44,7 @@
  * @ingroup themeable
  */
 ?>
-<div id="<?php print $block_html_id; ?>" class="supportUs_wrap"<?php print $attributes; ?>>
+<div id="<?php print $block_html_id; ?>" <?php print $attributes; ?>>
 
   <?php print render($title_prefix); ?>
 <?php if ($block->subject): ?>
