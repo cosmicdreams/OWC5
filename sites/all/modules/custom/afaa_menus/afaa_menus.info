@@ -1,0 +1,14 @@
+name = AFAA Menus
+description = Defines the menus
+core = 7.x
+package = AFAA
+version = 7.x-1.0
+project = afaa_menus
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:1
+features[menu_custom][] = menu-footer-menu-1
+features[menu_custom][] = menu-footer-menu-2
+features[menu_custom][] = menu-footer-menu-3
+features[menu_custom][] = menu-primary-navigation
+features[menu_custom][] = menu-utility-navigation
