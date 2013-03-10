@@ -184,7 +184,9 @@ function afaa_blocks_block_view($delta = '') {
 
   return array(
      'subject' => t('AFAA Block'),
-     'content' => array(),
+     'content' => array(
+       '#markup' => null,
+     ),
   );
 }
 
@@ -205,7 +207,13 @@ function afaa_blocks_block_afaa_block_facebook_view() {
  * Metafunction to generate content for the "connect with us" block.
  */
 function afaa_blocks_block_afaa_block_connect_view() {
-  $settings = variable_get('afaa_block_connect', array());
+  $settings = variable_get('afaa_block_connect', array(
+    'body' => array(
+      'value' => null,
+      'format' => 'full_html',
+    ),
+  ));
+
   return array(
     'subject' => t('Connect With Us'),
     'content' => array(
@@ -219,7 +227,12 @@ function afaa_blocks_block_afaa_block_connect_view() {
  * Metafunction to generate content for the "tagline" block.
  */
 function afaa_blocks_block_afaa_block_tagline_view() {
-  $settings = variable_get('afaa_block_tagline', array());
+  $settings = variable_get('afaa_block_tagline', array(
+    'body' => array(
+      'value' => null,
+      'format' => 'full_html',
+    ),
+  ));
   return array(
     'subject' => t('Support Us'),
     'content' => array(
@@ -235,7 +248,16 @@ function afaa_blocks_block_afaa_block_tagline_view() {
  * Metafunction to generate content for the "support us" block.
  */
 function afaa_blocks_block_afaa_block_support_view() {
-  $settings = variable_get('afaa_block_support', array());
+  $settings = variable_get('afaa_block_support', array(
+    'body' => array(
+      'value' => null,
+      'format' => 'full_html',
+    ),
+    'donate_text' => null,
+    'donate_url' => null,
+    'donate_destination' => null,
+  ));
+
   $donate = null;
 
   // Generates a DONATE button
