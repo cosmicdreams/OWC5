@@ -120,7 +120,10 @@ header nav ul li.last a {
 header .socialandsearch {
    position: absolute;
    top: 80px; right: 25px;
-   width: 470px;
+   width: 420px;
+}
+header .socialandsearch ul {
+   margin: 0;
 }
 header .socialandsearch input[type=text]{
    background: url(../../images/sprite.png) no-repeat 5px -317px;
