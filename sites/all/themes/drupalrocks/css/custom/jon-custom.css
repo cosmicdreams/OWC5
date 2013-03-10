@@ -216,6 +216,9 @@ header .socialandsearch input.form-submit {
 	position: static;
 	background: url(../../images/active-nav.gif) no-repeat 49% 20px;
 }
+#main #navigation nav ul li.active-trail a {
+	background-image: none;
+}
 #main #navigation nav ul li.active-trail ul.menu {
 	display: block;
 	background: #e8f8fc;
