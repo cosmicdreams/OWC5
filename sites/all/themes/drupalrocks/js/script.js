@@ -13,6 +13,39 @@
 (function ($, Drupal, window, document, undefined) {
 
 	$(function(){
+		var windowSize;
+
+		windowSize = $(window).width();
+
+		//Main Menu things
+		$('#navigation nav li').hover(function(){
+			if(!$(this).hasClass('active-trail') && windowSize > 500){
+				$(this).find('.menu').slideDown();
+			}
+		}, function(){
+			if(!$(this).hasClass('active-trail') && windowSize > 500){
+				$(this).find('.menu').hide();
+			}
+		});
+
+		console.log(windowSize);
+
+		//Mobile Shit
+		if(windowSize < 500){
+			$('#navigation nav li').bind('click', function(e){
+				e.preventDefault();
+
+				if($(this).find('.menu').length > 0 && !$(this).find('.menu').hasClass('active')){
+					//first hide
+					$('.menu.active').slideUp();
+					$('.menu').removeClass('active');
+					//then show
+					$(this).find('.menu').addClass('active');
+					$(this).find('.menu').slideDown();
+				}
+			});
+		}
+
 		$('#page').before('<div style="color:white;background-color:black;padding:10px 15px;position:fixed;left:0;bottom:0">Script loaded</div>')
 		//$('.form-select').hide();
 		
@@ -46,15 +79,7 @@
 
 		});
 
-		/*
-		$('select').each(function(){
-			var index = $(this).index();
-			$(this).css('background-color','blue');
-			$(this).data('index',index);
-			$(this).after('<div class="'+select+'-index"><p>blahblah</p></div>')
-		});
-		*/
-	});
 
+	});
 
 })(jQuery, Drupal, this, this.document);
