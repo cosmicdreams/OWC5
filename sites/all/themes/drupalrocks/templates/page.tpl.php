@@ -122,6 +122,10 @@
       </nav>
     </div><!-- /#navigation -->
 
+    <div id ="featured" class="column">
+      <?php print render($page['featured']); ?>
+    </div>
+    
       <div id="content" class="column" role="main">
       <?php print render($page['highlighted']); ?>
       <a id="main-content"></a>
@@ -136,6 +140,7 @@
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
+
       <?php print render($page['content']); ?>
       <?php print $feed_icons; ?>
     </div><!-- /#content -->
