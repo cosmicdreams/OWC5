@@ -22,7 +22,7 @@ function speaker_bio_node_info() {
     'speaker_bio' => array(
       'name' => t('Speaker Bio'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('The profile and bio of a speaker, conference speaker, board member, or medical advisory board member.'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',
