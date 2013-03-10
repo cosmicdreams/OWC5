@@ -60,6 +60,8 @@ stylesheets[all][] = css/views-styles.css
 stylesheets[all][] = css/print.css
 stylesheets[all][] = css/custom/jon-custom.css
 stylesheets[all][] = css/custom/noah-custom.css
+stylesheets[all][] = css/custom/user-content.css
+
 
 
 ; Built-in conditional stylesheet support has been removed from Zen 7.x-5.x.
