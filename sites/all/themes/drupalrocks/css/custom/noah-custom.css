@@ -4,8 +4,18 @@
 
 a{
     color:#cc6600;
+    text-decoration:none;
+}
+
+a:hover{
     text-decoration:underline;
 }
+
+#logo > a{
+    height:100%;
+    display:block;
+}
+
 /* 
  * Form Styles
  */
