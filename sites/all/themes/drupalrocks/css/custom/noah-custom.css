@@ -1,20 +1,4 @@
-/**************
-* Global Styles
-**************/
 
-a{
-    color:#cc6600;
-    text-decoration:none;
-}
-
-a:hover{
-    text-decoration:underline;
-}
-
-#logo > a{
-    height:100%;
-    display:block;
-}
 
 /* 
  * Form Styles
@@ -78,10 +62,8 @@ input[type='checkbox']:checked + label {
 background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
 }
 
-/*******
-* Styled Selects
-*******/
 
+<<<<<<< HEAD
 .styledSelect_list-isHidden{
     position:relative;
     left:9999px;
@@ -223,3 +205,5 @@ textarea {
 }
 
 
+=======
+>>>>>>> fb332433d1acca3d1f63b167b36176d8e9818847
