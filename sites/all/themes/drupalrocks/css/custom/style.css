@@ -772,6 +772,14 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
        position: absolute;
        left: 20px; top: 0;
    }
+   header nav li {
+      display: none !important;
+   }
+   header nav li.last {
+      display: block !important;
+      left: 20px; top: 0px;
+      position: absolute;
+   }   
    .rotator {
        height: 200px !important;
    }
