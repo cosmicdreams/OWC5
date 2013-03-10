@@ -160,6 +160,7 @@ header .socialandsearch input.form-submit {
 	padding: 0 20px; 
 	margin: 0;
 	position: relative;
+	z-index: 5000;
 }
 #main #navigation nav ul li:first-child {
 	margin: 0;
