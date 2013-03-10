@@ -41,25 +41,36 @@
 		$('.rotator .item').each(function(){
 			i++;
 			$(this).attr('rel', i);
-			$('ul.rotator-pager').append('<li rel="'+i+'"><span></span></li>')
+			$('ul.rotator-pager').append('<li rel="'+i+'"><span></span></li>');
+
+			var imgH = $(this).find('img').height();
+			var rotH = $('.rotator').height();
+
+			if(imgH > rotH){
+
+			}
 		});
 		$('.rotator .item:first').addClass('active');
 		//Setup the pager
 		$('ul.rotator-pager li:first').addClass('active');
 		$('ul.rotator-pager li').live('click', function(){
+			clearInterval(rotatorInterval);
+			$('.rotator .item').removeClass('prev');
+
 			var curRel = $(this).attr('rel');
 
 			if(!$(this).hasClass('active')){
 				$('ul.rotator-pager li').removeClass('active');
 				$(this).addClass('active');
 
-				$('.rotator .item[rel="'+i+'"]').addClass('next');
+				$('.rotator .item[rel="'+curRel+'"]').addClass('next');
+				var nextRel = $('.rotator .item[rel="'+curRel+'"]').attr('rel');
+
 				blurbReset();
 				$('.rotator .item.active .blurb, .rotator .item.next .blurb').hide();
-				var nextRel = $('.rotator .item.next').attr('rel');
-
+				
 				// starting animation
-				$('.rotator .item.active').animate({
+				$('.rotator .item.active').stop().animate({
 					width: "50%",
 					top: "15%"
 				}, 600, function(){
@@ -68,7 +79,7 @@
 					$('.rotator .item.next').addClass('active');
 					$('.rotator .item').removeClass('next');
 				});
-				$('.rotator .item.next').animate({
+				$('.rotator .item.next').stop().animate({
 					width: "50%",
 					left: "50%",
 					top: "15%"
@@ -92,7 +103,7 @@
 				});
 			}
 
-			clearInterval(rotatorInterval);
+			rotatorInterval;
 
 		});
 		//Rotator Function
