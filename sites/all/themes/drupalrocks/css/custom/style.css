@@ -122,6 +122,9 @@ header .socialandsearch {
    top: 80px; right: 25px;
    width: 470px;
 }
+header .socialandsearch ul {
+   margin: 0;
+}
 header .socialandsearch input[type=text]{
    background: url(../../images/sprite.png) no-repeat 5px -317px;
    border: 1px solid #c9c9c9;
