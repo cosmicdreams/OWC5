@@ -13,18 +13,38 @@
 (function ($, Drupal, window, document, undefined) {
 
 $(function(){
+	var windowSize;
+
+	windowSize = $(window).width();
+
 	//Main Menu things
 	$('#navigation nav li').hover(function(){
-		if(!$(this).hasClass('active-trail')){
+		if(!$(this).hasClass('active-trail') && windowSize > 500){
 			$(this).find('.menu').slideDown();
-			console.log($(this).attr('class'));
 		}
 	}, function(){
-		if(!$(this).hasClass('active-trail')){
+		if(!$(this).hasClass('active-trail') && windowSize > 500){
 			$(this).find('.menu').hide();
 		}
 	});
 
+	console.log(windowSize);
+
+	//Mobile Shit
+	if(windowSize < 500){
+		$('#navigation nav li').bind('click', function(e){
+			e.preventDefault();
+
+			if($(this).find('.menu').length > 0 && !$(this).find('.menu').hasClass('active')){
+				//first hide
+				$('.menu.active').slideUp();
+				$('.menu').removeClass('active');
+				//then show
+				$(this).find('.menu').addClass('active');
+				$(this).find('.menu').slideDown();
+			}
+		});
+	}
 });
 
 })(jQuery, Drupal, this, this.document);
