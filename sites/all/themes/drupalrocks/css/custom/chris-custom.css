@@ -16,3 +16,5 @@
     border-left: 10px solid #cc6633;
     padding-left: 5px;
 }
+
+.front h1.title {display: none;}
