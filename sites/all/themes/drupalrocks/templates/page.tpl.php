@@ -108,7 +108,6 @@
     <div class="socialandsearch">
       <ul>
         <li><a href="http://www.facebook.com/minnesotafoodallergy" class="fb" target="_blank">facebook</a></li>
-        <li><a href="" class="tw" target="_blank">twitter</a></li>
         <li><a href="" class="yt" target="_blank">youtube</a></li>
       </ul>
      <?php print render($page['header']); ?>

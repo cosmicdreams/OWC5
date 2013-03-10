@@ -49,13 +49,13 @@
 				$(this).find('.menu').hide();
 			}
 		});
+		$('#navigation nav ul').addClass('clearfix');
 
 		//Mobile Shit
 		responsiveMenus();
 		$(window).resize(responsiveMenus);
 
-		//$('.form-select').hide();
-		
+	
 		$('select').each(function(){
 			var id = $(this).attr('id');
 			var optionSelected = $(this).find(':selected').text();
