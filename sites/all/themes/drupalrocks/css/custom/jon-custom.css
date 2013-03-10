@@ -311,9 +311,13 @@ footer .copywrite {
 
 
 
+@media all and (max-width: 935px) {
+	.rotator .blurb {
+		top: 50%;
+	}
+}
 
-
-@media all and (max-width: 850px) {
+@media all and (max-width: 880px) {
 	#page {
 		padding: 10px;
 	}
@@ -355,6 +359,13 @@ footer .copywrite {
 	header nav li:first-child {
 		position: absolute;
 		left: 20px; top: 0;
+	}
+	.rotator {
+		height: 200px !important;
+	}
+	.rotator .blurb {
+		top: 18%;
+		height: 80px;
 	}
 	#main #navigation nav {
 		height: auto;
