@@ -72,7 +72,6 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
 }
 
 
-<<<<<<< HEAD
 .upcomingEventsblock_title {
     line-height: 1;
     margin: 0 0 18px 0;
@@ -316,6 +315,10 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
 .testimonial_citation {
     color: #0c4a89;
     font-weight: bold;
+}
+
+.testimonial_quote{
+    margin: 1.5em 40px;
 }
 
 .testimonial_quote:before, 
