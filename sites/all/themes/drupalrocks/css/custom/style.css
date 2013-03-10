@@ -419,7 +419,7 @@ footer {
    background: url(../../images/footer-tile.gif) repeat-x #e8f8fc;
    margin: 0;
    width: 100%;
-   padding: 25px ;
+   padding: 25px 0;
    overflow: hidden;
 }
 footer .wrap {
