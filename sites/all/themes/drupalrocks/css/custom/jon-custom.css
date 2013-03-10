@@ -22,6 +22,9 @@ h4 {
 a {
 	color: #CC6600;
 }
+
+
+
 #page {
 	width: 85%;
 	margin: 40px auto 0;
@@ -200,21 +203,13 @@ header .socialandsearch input.form-submit {
 #main #navigation nav ul li ul.menu {
 	display: none;
 	background: #cc6633;
-<<<<<<< HEAD
-=======
 	padding: 5px 5px 0 10px;
->>>>>>> c8ac8e838f6493188c35d7e506cfb3952e3be220
 	position: absolute;
 	top: 30px;
 	z-index: 200;
 	box-shadow: 2px 3px 6px rgba(0,0,0,0.5);
 	moz-box-shadow: 2px 3px 6px rgba(0,0,0,0.5);
-<<<<<<< HEAD
 	width: 100%;
-
-=======
-	width: auto;
->>>>>>> c8ac8e838f6493188c35d7e506cfb3952e3be220
 }
 #main #navigation nav ul li ul.menu li {
 	height: auto;
@@ -334,7 +329,6 @@ footer .copywrite {
 
 
 
-<<<<<<< HEAD
 /*********
 * Support Us - Block
 *********/
@@ -579,8 +573,6 @@ footer .copywrite {
 
 
 @media all and (max-width: 850px) {
-=======
-
 
 
 @media all and (max-width: 935px) {
@@ -590,7 +582,6 @@ footer .copywrite {
 }
 
 @media all and (max-width: 880px) {
->>>>>>> c8ac8e838f6493188c35d7e506cfb3952e3be220
 	#page {
 		padding: 10px;
 	}
@@ -633,8 +624,6 @@ footer .copywrite {
 		position: absolute;
 		left: 20px; top: 0;
 	}
-<<<<<<< HEAD
-=======
 	.rotator {
 		height: 200px !important;
 	}
@@ -642,7 +631,6 @@ footer .copywrite {
 		top: 18%;
 		height: 80px;
 	}
->>>>>>> c8ac8e838f6493188c35d7e506cfb3952e3be220
 	#main #navigation nav {
 		height: auto;
 		padding: 0;
@@ -709,7 +697,6 @@ footer .copywrite {
 		margin: 0;
 	}
 }
-<<<<<<< HEAD
 
 header h1 {
     text-indent:0 !important;
@@ -822,6 +809,3 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
     display: block;
     text-align: right;
 }
-
-=======
->>>>>>> c8ac8e838f6493188c35d7e506cfb3952e3be220
