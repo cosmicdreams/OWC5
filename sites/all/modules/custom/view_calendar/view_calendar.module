@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the View: Calendar feature.
+ */
+
+include_once 'view_calendar.features.inc';

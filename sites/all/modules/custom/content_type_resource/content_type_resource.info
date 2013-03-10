@@ -1,0 +1,14 @@
+name = Content Type: Resource
+description = The fields and configuration for the Resource content type.
+core = 7.x
+package = AFAA
+version = 7.x-1.0
+project = content_type_resource
+dependencies[] = features
+dependencies[] = image
+dependencies[] = insert
+dependencies[] = wysiwyg
+features[features_api][] = api:1
+features[field][] = node-resource-body
+features[field][] = node-resource-field_inline_image
+features[node][] = resource
