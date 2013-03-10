@@ -1,0 +1,270 @@
+<?php
+/**
+ * @file
+ * Generates custom blocks.
+ */
+
+/**
+ * Implements hook_block_info()
+ * @return array
+ */
+function afaa_blocks_block_info() {
+  return array(
+    'afaa_block_support' => array(
+      'info' => 'Support Us',
+      'cache' => DRUPAL_CACHE_GLOBAL,
+    ),
+    'afaa_block_connect' => array(
+      'info' => 'Connect With Us',
+      'cache' => DRUPAL_CACHE_GLOBAL,
+    ),
+    'afaa_block_facebook' => array(
+      'info' => 'AFAA on Facebook',
+      'cache' => DRUPAL_CACHE_GLOBAL,
+    ),
+    'afaa_block_tagline' => array(
+      'info' => 'AFAA Tagline',
+      'cache' => DRUPAL_CACHE_GLOBAL,
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_configure().
+ * @param string $delta
+ * @return array
+ */
+function afaa_blocks_block_configure($delta = '') {
+  if (strpos($delta, 'afaa_') !== 0) {
+    return array();
+  }
+
+  // A little meta-programming never hurt anyone, right?
+  $function = 'afaa_blocks_block_' . $delta . '_configure';
+
+  if (is_callable($function)) {
+    return $function();
+  }
+
+  return array();
+}
+
+
+/**
+ * Generates a form to configure the "connect" block.
+ * @return array
+ */
+function afaa_blocks_block_afaa_block_connect_configure() {
+  $settings = variable_get('afaa_block_connect', array());
+ 
+  $form = array(
+    'settings' => array(
+      '#tree' => true,
+    ),
+  ); 
+
+  $form['settings']['body'] = array(
+    '#type' => 'text_format',
+    '#format' => null,
+    '#default_value' => isset($settings['body']['value']) ? $settings['body']['value'] : null,
+    '#format' => isset($settings['body']['format']) ? $settings['body']['format'] : null,
+    '#title' => t('Body'),
+    '#description' => t('Custom content that shows up beneath the block title,')
+  );
+
+  return $form;
+}
+
+/**
+ * Generates a form to configure the "support" block.
+ * @return array
+ */
+function afaa_blocks_block_afaa_block_support_configure() {
+  $settings = variable_get('afaa_block_support', array());
+  $form = array(
+    'settings' => array(
+      '#tree' => true,
+    ),
+  ); 
+
+  $form['settings']['body'] = array(
+    '#type' => 'text_format',
+    '#default_value' => isset($settings['body']['value']) ? $settings['body']['value'] : null,
+    '#format' => isset($settings['body']['format']) ? $settings['body']['format'] : null,
+    '#title' => t('Body'),
+    '#description' => t('Custom content that shows up beneath the block title,')
+  );
+
+  $form['settings']['donate_url'] = array(
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['donate_url']) ? $settings['donate_url'] : null,
+    '#title' => t('Donate Button URL'),
+    '#description' => t('Where the DONATE button will take the user.'),
+  );
+
+  $form['settings']['donate_text'] = array(
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['donate_text']) ? $settings['donate_text'] : null,
+    '#title' => t('Donate Button Text'),
+    '#description' => t('The button text for the DONATE button.'),
+  );
+
+  $form['settings']['donate_destination'] = array(
+    '#type' => 'radios',
+    '#default_value' => isset($settings['donate_destination']) ? $settings['donate_destination'] : '_self',
+    '#title' => t('Donate Button Link Target'),
+    '#options' => array(
+      '_blank' => t('Open in a new window'),
+      '_self' => t('Open in the same window'),
+    ),
+  );
+
+  return $form;
+}
+
+
+/**
+ * Generates a form to configure the "tagline" block.
+ * @return array
+ */
+function afaa_blocks_block_afaa_block_tagline_configure() {
+  $settings = variable_get('afaa_block_tagline', array());
+  $form = array(
+    'settings' => array(
+      '#tree' => true,
+    ),
+  ); 
+
+  $value = '<div class="tagline_wrap">
+<h2 class="tagline_headline">Taking the fear out of food allergies</h2><h3 class="tagline_body">The Anaphylaxis and Food Allergy Association of Minnesota (AFAA) is a 501(c)3 non-profit organization 
+whose mission is to educate, advocate, and to support those with food allergies. <a href="/about-us" title="about AFAA">Learn more about AFAA.</a></h3>
+</div>';
+  $format = 'full_html';
+
+  $form['settings']['body'] = array(
+    '#type' => 'text_format',
+    '#default_value' => isset($settings['body']['value']) ? $settings['body']['value'] : $body,
+    '#format' => isset($settings['body']['format']) ? $settings['body']['format'] : $format,
+    '#title' => t('Body'),
+    '#description' => t('Custom content that shows up beneath the block title.')
+  );
+
+  return $form;
+}
+
+
+/**
+ * Implements hook_block_block_save()
+ * @param string $delta
+ * @param aray $edit
+ */
+function afaa_blocks_block_save($delta = '', $edit = array()) {
+  if (strpos($delta, 'afaa_') !== 0) {
+    return;
+  }
+  if (! empty($edit) && isset($edit['settings'])) {
+    variable_set($delta, $edit['settings']);
+  }
+}
+
+
+/**
+ * Implements hook_block_view()
+ * @param string $delta
+ */
+function afaa_blocks_block_view($delta = '') {
+  if (strpos($delta, 'afaa_') !== 0) {
+    return;
+  }
+  
+  $function = 'afaa_blocks_block_' . $delta . '_view';
+
+  if (is_callable($function)) {
+    return $function();
+  }
+
+  return array(
+     'subject' => t('AFAA Block'),
+     'content' => array(),
+  );
+}
+
+
+/**
+ * Metafunction to generate content for the facebook block.
+ */
+function afaa_blocks_block_afaa_block_facebook_view() {
+  return array(
+    'subject' => t('AFAA on Facebook'),
+    'content' => array(),
+  );
+}
+
+/**
+ * Metafunction to generate content for the "connect with us" block.
+ */
+function afaa_blocks_block_afaa_block_connect_view() {
+  $settings = variable_get('afaa_block_connect', array());
+  return array(
+    'subject' => t('Connect With Us'),
+    'content' => array(
+      '#markup' => $settings['body']['value'],
+      'format' => $settings['body']['format'],
+    ),
+  );
+}
+
+/**
+ * Metafunction to generate content for the "tagline" block.
+ */
+function afaa_blocks_block_afaa_block_tagline_view() {
+  $settings = variable_get('afaa_block_tagline', array());
+  return array(
+    'subject' => t('Support Us'),
+    'content' => array(
+       'body' => array(
+         '#markup' => $settings['body']['value'],
+         'format' => $settings['body']['format'],
+       ),
+    ),
+  );
+}
+
+/**
+ * Metafunction to generate content for the "support us" block.
+ */
+function afaa_blocks_block_afaa_block_support_view() {
+  $settings = variable_get('afaa_block_support', array());
+  $donate = null;
+
+  // Generates a DONATE button
+  if (! empty($settings['donate_text'])) {
+    $config = array(
+      'attributes' => array(
+        'class' => array(
+          'supportUs_btn btn btn_default',
+        ),
+        'target' => $settings['donate_destination'],
+      ),
+    );
+    $donate = l($settings['donate_text'], $settings['donate_url'], $config);
+    $donate = '<div class="supportUs_btnWrap">' . $donate . '</div>';
+    $donate = array(
+      '#markup' => $donate
+    );
+  }
+
+  return array(
+    'subject' => t('Support Us'),
+    'content' => array(
+       'body' => array(
+         '#markup' => $settings['body']['value'],
+         'format' => $settings['body']['format'],
+       ),
+       'donate' => $donate,
+    ),
+  );
+}
+
+
