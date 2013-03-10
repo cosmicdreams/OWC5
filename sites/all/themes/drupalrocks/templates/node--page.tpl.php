@@ -83,6 +83,7 @@
  * @see template_process()
  */
 ?>
+<?php dpm($node); ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
     <header>
@@ -109,13 +110,7 @@
     // We hide the comments and links now so that we can render them later.
     hide($content['comments']);
     hide($content['links']);
-    $arr = explode('<div class="content">',render($content['field_featured_media']),2);
-    $fm = str_replace('</div>','',$arr[1]);
-    if (strpos($fm,'<iframe') !== false) {
-    	$arr = explode('<iframe',$fm,2);
-    	$fm = '<iframe'.$arr[1];
-    }
-    print $fm;
+    print render($content['field_featured_media']);
     print render($content['body']);
     print render($content['field_gallery_image']);
     print render($content['field_external_resource']);
