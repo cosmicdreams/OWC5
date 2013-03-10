@@ -1,0 +1,27 @@
+<?php
+/**
+ * Implements hook_field_schema().
+ */
+function sharethis_field_field_schema($field) {
+  $columns = array(
+    'sharethis' => array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 0, 'unsigned' => TRUE ),
+  );
+  $indexes = array(
+    'sharethis' => array('sharethis'),
+  );
+  return array(
+    'columns' => $columns,
+    'indexes' => $indexes,
+  );
+}
+
+
+/**
+ * Implements hook_init().
+ */
+function sharethis_field_init() {
+  variable_set('sharethis_node_option_backup', variable_get('sharethis_node_option'));
+  variable_set('sharethis_node_option', '');
+  variable_set('sharethis_location_backup', variable_get('sharethis_location'));
+  variable_set('sharethis_location', 'content');
+}

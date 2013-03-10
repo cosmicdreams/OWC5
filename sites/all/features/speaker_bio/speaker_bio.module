@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Speaker Bio feature.
+ */
+
+include_once 'speaker_bio.features.inc';

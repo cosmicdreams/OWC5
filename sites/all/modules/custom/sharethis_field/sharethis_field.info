@@ -1,0 +1,4 @@
+name = ShareThis field
+description = Adds a ShareThis field to any manage fields page, with ability to show ShareThis an individual node basis.
+core = 7.x
+dependencies[] = sharethis
