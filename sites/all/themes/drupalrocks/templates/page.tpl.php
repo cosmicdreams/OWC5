@@ -114,7 +114,7 @@
 
   </header>
 
-  <div id="main">
+  <div id="main" class="clearfix">
 
     <div id="navigation" class="clearfix">
       <nav role="navigation">
@@ -136,28 +136,22 @@
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
-      <div class="user-content">
-        <?php print render($page['content']); ?>
-      </div>
+      <?php print render($page['content']); ?>
       <?php print $feed_icons; ?>
     </div><!-- /#content -->
 
-    <?php
+      <?php 
       // Render the sidebars to see if there's anything in them.
       $sidebar_first  = render($page['sidebar_first']);
       $sidebar_second = render($page['sidebar_second']);
-    ?>
-
-    <?php if ($sidebar_first || $sidebar_second): ?>
-      <aside class="sidebars">
-        <?php print $sidebar_first; ?>
-        <?php print $sidebar_second; ?>
-      </aside><!-- /.sidebars -->
-    <?php endif; ?>
+      if ($sidebar_first || $sidebar_second): ?>
+        <aside class="sidebars">
+          <?php print $sidebar_first; ?>
+          <?php print $sidebar_second; ?>
+        </aside><!-- /.sidebars -->
+      <?php endif; ?>
 
   </div><!-- /#main -->
-
-  
 
 </div><!-- /#page -->
 <?php print render($page['footer']); ?>
