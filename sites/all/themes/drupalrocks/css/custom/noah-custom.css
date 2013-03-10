@@ -1,20 +1,4 @@
-/**************
-* Global Styles
-**************/
 
-a{
-    color:#cc6600;
-    text-decoration:none;
-}
-
-a:hover{
-    text-decoration:underline;
-}
-
-#logo > a{
-    height:100%;
-    display:block;
-}
 
 /* 
  * Form Styles
@@ -78,52 +62,4 @@ input[type='checkbox']:checked + label {
 background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
 }
 
-/*******
-* Styled Selects
-*******/
 
-.styledSelect_list-isHidden{
-    position:relative;
-    left:9999px;
-    height:0;
-}
-
-.styledSelect_list{
-    margin:0;
-    padding:0;
-    border-left:1px solid #ccc;
-    border-right:1px solid #ccc;
-    border-bottom:1px solid #ccc;
-    display:inline-block;
-    position:absolute;
-    z-index:100;
-    max-height:150px;
-    overflow-y: auto;
-    background: #FFFFFF;
-}
-
-.styledSelect_option{
-    list-style-type: none;
-    padding: 10px 30px 10px 5px;
-    line-height: 1;
-}
-
-.styledSelect_optionText{
-    padding: 0 30px 0 0;
-}
-
-.styledSelect_option:hover{
-    background-color:#ccc;
-    cursor:pointer;
-}
-
-.styledSelect_optionSelected {
-    height: 26px;
-    border: 1px solid #ccc;
-    background:#FFF url('../../images/select-arrow.png') 100% 50% no-repeat;
-    padding: 0 5px;
-}
-
-.styledSelect_optionSelected:hover {
-    cursor: pointer;
-}

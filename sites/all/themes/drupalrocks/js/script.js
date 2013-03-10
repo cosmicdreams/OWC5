@@ -14,16 +14,37 @@
 
 	$(function(){
 		var windowSize;
-
 		windowSize = $(window).width();
+		var mobileNav = function(e){
+			e.preventDefault();
+			if($(this).find('.menu').length > 0 && !$(this).find('.menu').hasClass('active')){
+				$('#navigation nav li').removeClass('minus');
+				$(this).addClass('minus');
+				//first hide
+				$('.menu.active').slideUp();
+				$('.menu').removeClass('active');
+				//then show
+				$(this).find('.menu').addClass('active');
+				$(this).find('.menu').slideDown();
+			}
+		};
+		var responsiveMenus = function(){
+			if(windowSize < 420){
+				$('#navigation nav li').bind('click', mobileNav);
+			} else {
+				$('#navigation nav li').unbind('click', mobileNav);
+				$('#navigation nav li').removeClass('minus');
+			}
+			windowSize = $(window).width();
+		}
 
 		//Main Menu things
 		$('#navigation nav li').hover(function(){
-			if(!$(this).hasClass('active-trail') && windowSize > 500){
+			if(!$(this).hasClass('active-trail') && windowSize > 420){
 				$(this).find('.menu').slideDown();
 			}
 		}, function(){
-			if(!$(this).hasClass('active-trail') && windowSize > 500){
+			if(!$(this).hasClass('active-trail') && windowSize > 420){
 				$(this).find('.menu').hide();
 			}
 		});
@@ -31,20 +52,14 @@
 		console.log(windowSize);
 
 		//Mobile Shit
-		if(windowSize < 500){
-			$('#navigation nav li').bind('click', function(e){
-				e.preventDefault();
+		responsiveMenus();
+		$(window).resize(responsiveMenus);
+		
 
-				if($(this).find('.menu').length > 0 && !$(this).find('.menu').hasClass('active')){
-					//first hide
-					$('.menu.active').slideUp();
-					$('.menu').removeClass('active');
-					//then show
-					$(this).find('.menu').addClass('active');
-					$(this).find('.menu').slideDown();
-				}
-			});
-		}
+
+
+
+
 
 		$('#page').before('<div style="color:white;background-color:black;padding:10px 15px;position:fixed;left:0;bottom:0">Script loaded</div>')
 		//$('.form-select').hide();
