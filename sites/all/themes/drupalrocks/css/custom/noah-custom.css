@@ -62,8 +62,12 @@ input[type='checkbox']:checked + label {
 background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
 }
 
+.styledSelect_optionSelected-edit-date-month {
+    clear: both;
+    overflow: hidden;
+}
 
-<<<<<<< HEAD
+
 .styledSelect_list-isHidden{
     position:relative;
     left:9999px;
@@ -114,14 +118,7 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
 * Upcoming Events - Block
 *********/
 
-.form-select {
-    display: none;
-}
 
-.styledSelect_optionSelected-edit-date-month {
-    clear: both;
-    overflow: hidden;
-}
 
 #edit-date:after {
     clear: both;
@@ -204,6 +201,57 @@ textarea {
     text-align: right;
 }
 
+/*********
+* Support Us - Block
+*********/
 
-=======
->>>>>>> fb332433d1acca3d1f63b167b36176d8e9818847
+.block_yellow{
+    background: #f3d426;
+    border: 1px solid #dec32c;
+}
+
+.supportUs_wrap {
+    padding: 8px 11px;
+    width: 300px;
+}
+
+.supportUs_body{
+    margin: 8px 0 14px 0;
+}
+
+.supportUs_body a{
+    color:black;
+}
+
+.supportUs_title {
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.supportUs_btnWrap{
+    text-align:right;
+}
+
+/*********
+* Button
+*********/
+
+.btn {
+
+    padding: 4px 7px;
+    text-decoration:none;
+}
+
+.btn_default{
+    border: 1px solid #afc6cd;
+    color: white;
+    background: #e08e00; /* Old browsers */
+    background: -moz-linear-gradient(top,  #e08e00 0%, #c85e00 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e08e00), color-stop(100%,#c85e00)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #e08e00 0%,#c85e00 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e08e00', endColorstr='#c85e00',GradientType=0 ); /* IE6-9 */
+}
