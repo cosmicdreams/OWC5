@@ -1,0 +1,372 @@
+h1, h2 {
+	font-family: 'Merriweather Sans', sans-serif;
+}
+h3, h4, {
+	color: #333;
+	font-family: 'Muli', sans-serif;
+}
+h1 {
+	font-size: 28px;
+	color: #336699;
+}
+h2 {
+	font-size: 24px;
+	color: #cc6600;
+}
+h3 {
+	font-size: 18px;
+}
+h4 {
+	font-size: 12px;
+}
+a {
+	color: #CC6600;
+}
+#page {
+	width: 85%;
+	margin: 0 auto;
+	padding: 25px;
+	position: relative;
+	background: white;
+}
+body, html { margin: 0; padding: 0; }
+body, html {
+	font-family: 'Muli', sans-serif;
+	background: #004a8d;
+}
+#skip-link {
+	display: none;
+}
+header h1 {
+	background: url(../../images/sprite.png) no-repeat 0 0;
+	background-size: 100%;
+	text-indent: -999em;
+	height: 150px; max-width: 290px;
+}
+header nav {
+	width: 50%;
+	position: absolute;
+	top: 25px; right: 25px;
+}
+header nav ul {
+	margin: 0;
+}
+header nav ul li:first-child {
+	margin: 0;
+}
+header nav ul li.first, 
+header nav ul li.last {
+	border: none;
+	padding: 0;
+}
+header nav ul li {
+	display: block;
+	float: right;
+	padding-right: 20px;
+	margin-right: 20px;
+	border-right: 1px solid #004a8d;
+}
+header nav ul li a {
+	color: #004a8d;
+	text-decoration: none;
+}
+header nav ul li.last a {
+	font-size: 13px;
+	padding: 4px 15px;
+	position: relative;
+	color: white;
+	border: 1px solid #afc6cd;
+	font-weight: bold;
+	background: #e08e00; /* Old browsers */
+	background: -moz-linear-gradient(top,  #c85e00 0%, #bc5430 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e08e00), color-stop(100%,#c85e00)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e08e00 0%,#c85e00 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e08e00', endColorstr='#c85e00',GradientType=0 ); /* IE6-9 */
+}
+header .socialandsearch {
+	position: absolute;
+	top: 80px; right: 25px;
+	width: 470px;
+}
+header .socialandsearch input[type=text]{
+	background: url(../../images/sprite.png) no-repeat 5px -317px;
+	border: 1px solid #c9c9c9;
+	padding: 4px;
+	position: relative;
+	right: -6px;
+	width: 200px;
+}
+header .socialandsearch form {
+	position: absolute;
+	top: 0; right: 0;
+}
+header .socialandsearch li {
+	width: 33px; height: 33px;
+	display: block;
+	float: left;
+	margin-left: 16px;
+	list-style: none;
+	text-indent: -999em;
+}
+header .socialandsearch li a {
+	background: url(../../images/sprite.png) no-repeat;
+	width: 33px; height: 33px;
+	display: block;
+}
+header .socialandsearch li a.fb{
+	background-position: 0 -161px;
+}
+header .socialandsearch li a.tw {
+	background-position: -39px -161px;
+}
+header .socialandsearch li a.yt {
+	background-position: -77px -161px;
+}
+
+header .socialandsearch input.form-submit {
+	background: #e08e00; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e08e00 0%, #c85e00 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e08e00), color-stop(100%,#c85e00)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e08e00 0%,#c85e00 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e08e00', endColorstr='#c85e00',GradientType=0 ); /* IE6-9 */
+	border: 1px solid #afc6cd;
+	color: white;
+	padding: 4px 7px;;
+}
+#main #navigation nav {
+	padding: 10px 0 0;
+	background: #004a8d;
+	min-height: 30px;
+	overflow: visible;
+	margin: 0 auto;
+}
+#main #navigation nav h2 {
+	display: none;
+}
+#main #navigation nav ul {
+	padding: 0 20px; margin: 0;
+}
+
+#main #navigation nav ul li:first-child {
+	margin: 0;
+}
+#main #navigation nav ul li {
+	display: block;
+	float: left;
+	padding: 0 37px;
+	position: relative;
+	height: 30px;
+	z-index: 300;
+}
+#main #navigation nav ul li a:hover {
+	background: url(../../images/active.png) repeat-x 0 23px;
+}
+#main #navigation nav ul li a {
+	color: white;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-shadow: 0 -1px 1px #07294b;
+	font-weight: bold;
+	font-size: 16px;
+	display: block;
+	padding-bottom: 7px;
+}
+#main #navigation nav ul li ul.menu {
+	display: none;
+	background: #cc6633;
+	padding: 5px 0;
+	position: absolute;
+	top: 30px; left: 2px;
+	z-index: 200;
+	box-shadow: 2px 3px 6px rgba(0,0,0,0.5);
+	moz-box-shadow: 2px 3px 6px rgba(0,0,0,0.5);
+}
+#main #navigation nav ul li ul.menu li {
+	height: auto;
+}
+#main #navigation nav ul li ul.menu li a {
+	color: white;
+	font-weight: normal;
+	text-shadow: none;
+	padding: 0;
+}
+#main #navigation nav ul li ul.menu li:hover {
+	background: none;
+}
+#main #navigation nav ul li.active-trail {
+	position: static;
+	background: url(../../images/active-nav.gif) no-repeat 49% 20px;
+}
+#main #navigation nav ul li.active-trail ul.menu {
+	display: block;
+	background: #e8f8fc;
+	top: 30px; left: 0;
+	width: 100%;
+	z-index: 100;
+}
+#main #navigation nav ul li.active-trail ul.menu li {
+	display: block;
+	float: left;
+}
+#main #navigation nav ul li.active-trail ul.menu li a {
+	color: #333;
+}
+#main #navigation nav ul li.active-trail ul.menu li a:hover {
+	color: #cc6633;
+}
+footer {
+	background: #e8f8fc;
+	border-top: 10px solid #f3d426;
+	margin: 0 auto;
+	width: 85%; height: 150px;
+	padding: 25px ;
+}
+footer .wrap {
+	width: 85%;
+	margin: 0 auto;
+}
+footer .block-menu {
+	width: 25%;
+	margin-right: 2%;
+	float: left;
+}
+footer .block-menu h2 {
+	font-size: 16px;
+	margin: 0;
+}
+footer .block-menu ul li {
+	list-style: none
+}
+footer .block-menu ul {
+	margin-top: 0;
+	padding-left: 10px;
+}
+footer .block-menu ul li a {
+	color: #333;
+	text-decoration: none;
+}
+footer .copywrite {
+	width: 100%;
+	text-align: center;
+	color: #004a8d;
+}
+
+
+
+
+
+
+
+
+@media all and (max-width: 850px) {
+	#page {
+		padding: 10px;
+	}
+	header nav {
+		width: 100%;
+	}
+	header .socialandsearch {
+		width: 180px;
+	}
+	header .socialandsearch form {
+		display: none;
+	}
+	footer {
+		height: auto;
+	}
+	footer .block-menu {
+		width: 154px;
+	}
+}
+@media all and (max-width: 530px) {
+	header .socialandsearch {
+		display: none;
+	}
+}
+@media all and (max-width: 340px) {
+	#page {
+		width: 93.6%;
+		margin: 0;
+	}
+	header h1 {
+		height: 149px;
+	}
+	header nav {
+		right: 10px; top: 10px;
+	}
+	header nav li:first-child {
+		position: absolute;
+		left: 20px; top: 0;
+	}
+	#main #navigation nav {
+		height: auto;
+		padding: 0;
+	}
+	#main #navigation nav ul {
+		height: auto;
+		padding: 0 1px;
+	}
+	#main #navigation nav ul li:first-child {
+		border: none;
+	}
+	#main #navigation nav ul li,
+	#main #navigation nav ul li.active-trail {
+		height: auto;
+		display: block;
+		float: none;
+		padding: 0;
+		border-top: 1px solid white;
+		background: url(../../images/sprite-icons.png) no-repeat 102% -9246px #004a8d;
+	}
+	#main #navigation nav ul li.minus {
+		background: url(../../images/sprite-icons.png) no-repeat 100% -2953px #004a8d;
+	}
+	#main #navigation nav ul li a, 
+	#main #navigation nav ul li.active-trail a {
+		display: block;
+		padding: 10px 0 5px 10px;
+	}
+	#main #navigation nav ul li:hover,
+	#main #navigation nav ul li.active-trail:hover {
+		background: url(../../images/sprite-icons.png) no-repeat 102% -9246px #004a8d;
+	}
+	#main #navigation nav ul li.minus:hover {
+		background: url(../../images/sprite-icons.png) no-repeat 100% -2953px #004a8d;
+	}
+	#main #navigation nav ul li ul.menu,
+	#main #navigation nav ul li.active-trail ul.menu {
+		display: none;
+		position: relative;
+		top: 0; left: 0;
+		background: #e8f8fc;
+	}
+	#main #navigation nav ul li ul.menu li,
+	#main #navigation nav ul li.active-trail ul.menu li {
+		display: block;
+		float: none;
+		padding: 5px 10px;
+		border: none;
+		background: #e8f8fc;
+	}
+	#main #navigation nav ul li ul.menu li a,
+	#main #navigation nav ul li.active-trail ul.menu li a {
+		padding: 0;
+		background: #e8f8fc;
+		color: #333;
+	}
+	#main #navigation nav ul li a:hover,
+	#main #navigation nav ul li.active-trail a:hover {
+		background: none;
+	}
+
+	footer {
+		width: auto;
+		margin: 0;
+	}
+}
