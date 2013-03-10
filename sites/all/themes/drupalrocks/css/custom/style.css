@@ -571,19 +571,12 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
    background: #f3d426;
    border: 1px solid #dec32c;
    padding: 8px 11px;
-   width: 300px;
 }
 
 .supportUs_title {
    color: white;
    padding: 0;
    margin: 0;
-}
-
-
-.supportUs_wrap {
-   padding: 8px 11px;
-   width: 300px;
 }
 
 .supportUs_body{
@@ -779,6 +772,14 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
        position: absolute;
        left: 20px; top: 0;
    }
+   header nav li {
+      display: none !important;
+   }
+   header nav li.last {
+      display: block !important;
+      left: 20px; top: 0px;
+      position: absolute;
+   }   
    .rotator {
        height: 200px !important;
    }
@@ -868,6 +869,7 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
     margin-right: 10px;
     border-radius: 10px;
     moz-border-radius: 10px;
+    cursor: pointer;
 }
 .rotator-pager li.active span {
     display: block;
