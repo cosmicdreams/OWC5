@@ -24,7 +24,7 @@ a {
 }
 #page {
 	width: 85%;
-	margin: 0 auto;
+	margin: 40px auto 0;
 	padding: 25px;
 	position: relative;
 	background: white;
@@ -143,6 +143,13 @@ header .socialandsearch input.form-submit {
 	float: left;
 	min-width: 74%;
 }
+
+.rotator {
+	width: 100%;
+	height: 300px;
+	position: relative;
+}
+
 #main #navigation nav {
 	padding: 10px 0 0;
 	background: #004a8d;
@@ -154,7 +161,9 @@ header .socialandsearch input.form-submit {
 	display: none;
 }
 #main #navigation nav ul {
-	padding: 0 20px; margin: 0;
+	padding: 0 20px; 
+	margin: 0;
+	position: relative;
 }
 
 #main #navigation nav ul li:first-child {
@@ -262,8 +271,8 @@ aside {
 
 footer {
 	background: url(../../images/footer-tile.gif) repeat-x #e8f8fc;
-	margin: 0 auto;
-	width: 85%; height: 150px;
+	margin: 0;
+	width: 100%; height: 150px;
 	padding: 25px ;
 }
 footer .wrap {
