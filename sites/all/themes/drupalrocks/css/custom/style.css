@@ -71,8 +71,12 @@ header h1 {
 header h1 {
    background: url(../../images/sprite.png) no-repeat 0 0;
    background-size: 100%;
-   text-indent: -999em;
    height: 150px; max-width: 290px;
+}
+header h1 a {
+   display: block;
+   height: 100%;
+   text-indent: -999em;
 }
 header nav {
    width: 50%;

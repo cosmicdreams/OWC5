@@ -58,9 +58,10 @@ stylesheets[all][] = css/views-styles.css
  ;stylesheets[all][] = css/forms.css
  ;stylesheets[all][] = css/fields.css
 stylesheets[all][] = css/print.css
-stylesheets[all][] = css/custom/jon-custom.css
-stylesheets[all][] = css/custom/noah-custom.css
+;stylesheets[all][] = css/custom/jon-custom.css
+;stylesheets[all][] = css/custom/noah-custom.css
 stylesheets[all][] = css/custom/kj-custom.css
+stylesheets[all][] = css/custom/style.css
 stylesheets[all][] = css/custom/chris-custom.css
 stylesheets[all][] = css/custom/user-content.css
 
