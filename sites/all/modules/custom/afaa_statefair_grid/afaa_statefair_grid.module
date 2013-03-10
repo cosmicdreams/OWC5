@@ -1,0 +1,271 @@
+<?php
+
+/**
+ * @file afaa_statefair_grid.module
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function afaa_statefair_grid_menu() {
+  return array(
+    'admin/config/workflow/statefair-grid' => array(
+      'title'            => 'State Fair Volunteer Grid',
+      'access arguments' => array('administer site configuration'),
+      'page callback'    => 'drupal_get_form',
+      'page arguments'   => array('afaa_statefair_grid_config_form')
+    ),
+  );
+}
+
+/**
+ * State fair volunteer management grid
+ */
+function afaa_statefair_grid_config_form($form, &$form_state) {
+  $form = array();
+
+  $values = variable_get('afaa_statefair_volunteers', array());
+
+  drupal_add_library('system', 'ui.datepicker');
+  drupal_add_js('jQuery(document).ready(function(){jQuery(".start-date").datepicker({dateFormat:"mm/dd/yy", autoSize:true});});', 'inline');
+
+  $form['afaa_statefair_volunteers']['#tree'] = TRUE;
+  $form['afaa_statefair_volunteers']['start_date'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Start Date'),
+    '#size'          => 10,
+    '#attributes'    => array('class' => array('start-date')),
+    '#default_value' => isset($values['start_date']) ? $values['start_date'] : '',
+  );
+
+  for ($i = 1; $i <= 12; $i++) {
+    $form['afaa_statefair_volunteers']['day_' . $i] = array(
+      '#title'       => t('Day') . ' ' . $i,
+      '#weight'      => $i,
+      '#collapsed'   => '1',
+      '#type'        => 'fieldset',
+      '#collapsible' => '1',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_1'] = array(
+      '#title'       => t('9am - Noon'),
+      '#weight'      => '0',
+      '#collapsed'   => '0',
+      '#type'        => 'fieldset',
+      '#collapsible' => '1',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_1']['slot_1'] = array(
+      '#weight'        => '0',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 1'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_1']['slot_1'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_1']['slot_2'] = array(
+      '#weight'        => '1',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 2'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_1']['slot_2'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_1']['slot_3'] = array(
+      '#weight'        => '2',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 3'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_1']['slot_3'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_1']['slot_4'] = array(
+      '#weight'        => '3',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 4'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_1']['slot_4'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_2'] = array(
+      '#weight'      => '1',
+      '#collapsed'   => '0',
+      '#type'        => 'fieldset',
+      '#collapsible' => '1',
+      '#title'       => t('Noon - 3pm'),
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_2']['slot_1'] = array(
+      '#weight'        => '0',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 1'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_2']['slot_1'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_2']['slot_2'] = array(
+      '#weight'        => '1',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 2'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_2']['slot_2'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_2']['slot_3'] = array(
+      '#weight'        => '2',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 3'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_2']['slot_3'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_2']['slot_4'] = array(
+      '#weight'        => '3',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 4'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_2']['slot_4'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_3'] = array(
+      '#weight'      => '2',
+      '#collapsed'   => '0',
+      '#type'        => 'fieldset',
+      '#collapsible' => '1',
+      '#title'       => t('3pm - 6pm'),
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_3']['slot_1'] = array(
+      '#weight'        => '0',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 1'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_3']['slot_1'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_3']['slot_2'] = array(
+      '#weight'        => '1',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 2'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_3']['slot_2'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_3']['slot_3'] = array(
+      '#weight'        => '2',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 3'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_3']['slot_3'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_3']['slot_4'] = array(
+      '#weight'        => '3',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 4'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_3']['slot_4'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_4'] = array(
+      '#weight'      => '3',
+      '#collapsed'   => '0',
+      '#type'        => 'fieldset',
+      '#collapsible' => '1',
+      '#title'       => t('6pm - 9pm'),
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_4']['slot_1'] = array(
+      '#weight'        => '0',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 1'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_4']['slot_1'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_4']['slot_2'] = array(
+      '#weight'        => '1',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 2'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_4']['slot_2'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_4']['slot_3'] = array(
+      '#weight'        => '2',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 3'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_4']['slot_3'] : '',
+    );
+    $form['afaa_statefair_volunteers']['day_' . $i]['shift_4']['slot_4'] = array(
+      '#weight'        => '3',
+      '#required'      => '0',
+      '#type'          => 'textfield',
+      '#title'         => t('Slot 4'),
+      '#default_value' => !empty($values['day_' . $i]) ? $values['day_' . $i]['shift_4']['slot_4'] : '',
+    );
+  }
+
+  $form['actions']['reset'] = array(
+    '#type'   => 'submit',
+    '#value'  => t('Reset to defaults'),
+    '#submit' => array('afaa_statefair_grid_settings_reset'),
+    '#weight' => 100,
+  );
+
+  return  system_settings_form($form);
+}
+
+/**
+ * Management form reset submit handler.
+ */
+function afaa_statefair_grid_settings_reset($form, &$form_state) {
+  variable_del('afaa_statefair_volunteers');
+}
+
+
+function afaa_statefair_grid_block_info() {
+  return array(
+    'afaa_statefair_volunteer_grid' => array(
+      'info'  => t('State Fair Volunteer grid'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+function afaa_statefair_grid_block_view($delta = '') {
+  $block = array();
+
+  if ($delta == 'afaa_statefair_volunteer_grid') {
+
+    $values = variable_get('afaa_statefair_volunteers', array());
+    if (!isset($values['start_date'])) {
+      return array();
+    }
+
+    $header = array(0 => '');
+    $row[1][0] = array('data' => '9am - Noon', 'class' => array('label'));
+    $row[2][0] = array('data' => 'Noon - 3pm', 'class' => array('label'));
+    $row[3][0] = array('data' => '3pm - 6pm', 'class' => array('label'));
+    $row[4][0] = array('data' => '6pm - 9pm', 'class' => array('label'));
+
+    for ($i = 1; $i <= 12; $i++) {
+      if ($i == 1) {
+        $day = strtotime($values['start_date']);
+      }
+      else {
+        $day = $values['start_date'] . ' +'. ($i - 1) .'days';
+        $day = strtotime($day);
+      }
+      $header[$i] = date('M j', $day);
+      for ($shift = 1; $shift <= 4; $shift++) {
+        $full = TRUE;
+        for ($slot = 1; $slot <= 4; $slot++) {
+          if (empty($values['day_' . $i]['shift_'. $shift]['slot_'. $slot])) {
+            $full = FALSE;
+          }
+        }
+        if ($full) {
+          $row[$shift][$i] = array('data' => 'Full', 'class' => array('full-day'));
+        }
+        else {
+          $row[$shift][$i] = array('data' => 'Open', 'class' => array('open-day'));
+        }
+      }
+    }
+
+    $rows = array(
+      $row[1],
+      $row[2],
+      $row[3],
+      $row[4]
+    );
+
+    $block['title'] = '<none>';
+    $block['content'] = theme('table', array('header' => $header, 'rows' => $rows));
+  }
+
+  return $block;
+}

@@ -1,4 +1,4 @@
-.calendar-calendar td a{color: #FFFFFF;}
+.calendar-calendar td a {color: #FFFFFF;}
 
 .calendar-calendar .month-view .full td.multi-day .inner .monthview .continues,
 .calendar-calendar .month-view .full td.multi-day .inner .monthview .cutoff,
@@ -7,3 +7,5 @@
     -moz-border-radius: 0;
     border-radius: 0;
 }
+
+.block-constant-contact h2 {display: none;}
