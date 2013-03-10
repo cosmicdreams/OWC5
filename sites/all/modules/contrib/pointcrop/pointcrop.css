@@ -1,0 +1,15 @@
+/**
+ * CSS for the pointcrop module.
+ */
+
+.form-text.pointcrop {
+  max-width: 13em;
+}
+
+.pointcrop.focus-box {
+  min-width: 500px;
+}
+
+.pointcrop.focus-box .img-wrapper {
+  position: relative;
+}

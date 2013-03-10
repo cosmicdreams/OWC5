@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Install/Update/Uninstall functions for the pointcrop module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pointcrop_schema() {
+  $schema['pointcrop_file'] = array(
+    'fields' => array(
+      'fid' => array(
+        'description' => 'File ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'focus_point' => array(
+        'description' => 'The ratio of the focus point to the width and height. x and y will be a number between zero and one.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('fid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function pointcrop_install() {
+  db_update('system')
+    ->fields(array('weight' => 1))
+    ->condition('name', 'pointcrop')
+    ->execute();
+}
+
+/**
+ * Implements hook_enable().
+ */
+function pointcrop_enable() {
+  cache_clear_all('image_effects:', 'cache', TRUE);
+}
+
+/**
+ * Implements hook_disable().
+ */
+function pointcrop_disable() {
+  cache_clear_all('image_styles', 'cache');
+  cache_clear_all('image_effects:', 'cache', TRUE);
+}

@@ -1,0 +1,5 @@
+name = Volunteer Grid
+description = State Fair Volunteer Grid
+core = 7.x
+version = 7.x-1.0
+package = AFAA
