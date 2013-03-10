@@ -99,5 +99,176 @@ function content_type_event_views_default_views() {
   );
   $export['event_location'] = $view;
 
+  $view = new view();
+  $view->name = 'upcoming_events';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Upcoming Events';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Upcoming Events';
+  $handler->display->display_options['css_class'] = 'upcomingEventsBlock_wrap';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'View All Events';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_event_date_4',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['row_class'] = 'upcomingEventsBlock_list';
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['type'] = 'ol';
+  $handler->display->display_options['style_options']['class'] = 'item-list';
+  $handler->display->display_options['style_options']['wrapper_class'] = '';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Footer: View All */
+  $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom']['ui_name'] = 'View All';
+  $handler->display->display_options['footer']['area_text_custom']['content'] = '<a class="upcomingEventsBlock_linkOut" href="/calendar">View All Events</a>';
+  /* Field: Event Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['ui_name'] = 'Event Title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_class'] = 'upcomingEventsBlock_eventLink';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'upcomingEventsBlock_eventDetail';
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: [HIDE] Event Month */
+  $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['ui_name'] = '[HIDE] Event Month';
+  $handler->display->display_options['fields']['field_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['element_wrapper_type'] = 'span';
+  $handler->display->display_options['fields']['field_event_date']['element_wrapper_class'] = 'upcomingEventsBlock_eventMonth';
+  $handler->display->display_options['fields']['field_event_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['settings'] = array(
+    'format_type' => 'month_name_only',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: [HIDE] Event Day */
+  $handler->display->display_options['fields']['field_event_date_2']['id'] = 'field_event_date_2';
+  $handler->display->display_options['fields']['field_event_date_2']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date_2']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date_2']['ui_name'] = '[HIDE] Event Day';
+  $handler->display->display_options['fields']['field_event_date_2']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_event_date_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date_2']['settings'] = array(
+    'format_type' => 'day_only',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: [HIDE] Event Day Name */
+  $handler->display->display_options['fields']['field_event_date_3']['id'] = 'field_event_date_3';
+  $handler->display->display_options['fields']['field_event_date_3']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date_3']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date_3']['ui_name'] = '[HIDE] Event Day Name';
+  $handler->display->display_options['fields']['field_event_date_3']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date_3']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_event_date_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date_3']['element_wrapper_type'] = 'span';
+  $handler->display->display_options['fields']['field_event_date_3']['element_wrapper_class'] = 'upcomingEventsBlock_eventDay';
+  $handler->display->display_options['fields']['field_event_date_3']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date_3']['settings'] = array(
+    'format_type' => 'day_of_week_short',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: [HIDE] Grouping Date */
+  $handler->display->display_options['fields']['field_event_date_4']['id'] = 'field_event_date_4';
+  $handler->display->display_options['fields']['field_event_date_4']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date_4']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date_4']['ui_name'] = '[HIDE] Grouping Date';
+  $handler->display->display_options['fields']['field_event_date_4']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date_4']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_event_date_4']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_event_date_4']['alter']['text'] = '[field_event_date] [field_event_date_2] [field_event_date_3]';
+  $handler->display->display_options['fields']['field_event_date_4']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date_4']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_event_date_4']['element_wrapper_class'] = 'upcomingEventsBlock_eventDateWrap';
+  $handler->display->display_options['fields']['field_event_date_4']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date_4']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+  );
+  /* Filter criterion: Has Not Begun or Just Started */
+  $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['table'] = 'node';
+  $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['ui_name'] = 'Has Not Begun or Just Started';
+  $handler->display->display_options['filters']['date_filter']['operator'] = '>=';
+  $handler->display->display_options['filters']['date_filter']['default_date'] = 'now';
+  $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
+    'field_data_field_event_date.field_event_date_value' => 'field_data_field_event_date.field_event_date_value',
+  );
+  /* Filter criterion: Has not ended */
+  $handler->display->display_options['filters']['field_event_date_value2']['id'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['filters']['field_event_date_value2']['field'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['ui_name'] = 'Has not ended';
+  $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'hour';
+  $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
+
+  /* Display: Upcoming Events */
+  $handler = $view->new_display('block', 'Upcoming Events', 'upcoming_events');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['block_description'] = 'Upcoming Events';
+  $export['upcoming_events'] = $view;
+
   return $export;
 }
