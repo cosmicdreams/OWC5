@@ -1,1 +1,9 @@
 .calendar-calendar td a{color: #FFFFFF;}
+
+.calendar-calendar .month-view .full td.multi-day .inner .monthview .continues,
+.calendar-calendar .month-view .full td.multi-day .inner .monthview .cutoff,
+.calendar-calendar .week-view .full td.multi-day .inner .weekview .continues,
+.calendar-calendar .week-view .full td.multi-day .inner .weekview .cutoff {
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
