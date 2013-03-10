@@ -100,6 +100,7 @@ scripts[] = js/rotator.js
 ;   <?php print $header_top; ?>
 
 regions[header]         = Header
+regions[utility]        = Utility Navigation
 regions[navigation]     = Navigation bar
 regions[highlighted]    = Highlighted
 regions[help]           = Help
