@@ -188,19 +188,20 @@ header .socialandsearch input.form-submit {
 #main #navigation nav ul li ul.menu {
 	display: none;
 	background: #cc6633;
-	padding: 5px 0 0 10px;
+	padding: 5px 5px 0 10px;
 	position: absolute;
 	top: 30px; left: 2px;
 	z-index: 200;
 	box-shadow: 2px 3px 6px rgba(0,0,0,0.5);
 	moz-box-shadow: 2px 3px 6px rgba(0,0,0,0.5);
-	width: 100%;
+	width: auto;
 }
 #main #navigation nav ul li ul.menu li {
 	height: auto;
 	width: 100%;
 	float: none;
 	padding: 0;
+	white-space: nowrap;
 }
 #main #navigation nav ul li ul.menu li a {
 	color: white;
