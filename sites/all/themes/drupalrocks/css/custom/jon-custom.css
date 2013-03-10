@@ -428,235 +428,6 @@ footer .copywrite {
 
 
 
-
-
-
-
-
-@media all and (max-width: 850px) {
-	#page {
-		padding: 10px;
-	}
-	header nav {
-		width: 100%;
-	}
-	header .socialandsearch {
-		width: 180px;
-	}
-	header .socialandsearch form {
-		display: none;
-	}
-	#content {
-		width: 100%;
-	}
-	footer {
-		height: auto;
-	}
-	footer .block-menu {
-		width: 154px;
-	}
-}
-@media all and (max-width: 530px) {
-	header .socialandsearch {
-		display: none;
-	}
-}
-@media all and (max-width: 340px) {
-	#page {
-		width: 93.6%;
-		margin: 0;
-	}
-	header h1 {
-		height: 149px;
-	}
-	header nav {
-		right: 10px; top: 10px;
-	}
-	header nav li:first-child {
-		position: absolute;
-		left: 20px; top: 0;
-	}
-	#main #navigation nav {
-		height: auto;
-		padding: 0;
-	}
-	#main #navigation nav ul {
-		height: auto;
-		padding: 0 1px;
-	}
-	#main #navigation nav ul li:first-child {
-		border: none;
-	}
-	#main #navigation nav ul li,
-	#main #navigation nav ul li.active-trail {
-		height: auto;
-		display: block;
-		float: none;
-		padding: 0;
-		border-top: 1px solid white;
-		background: url(../../images/sprite-icons.png) no-repeat 102% -9246px #004a8d;
-	}
-	#main #navigation nav ul li.minus {
-		background: url(../../images/sprite-icons.png) no-repeat 100% -2953px #004a8d;
-	}
-	#main #navigation nav ul li a, 
-	#main #navigation nav ul li.active-trail a {
-		display: block;
-		padding: 10px 0 5px 10px;
-	}
-	#main #navigation nav ul li:hover,
-	#main #navigation nav ul li.active-trail:hover {
-		background: url(../../images/sprite-icons.png) no-repeat 102% -9246px #004a8d;
-	}
-	#main #navigation nav ul li.minus:hover {
-		background: url(../../images/sprite-icons.png) no-repeat 100% -2953px #004a8d;
-	}
-	#main #navigation nav ul li ul.menu,
-	#main #navigation nav ul li.active-trail ul.menu {
-		display: none;
-		position: relative;
-		top: 0; left: 0;
-		background: #e8f8fc;
-	}
-	#main #navigation nav ul li ul.menu li,
-	#main #navigation nav ul li.active-trail ul.menu li {
-		display: block;
-		float: none;
-		padding: 5px 10px;
-		border: none;
-		background: #e8f8fc;
-	}
-	#main #navigation nav ul li ul.menu li a,
-	#main #navigation nav ul li.active-trail ul.menu li a {
-		padding: 0;
-		background: #e8f8fc;
-		color: #333;
-	}
-	#main #navigation nav ul li a:hover,
-	#main #navigation nav ul li.active-trail a:hover {
-		background: none;
-	}
-
-	footer {
-		width: auto;
-		margin: 0;
-	}
-}
-
-header h1 {
-    text-indent:0 !important;
-}
-
-#logo > a{
-    display:block;
-    text-indent:-9999em;
-    width:100%;
-    height:100%;
-}
-
-/* 
- * Form Styles
- */
-
-fieldset legend {
-    background: #e8e8e8;
-    width: 100%;
-}
-
-fieldset {
-    border: none;
-    font-size: 20px;
-}
-
-fieldset a {
-    color: black;
-    text-decoration: none;
-}
-
-.fieldset-legend {
-    background-image: none;
-    padding: 0
-;
-}
-
-fieldset legend:after {
-    content: '+';
-    position: absolute;
-    right: 20px;
-    top: -1px;
-    font-weight: bold;
-    font-size: 40px;
-}
-
-.fieldset-title {
-    width: 100%;
-    display: block;
-}
-
-.fieldset-legend .summary {
-    display: none;
-}
-
-input[type="checkbox"]{
-    opacity:0;
-    width: 18px;
-    margin-left:-22px;
-}
-input[type='checkbox'] + label{
-    margin: 0;
-    clear: none;
-    padding: 5px 0 4px 24px;
-    cursor: pointer;
-    background:transparent url(../../images/checkbox_off.png) 0 50% no-repeat;
-}
-input[type='checkbox'] + label{
-}
-
-input[type='checkbox']:checked + label {
-background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
-}
-
-
-<<<<<<< HEAD
-.upcomingEventsblock_title {
-    line-height: 1;
-    margin: 0 0 18px 0;
-    padding: 0;
-    color: #004a8d;
-    font-size: 28px;
-    font-weight: normal;
-    font-family: 'Merriweather Sans', Arial, sans-serif;
-}
-
-.upcomingEventsBlock_eventDateWrap {
-    float: left;
-    margin-right: 10px;
-}
-
-.upcomingEventsBlock_eventDetail {
-    overflow: hidden;
-}
-.upcomingEventsBlock_eventMonth{
-    font-size:16px;
-}
-.upcomingEventsBlock_eventDate{
-        font-size:20px;
-}
-.upcomingEventsBlock_eventDay {
-    text-transform: uppercase;
-    font-size:9px;
-}
-
-.upcomingEventsBlock_eventDetail > span {
-    display: inline-block;
-}
-
-.upcomingEventsBlock_linkOut {
-    width: 100%;
-    display: block;
-    text-align: right;
-}
-
 /*********
 * Support Us - Block
 *********/
@@ -894,4 +665,231 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
     color: #f3d426;
 }
 
+
+
+
+
+
+
+@media all and (max-width: 850px) {
+	#page {
+		padding: 10px;
+	}
+	header nav {
+		width: 100%;
+	}
+	header .socialandsearch {
+		width: 180px;
+	}
+	header .socialandsearch form {
+		display: none;
+	}
+	#content {
+		width: 100%;
+	}
+	footer {
+		height: auto;
+	}
+	footer .block-menu {
+		width: 154px;
+	}
+}
+@media all and (max-width: 530px) {
+	header .socialandsearch {
+		display: none;
+	}
+}
+@media all and (max-width: 340px) {
+	#page {
+		width: 93.6%;
+		margin: 0;
+	}
+	header h1 {
+		height: 149px;
+	}
+	header nav {
+		right: 10px; top: 10px;
+	}
+	header nav li:first-child {
+		position: absolute;
+		left: 20px; top: 0;
+	}
+	#main #navigation nav {
+		height: auto;
+		padding: 0;
+	}
+	#main #navigation nav ul {
+		height: auto;
+		padding: 0 1px;
+	}
+	#main #navigation nav ul li:first-child {
+		border: none;
+	}
+	#main #navigation nav ul li,
+	#main #navigation nav ul li.active-trail {
+		height: auto;
+		display: block;
+		float: none;
+		padding: 0;
+		border-top: 1px solid white;
+		background: url(../../images/sprite-icons.png) no-repeat 102% -9246px #004a8d;
+	}
+	#main #navigation nav ul li.minus {
+		background: url(../../images/sprite-icons.png) no-repeat 100% -2953px #004a8d;
+	}
+	#main #navigation nav ul li a, 
+	#main #navigation nav ul li.active-trail a {
+		display: block;
+		padding: 10px 0 5px 10px;
+	}
+	#main #navigation nav ul li:hover,
+	#main #navigation nav ul li.active-trail:hover {
+		background: url(../../images/sprite-icons.png) no-repeat 102% -9246px #004a8d;
+	}
+	#main #navigation nav ul li.minus:hover {
+		background: url(../../images/sprite-icons.png) no-repeat 100% -2953px #004a8d;
+	}
+	#main #navigation nav ul li ul.menu,
+	#main #navigation nav ul li.active-trail ul.menu {
+		display: none;
+		position: relative;
+		top: 0; left: 0;
+		background: #e8f8fc;
+	}
+	#main #navigation nav ul li ul.menu li,
+	#main #navigation nav ul li.active-trail ul.menu li {
+		display: block;
+		float: none;
+		padding: 5px 10px;
+		border: none;
+		background: #e8f8fc;
+	}
+	#main #navigation nav ul li ul.menu li a,
+	#main #navigation nav ul li.active-trail ul.menu li a {
+		padding: 0;
+		background: #e8f8fc;
+		color: #333;
+	}
+	#main #navigation nav ul li a:hover,
+	#main #navigation nav ul li.active-trail a:hover {
+		background: none;
+	}
+
+	footer {
+		width: auto;
+		margin: 0;
+	}
+}
+
+header h1 {
+    text-indent:0 !important;
+}
+
+#logo > a{
+    display:block;
+    text-indent:-9999em;
+    width:100%;
+    height:100%;
+}
+
+/* 
+ * Form Styles
+ */
+
+fieldset legend {
+    background: #e8e8e8;
+    width: 100%;
+}
+
+fieldset {
+    border: none;
+    font-size: 20px;
+}
+
+fieldset a {
+    color: black;
+    text-decoration: none;
+}
+
+.fieldset-legend {
+    background-image: none;
+    padding: 0
+;
+}
+
+fieldset legend:after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    top: -1px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.fieldset-title {
+    width: 100%;
+    display: block;
+}
+
+.fieldset-legend .summary {
+    display: none;
+}
+
+input[type="checkbox"]{
+    opacity:0;
+    width: 18px;
+    margin-left:-22px;
+}
+input[type='checkbox'] + label{
+    margin: 0;
+    clear: none;
+    padding: 5px 0 4px 24px;
+    cursor: pointer;
+    background:transparent url(../../images/checkbox_off.png) 0 50% no-repeat;
+}
+input[type='checkbox'] + label{
+}
+
+input[type='checkbox']:checked + label {
+background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
+}
+
+.upcomingEventsblock_title {
+    line-height: 1;
+    margin: 0 0 18px 0;
+    padding: 0;
+    color: #004a8d;
+    font-size: 28px;
+    font-weight: normal;
+    font-family: 'Merriweather Sans', Arial, sans-serif;
+}
+
+.upcomingEventsBlock_eventDateWrap {
+    float: left;
+    margin-right: 10px;
+}
+
+.upcomingEventsBlock_eventDetail {
+    overflow: hidden;
+}
+.upcomingEventsBlock_eventMonth{
+    font-size:16px;
+}
+.upcomingEventsBlock_eventDate{
+        font-size:20px;
+}
+.upcomingEventsBlock_eventDay {
+    text-transform: uppercase;
+    font-size:9px;
+}
+
+.upcomingEventsBlock_eventDetail > span {
+    display: inline-block;
+}
+
+.upcomingEventsBlock_linkOut {
+    width: 100%;
+    display: block;
+    text-align: right;
+}
 
