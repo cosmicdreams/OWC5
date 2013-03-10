@@ -1,0 +1,13 @@
+name = Content Type: Testimonial
+core = 7.x
+package = AFAA
+version = 7.x-1.0
+project = content_type_testimonial
+dependencies[] = features
+dependencies[] = field_sql_storage
+dependencies[] = node
+dependencies[] = text
+features[features_api][] = api:1
+features[field][] = node-testimonial-body
+features[field][] = node-testimonial-field_testimonial_peron_name
+features[node][] = testimonial
