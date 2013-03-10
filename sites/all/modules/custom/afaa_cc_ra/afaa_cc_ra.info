@@ -1,0 +1,9 @@
+name = Constant Contact Rules Action
+description = Provides a custom rules action to subscribe a user to a Constant Contact list.
+package = AFAA
+version = 7.x-1.0
+core = 7.x
+
+dependencies[] = constant_contact
+dependencies[] = entityform
+dependencies[] = afaa_forms
