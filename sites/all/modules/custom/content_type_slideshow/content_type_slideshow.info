@@ -1,15 +1,13 @@
 name = Content Type: Slideshow
 core = 7.x
 package = AFAA
+php = 5.2.4
 version = 7.x-1.0
 project = content_type_slideshow
 dependencies[] = features
 dependencies[] = field_collection
-dependencies[] = field_sql_storage
 dependencies[] = image
 dependencies[] = media
-dependencies[] = node
-dependencies[] = text
 features[features_api][] = api:1
 features[field][] = field_collection_item-field_slideshow_slide-field_slide_button_link
 features[field][] = field_collection_item-field_slideshow_slide-field_slide_button_text
