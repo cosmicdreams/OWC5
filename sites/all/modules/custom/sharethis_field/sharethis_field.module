@@ -1,0 +1,162 @@
+<?php
+
+/**
+ * Implements hook_field_info().
+ *
+ * Provides the description of the field.
+ */
+function sharethis_field_field_info() {
+  return array(
+    'sharethis_field_sharethis' => array(
+      'label' => t('ShareThis'),
+      'description' => t('Enable ShareThis'),
+      'default_widget' => 'sharethis_field_default_widget',
+      'default_formatter' => 'sharethis_field_default_formatter',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function sharethis_field_field_is_empty($item, $field) {
+  return empty($item['sharethis']);
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function sharethis_field_field_formatter_info() {
+  return array(
+    'sharethis_field_default_formatter' => array(
+      'label' => t('Show ShareThis'),
+      'field types' => array('sharethis_field_sharethis'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function sharethis_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'sharethis_field_default_formatter':
+      $node = $entity;
+      /**
+       * BEGIN: taken from sharethis module
+       */
+      $data_options = sharethis_get_options_array();
+      
+      // This looks to see if the path variable has been posted by some rewrite module.
+      // This is not super efficient, O(N), but N is often less than 20.
+      $is_path = FALSE;
+      foreach ($node as $k => $v) {
+        if ($k == "path") {
+          $is_path = TRUE;
+        }
+      }
+      // This will choose the path to use.
+      if ($is_path) {
+        $path_module = $node->path;
+      }
+      else {
+        $path_module = "/node/" . $node->nid;
+      }
+    
+      // Pathauto integration !
+      if (module_exists('pathauto')) {
+        $path_module = '/' . drupal_lookup_path('alias',"node/" . $node->nid);
+      }
+    
+      global $base_url;
+      // Get the full path to insert into the Share Buttons.
+      $mPath = $base_url . $path_module;
+      $mTitle = $node->title;
+      /**
+       * END: taken from sharethis module
+       */
+      
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          /**
+           * BEGIN: taken from sharethis module
+           */
+          '#tag' => 'div', // Wrap it in a div.
+          '#type' => 'html_tag',
+          '#attributes' => array('class' => 'sharethis-buttons'),
+          '#value' => sharethis_get_button_HTML($data_options, $mPath, $mTitle),
+          '#weight' => intval(variable_get('sharethis_weight', 10)),
+          /**
+           * END: taken from sharethis module
+           */
+        );
+      }
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function sharethis_field_field_widget_info() {
+  return array(
+    'sharethis_field_default_widget' => array(
+      'label' => t('Enable ShareThis'),
+      'field types' => array('sharethis_field_sharethis'),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function sharethis_field_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $value = isset($items[$delta]['sharethis']) ? $items[$delta]['sharethis'] : '';
+  $widget = $element;
+  $widget['#delta'] = $delta;
+  switch ($instance['widget']['type']) {
+    case 'sharethis_field_default_widget':
+      $widget += array(
+        '#type' => 'checkbox',
+        '#default_value' => $value,
+      );
+      break;
+  }
+
+  $element['sharethis'] = $widget;
+  return $element;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function sharethis_field_form_alter(&$form, &$form_state,  $form_id) {
+  if ( isset( $form['#field'] ) && $form['#field']['type'] == 'sharethis_field_sharethis') {
+    $form['field']['cardinality']['#default_value'] = 1;
+    $form['field']['#access'] = FALSE;
+  }
+  if( $form_id == 'sharethis_configuration_form' ) {
+    $form['context']['sharethis_node_option']['#required'] = FALSE;
+    $form['context']['sharethis_node_option']['#disabled'] = TRUE;
+    $form['context']['sharethis_node_option']['#description'] = '<em><strong>' . t('This setting has been disabled by the ShareThis Field module') . '</strong></em>';
+    $form['context']['sharethis_location']['#disabled'] = TRUE;
+    $form['context']['sharethis_location']['#description'] = '<em><strong>' . t('This setting has been disabled by the ShareThis Field module') . '</strong></em>';
+    $form['context']['sharethis_node_option']['#default_value'] = array();
+    $form['context']['sharethis_location']['#default_value'] = 'content';
+  }
+}
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function sharethis_field_uninstall() {
+  variable_set('sharethis_node_option', variable_get('sharethis_node_option_backup'));
+  variable_set('sharethis_location', variable_get('sharethis_location_backup'));
+  variable_del('sharethis_node_option_backup');
+  variable_del('sharethis_location_backup');
+}
