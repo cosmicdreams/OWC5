@@ -352,10 +352,11 @@ function content_type_event_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referencing entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['reverse_field_event_location_node']['id'] = 'reverse_field_event_location_node';
   $handler->display->display_options['relationships']['reverse_field_event_location_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_event_location_node']['field'] = 'reverse_field_event_location_node';
+  $handler->display->display_options['relationships']['reverse_field_event_location_node']['label'] = 'Content referencing Content from field_event_location';
   $handler->display->display_options['relationships']['reverse_field_event_location_node']['required'] = TRUE;
   /* Field: Content: Address */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
@@ -393,23 +394,23 @@ function content_type_event_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'event_location' => 'event_location',
+    'event' => 'event',
   );
 
   /* Display: EVA Field */
   $handler = $view->new_display('entity_view', 'EVA Field', 'entity_view_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referencing entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['reverse_field_event_location_node']['id'] = 'reverse_field_event_location_node';
   $handler->display->display_options['relationships']['reverse_field_event_location_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_event_location_node']['field'] = 'reverse_field_event_location_node';
+  $handler->display->display_options['relationships']['reverse_field_event_location_node']['label'] = 'Content referencing Content from field_event_location';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_event_location_node';
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';

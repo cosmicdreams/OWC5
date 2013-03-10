@@ -159,10 +159,10 @@ function content_type_basic_page_field_default_fields() {
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'media_default--media_browser_1' => 0,
-            'media_default--media_browser_my_files' => 0,
+            'media_default--media_browser_1' => 'media_default--media_browser_1',
+            'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 0,
-            'upload' => 0,
+            'upload' => 'upload',
             'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
@@ -389,7 +389,7 @@ function content_type_basic_page_field_default_fields() {
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => '',
+            'image_style' => 'gallery_image',
           ),
           'type' => 'image',
           'weight' => '2',
@@ -551,7 +551,7 @@ function content_type_basic_page_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 6,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',

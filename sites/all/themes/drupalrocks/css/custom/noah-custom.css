@@ -1,175 +1,98 @@
-header h1 {
-    text-indent:0 !important;
-}
-
-#logo > a{
-    display:block;
-    text-indent:-9999em;
-    width:100%;
-    height:100%;
-}
-
-/* 
- * Form Styles
- */
-
-fieldset legend {
-    background: #e8e8e8;
-    width: 100%;
-}
-
-fieldset {
-    border: none;
-    font-size: 20px;
-}
-
-fieldset a {
-    color: black;
-    text-decoration: none;
-}
-
-.fieldset-legend {
-    background-image: none;
-    padding: 0
-;
-}
-
-fieldset legend:after {
-    content: '+';
-    position: absolute;
-    right: 20px;
-    top: -1px;
-    font-weight: bold;
-    font-size: 40px;
-}
-
-.fieldset-title {
-    width: 100%;
+.rotator-pager {
     display: block;
+    margin: 0 auto;
+    padding: 10px 0 0;
 }
-
-.fieldset-legend .summary {
+.rotator-pager li {
+    list-style: none;
+    display: block;
+    float: left;
+    width: 20px; height: 20px;
+    background: #191919;
+    margin-right: 10px;
+    border-radius: 10px;
+    moz-border-radius: 10px;
+}
+.rotator-pager li.active span {
+    display: block;
+    background: #cc6633;
+    width: 12px; height: 12px;
+    border-radius: 6px;
+    moz-border-radius: 6px;
+    position: relative;
+    top: 4px; left: 4px;
+}
+.rotator {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    background: white;
+}
+.rotator .field-collection-view,
+.rotator .field-collection-container {
+    border: none;
+}
+.rotator .field-collection-view .field-collection-view-links,
+.rotator .description,
+.rotator .action-links,
+.rotator header {
     display: none;
 }
-
-input[type="checkbox"]{
-    opacity:0;
-    width: 18px;
-    margin-left:-22px;
+.rotator .field-items .field-item {
+    position: absolute;
+    width: 100%; height: 100%;
 }
-input[type='checkbox'] + label{
-    margin: 0;
-    clear: none;
-    padding: 5px 0 4px 24px;
-    cursor: pointer;
-    background:transparent url(../../images/checkbox_off.png) 0 50% no-repeat;
+.rotator .field-items .field-item img {
+    width: 100%; height: auto;
 }
-input[type='checkbox'] + label{
-}
-
-input[type='checkbox']:checked + label {
-background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
-}
-
-
-.upcomingEventsblock_title {
-    line-height: 1;
-    margin: 0 0 18px 0;
-    padding: 0;
-    color: #004a8d;
-    font-size: 28px;
-    font-weight: normal;
-    font-family: 'Merriweather Sans', Arial, sans-serif;
-}
-
-.upcomingEventsBlock_eventDateWrap {
-    float: left;
-    margin-right: 10px;
-}
-
-.upcomingEventsBlock_eventDetail {
+.rotator .item {
+    position: absolute;
+    top: 0; left: 0;
+    display: none;
+    width: 100%; height: 100%;
     overflow: hidden;
 }
-.upcomingEventsBlock_eventMonth{
-    font-size:16px;
-}
-.upcomingEventsBlock_eventDate{
-        font-size:20px;
-}
-.upcomingEventsBlock_eventDay {
-    text-transform: uppercase;
-    font-size:9px;
-}
-
-.upcomingEventsBlock_eventDetail > span {
-    display: inline-block;
-}
-
-.upcomingEventsBlock_linkOut {
-    width: 100%;
+.rotator .item.active {
     display: block;
-    text-align: right;
+    z-index: 2000;
+}
+.rotator .item.next,
+.rotator .item.prev {
+    display: block;
+    z-index: 1000;
+}
+.rotator .item img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: auto;
 }
 
-/*********
-* Support Us - Block
-*********/
-
-.block_yellow{
-    background: #f3d426;
-    border: 1px solid #dec32c;
+.rotator .blurb {
+    position: absolute;
+    bottom: 30px; right: 0;
+    background: rgba(0,0,0,0.6);
+    padding: 10px;
+    width: 0;
+    z-index: 3000;
 }
-
-.supportUs_wrap {
-    background: #f3d426;
-    border: 1px solid #dec32c;
-    padding: 8px 11px;
-    width: 300px;
+.rotator .blurb .tab {
+    position: absolute;
+    top: 0; left: 0;
+    background: yellow;
+    color: black;
+    padding: 2px 10px 0;
+    font-size: 14px;
+    opacity: 0;
+    height: 0;
 }
-
-.supportUs_title {
+.rotator .blurb h2 {
     color: white;
-    padding: 0;
-    margin: 0;
+    margin: 0 0 20px;
+    font-weight: normal;
+    width: 320px;
 }
-
-
-.supportUs_wrap {
-    padding: 8px 11px;
-    width: 300px;
-}
-
-.supportUs_body{
-    margin: 8px 0 14px 0;
-}
-
-.supportUs_body a{
-    color:black;
-}
-
-.supportUs_title {
-    color: white;
-    padding: 0;
-    margin: 0;
-}
-
-.supportUs_btnWrap{
-    text-align:right;
-}
-
-/*********
-* Button
-*********/
-
-.btn {
-
-    padding: 4px 7px;
-    text-decoration:none;
-}
-
-.btn_default{
-    border: 1px solid #afc6cd;
-    color: white;
+.rotator .blurb a {
     background: #e08e00; /* Old browsers */
     background: -moz-linear-gradient(top,  #e08e00 0%, #c85e00 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e08e00), color-stop(100%,#c85e00)); /* Chrome,Safari4+ */
@@ -177,177 +100,11 @@ background:transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
     background: -o-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #e08e00 0%,#c85e00 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #e08e00 0%,#c85e00 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e08e00', endColorstr='#c85e00',GradientType=0 ); /* IE6-9 */
-}
-
-
-#content {
-    width: 72%;
-    background: #f2f2f2
-;
-}
-
-/*********
-* Slideshow
-*********/
-
-.field-item {
-    line-height: 1;
-}
-
-.field-item img {
-    width: 100%;
-}
-
-.slideshow_wrap {
-    position: relative;
-}
-
-.slideshow_item {
+    color: white;
+    text-decoration: none;
     position: absolute;
-    top: 0;
-}
-
-.slideshow_item .field-collection-view {
-    margin: 0;
-    padding: 0;
-}
-
-.field-name-field-slide-heading, .field-name-field-slide-button, .field-name-field-slide-subheading, .field-name-field-slide-button, .field-collection-view-links, .field-collection-description {
+    bottom: 10px; right: 10px;
+    padding: 0 5px;
+    border: 1px solid #afc6cd;
     display: none;
 }
-
-.field-collection-container .field-items .field-item {
-    margin: 0;
-}
-
-
-.field-collection-container .field-items .field-items .field-item {
-    line-height: 0;
-}
-
-.field-name-field-slide-image {
-    transform:scale(1.0);
-}
-
-/*
-.tagline_headline {
-    background: #cc6633;
-    padding: 4px 17px;
-    width: 17%;
-    color: white;
-    font-size: 16px;
-    line-height: 1;
-    font-family: 'Muli';
-    font-style: italic;
-    float: left;
-    margin: 0 8px 0 0;
-}
-
-.tagline_body {
-    color: #333333;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-*/
-
-.tagline_headline, .tagline_body {
-    display: inline;
-}
-
-.tagline_wrap {
-    border-left: 12px solid #cc6633;
-    padding: 0 0 0 5px;
-    margin: 0 0 24px 0;
-}
-
-.tagline_headline {
-    color: #004a8d;
-    font-size: 16px;
-    margin-right: 8px;
-    font-style: italic;
-}
-
-.tagline_body {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-#navigation {
-    margin: 0 0 24px 0;
-}
-
-/*********
-* Testimonials
-*********/
-
-.testimonial_block {
-    position: relative;
-}
-
-.testimonial_wrap {
-    position: relative;
-}
-
-.testimonial_citation {
-    background: none;
-    height: auto;
-    padding: 0;
-    text-align: right;
-    font-size: 16px;
-    margin: 8px 0 0 0;
-    font-weight: bold;
-}
-
-.testimonial_text {
-    margin: 0;
-    font-size: 28px;
-    line-height: 1.1;
-}
-
-.testimonial_wrap_one 
-.testimonial_citation {
-    color: #cc6633;
-}
-
-.testimonial_wrap_two 
-.testimonial_citation {
-    color: #0c4a89;
-    font-weight: bold;
-}
-
-.testimonial_quote{
-    margin: 1.5em 40px;
-}
-
-.testimonial_quote:before, 
-.testimonial_quote:after {
-    font-size: 80px;
-    position: absolute;
-}
-
-.testimonial_quote:before {
-    content: '“';
-    left: 0;
-    top: 0;
-}
-
-.testimonial_quote:after {
-    content: '”';
-    right: 0;
-    bottom: -40px;
-}
-
-
-.testimonial_wrap_one .testimonial_quote:before, 
-.testimonial_wrap_one .testimonial_quote:after {
-    color: #0c4a89;
-}
-
-.testimonial_wrap_two .testimonial_quote:before, 
-.testimonial_wrap_two .testimonial_quote:after {
-    color: #f3d426;
-}
-
-
