@@ -85,6 +85,20 @@
 ?>
 <?php dpm($node); ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <?php if ($view_mode === 'teaser'): ?>
+    <header>
+    <?php if (!$page && $title): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+    </header>
+    <div class="media">
+    <?php render($content['field_gallery_image']); ?>
+    <?php render($content['field_external_resource']); ?>
+    </div>
+    <div class="summary">
+    <?php print render($content['body']); ?>
+    </div>
+  <?php else: ?>
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
     <header>
       <?php print render($title_prefix); ?>
@@ -121,5 +135,5 @@
   <?php print render($content['links']); ?>
 
   <?php print render($content['comments']); ?>
-
+  <?php endif; ?>
 </article><!-- /.node -->

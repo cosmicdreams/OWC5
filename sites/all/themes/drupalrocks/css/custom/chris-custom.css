@@ -1,4 +1,4 @@
-.calendar-calendar td a{color: #FFFFFF;}
+.calendar-calendar td a {color: #FFFFFF;}
 
 .calendar-calendar .month-view .full td.multi-day .inner .monthview .continues,
 .calendar-calendar .month-view .full td.multi-day .inner .monthview .cutoff,
@@ -7,3 +7,14 @@
     -moz-border-radius: 0;
     border-radius: 0;
 }
+
+.view .date-nav-wrapper .date-prev a:hover {
+    text-decoration: underline;
+}
+.block-constant-contact h2 {display: none;}
+#block-afaa-blocks-afaa-block-tagline {
+    border-left: 10px solid #cc6633;
+    padding-left: 5px;
+}
+
+.front h1.title {display: none;}

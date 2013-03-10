@@ -80,9 +80,11 @@
     <?php if ($site_name || $site_slogan): ?>
       <hgroup id="name-and-slogan">
         <?php if ($site_name): ?>
+	  <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
           <h1 id="logo">
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+            <span><?php print $site_name; ?></span>
           </h1>
+	  </a>
         <?php endif; ?>
       </hgroup>
     <?php endif; ?>
@@ -106,7 +108,6 @@
     <div class="socialandsearch">
       <ul>
         <li><a href="http://www.facebook.com/minnesotafoodallergy" class="fb" target="_blank">facebook</a></li>
-        <li><a href="" class="tw" target="_blank">twitter</a></li>
         <li><a href="" class="yt" target="_blank">youtube</a></li>
       </ul>
      <?php print render($page['header']); ?>

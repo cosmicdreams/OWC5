@@ -1,0 +1,6 @@
+name = Pointcrop
+description = Allows users to set a focus point for an image for use in cropping.
+core = 7.x
+
+dependencies[] = image
+files[] = pointcrop.effects.inc
