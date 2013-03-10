@@ -168,9 +168,9 @@ header .socialandsearch input.form-submit {
 #main #navigation nav ul li {
 	display: block;
 	float: left;
-	padding: 0 37px;
 	position: relative;
 	height: 30px;
+	padding: 0 7px;
 }
 #main #navigation nav ul li a:hover {
 	background: url(../../images/active.png) repeat-x 0 23px;
@@ -183,7 +183,7 @@ header .socialandsearch input.form-submit {
 	font-weight: bold;
 	font-size: 16px;
 	display: block;
-	padding-bottom: 7px;
+	padding:0 30px 7px;
 }
 #main #navigation nav ul li ul.menu {
 	display: none;
