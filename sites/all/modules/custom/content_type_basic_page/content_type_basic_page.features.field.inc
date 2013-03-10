@@ -445,6 +445,67 @@ function content_type_basic_page_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-page-field_share_this'.
+  $fields['node-page-field_share_this'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_share_this',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'sharethis' => array(
+          0 => 'sharethis',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'sharethis_field',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'sharethis_field_sharethis',
+    ),
+    'field_instance' => array(
+      'bundle' => 'page',
+      'default_value' => array(
+        0 => array(
+          'sharethis' => 1,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'sharethis_field',
+          'settings' => array(),
+          'type' => 'sharethis_field_default_formatter',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_share_this',
+      'label' => 'Share This',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'sharethis_field',
+        'settings' => array(),
+        'type' => 'sharethis_field_default_widget',
+        'weight' => '6',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
@@ -452,6 +513,7 @@ function content_type_basic_page_field_default_fields() {
   t('External Resource');
   t('Featured Media');
   t('Gallery Image');
+  t('Share This');
 
   return $fields;
 }
