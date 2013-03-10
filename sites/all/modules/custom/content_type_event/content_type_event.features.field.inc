@@ -50,7 +50,7 @@ function content_type_event_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -79,7 +79,7 @@ function content_type_event_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -124,7 +124,7 @@ function content_type_event_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -148,7 +148,7 @@ function content_type_event_field_default_fields() {
           'size' => '80',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -319,6 +319,76 @@ function content_type_event_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-event-field_event_type'.
+  $fields['node-event-field_event_type'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_event_type',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'event_type',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_event_type',
+      'label' => 'Event Type',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'node-event-field_featured_media'.
   $fields['node-event-field_featured_media'] = array(
     'field_config' => array(
@@ -362,7 +432,7 @@ function content_type_event_field_default_fields() {
             'file_view_mode' => 'default',
           ),
           'type' => 'file_rendered',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -406,7 +476,7 @@ function content_type_event_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -454,7 +524,7 @@ function content_type_event_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -502,7 +572,7 @@ function content_type_event_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -548,7 +618,7 @@ function content_type_event_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -586,7 +656,7 @@ function content_type_event_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -626,7 +696,7 @@ function content_type_event_field_default_fields() {
           'module' => 'sharethis_field',
           'settings' => array(),
           'type' => 'sharethis_field_default_formatter',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -647,7 +717,7 @@ function content_type_event_field_default_fields() {
         'module' => 'sharethis_field',
         'settings' => array(),
         'type' => 'sharethis_field_default_widget',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -742,6 +812,7 @@ function content_type_event_field_default_fields() {
   t('Event Date');
   t('Event Description');
   t('Event Location');
+  t('Event Type');
   t('Featured Media');
   t('Gallery Image');
   t('Registration Link');
