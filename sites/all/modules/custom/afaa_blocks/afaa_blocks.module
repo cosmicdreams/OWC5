@@ -136,10 +136,8 @@ function afaa_blocks_block_afaa_block_tagline_configure() {
     ),
   ); 
 
-  $value = '<div class="tagline_wrap">
-<h2 class="tagline_headline">Taking the fear out of food allergies</h2><h3 class="tagline_body">The Anaphylaxis and Food Allergy Association of Minnesota (AFAA) is a 501(c)3 non-profit organization 
-whose mission is to educate, advocate, and to support those with food allergies. <a href="/about-us" title="about AFAA">Learn more about AFAA.</a></h3>
-</div>';
+  $value = '<h3 class="tagline_body">The Anaphylaxis and Food Allergy Association of Minnesota (AFAA) is a 501(c)3 non-profit organization 
+whose mission is to educate, advocate, and to support those with food allergies. <a href="/about-us" title="about AFAA">Learn more about AFAA.</a></h3>';
   $format = 'full_html';
 
   $form['settings']['body'] = array(
@@ -197,7 +195,9 @@ function afaa_blocks_block_view($delta = '') {
 function afaa_blocks_block_afaa_block_facebook_view() {
   return array(
     'subject' => t('AFAA on Facebook'),
-    'content' => array(),
+    'content' => array(
+      '#markup' => 'I OUTPUT NOTHING, IF YOU CAN SEE THIS, YOU NEED TO OVERRIDE THIS BLOCK TEMPLATE.',
+    ),
   );
 }
 
