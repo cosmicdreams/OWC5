@@ -232,6 +232,7 @@ header .socialandsearch input.form-submit {
 }
 #main #navigation nav ul li.active-trail ul.menu li a {
 	color: #333;
+	background-image: none;
 }
 #main #navigation nav ul li.active-trail ul.menu li a:hover {
 	color: #cc6633;
