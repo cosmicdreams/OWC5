@@ -10,126 +10,81 @@
 function content_type_slideshow_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'field_collection_item-field_slideshow_slide-field_slide_button_link'.
-  $fields['field_collection_item-field_slideshow_slide-field_slide_button_link'] = array(
+  // Exported field: 'field_collection_item-field_slideshow_slide-field_slide_button'.
+  $fields['field_collection_item-field_slideshow_slide-field_slide_button'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_slide_button_link',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
+      'field_name' => 'field_slide_button',
+      'foreign keys' => array(),
+      'indexes' => array(),
       'locked' => '0',
-      'module' => 'text',
-      'settings' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'link_field',
     ),
     'field_instance' => array(
       'bundle' => 'field_slideshow_slide',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'This is the URL the user will be redirected to if they click on the slide or the button on top of the slide (if supplied).',
+      'description' => 'The link title here will serve as the button\'s title when displayed.
+The link URL can be any link, including a URL from this website.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '3',
+          'type' => 'link_separate',
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'field_collection_item',
-      'field_name' => 'field_slide_button_link',
-      'label' => 'Button Link',
+      'field_name' => 'field_slide_button',
+      'label' => 'Button',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'attributes' => array(
+          'class' => '',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'rel_remove' => 'default',
+        'title' => 'required',
+        'title_maxlength' => '128',
+        'title_value' => '',
+        'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '1',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_slideshow_slide-field_slide_button_text'.
-  $fields['field_collection_item-field_slideshow_slide-field_slide_button_text'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_slide_button_text',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_slideshow_slide',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Displays a button on top of the slide, with this text.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '2',
-        ),
-      ),
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_slide_button_text',
-      'label' => 'Button Text',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '5',
       ),
     ),
   );
@@ -418,17 +373,16 @@ function content_type_slideshow_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Button Link');
-  t('Button Text');
+  t('Button');
   t('Defines how each slide will appear in the slideshow.');
-  t('Displays a button on top of the slide, with this text.');
   t('Displays a heading on top of the slide.');
   t('Displays a subheading on top of the slide.');
   t('Heading');
   t('Image');
   t('Slide');
   t('Subheading');
-  t('This is the URL the user will be redirected to if they click on the slide or the button on top of the slide (if supplied).');
+  t('The link title here will serve as the button\'s title when displayed.
+The link URL can be any link, including a URL from this website.');
 
   return $fields;
 }
