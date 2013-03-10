@@ -25,7 +25,7 @@
 				$('.menu').removeClass('active');
 				//then show
 				$(this).find('.menu').addClass('active');
-				$(this).find('.menu').slideDown();
+				$(this).find('.menu').slideDown();				
 			}
 		};
 		var responsiveMenus = function(){
@@ -34,6 +34,7 @@
 			} else {
 				$('#navigation nav li').unbind('click', mobileNav);
 				$('#navigation nav li').removeClass('minus');
+				$(this).find('.menu').hide();
 			}
 			windowSize = $(window).width();
 		}
