@@ -159,10 +159,10 @@ function content_type_basic_page_field_default_fields() {
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'media_default--media_browser_1' => 'media_default--media_browser_1',
-            'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+            'media_default--media_browser_1' => 0,
+            'media_default--media_browser_my_files' => 0,
             'media_internet' => 0,
-            'upload' => 'upload',
+            'upload' => 0,
             'youtube' => 0,
           ),
           'progress_indicator' => 'throbber',
