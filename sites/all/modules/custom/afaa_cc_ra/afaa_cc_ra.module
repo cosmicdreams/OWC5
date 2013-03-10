@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file afaa_cc_ra.module
+ */
+
+/**
+ * Helper function to load list of Constant Contact lists.
+ */
+function afaa_cc_ra_get_cc_list() {
+  module_load_include('module', 'module', 'constant_contact');
+
+  $cc = constant_contact_create_object();
+  if (!is_object($cc)) {
+    return '';
+  }
+
+  return constant_contact_get_lists($cc);
+}

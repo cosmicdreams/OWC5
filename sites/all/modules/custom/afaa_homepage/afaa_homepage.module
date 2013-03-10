@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the AFAA: Homepage feature.
+ */
+
+include_once 'afaa_homepage.features.inc';

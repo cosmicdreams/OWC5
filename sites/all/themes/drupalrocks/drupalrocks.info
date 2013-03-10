@@ -60,8 +60,6 @@ stylesheets[all][] = css/views-styles.css
 stylesheets[all][] = css/print.css
 stylesheets[all][] = css/custom/jon-custom.css
 stylesheets[all][] = css/custom/noah-custom.css
-stylesheets[all][] = css/custom/user-content.css
-
 
 
 ; Built-in conditional stylesheet support has been removed from Zen 7.x-5.x.
@@ -79,6 +77,9 @@ stylesheets[all][] = css/custom/user-content.css
 ; Optionally add some JavaScripts to your theme.
 
 scripts[] = js/script.js
+scripts[] = js/rotator.js
+
+
 
 ; This section lists the regions defined in Zen's default page.tpl.php and
 ; maintenance-page.tpl.php files. The name in brackets is the machine name of
@@ -94,10 +95,9 @@ scripts[] = js/script.js
 ;   <?php print render($page['header_top']); ?>
 ; And you'll use this variable in maintenance-page.tpl.php:
 ;   <?php print $header_top; ?>
-regions[utility]        = Utility Navigation
+
 regions[header]         = Header
 regions[navigation]     = Navigation bar
-regions[featured] 	    = Featured
 regions[highlighted]    = Highlighted
 regions[help]           = Help
 regions[content]        = Content

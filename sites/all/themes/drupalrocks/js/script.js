@@ -50,8 +50,6 @@
 			}
 		});
 
-		console.log(windowSize);
-
 		//Mobile Shit
 		responsiveMenus();
 		$(window).resize(responsiveMenus);
@@ -87,8 +85,6 @@
 			}).attr('selected', true);
 
 		});
-
-
 	});
 
 })(jQuery, Drupal, this, this.document);

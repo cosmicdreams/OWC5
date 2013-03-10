@@ -5,6 +5,13 @@
  */
 
 /**
+ * Implements hook_views_api().
+ */
+function content_type_slideshow_views_api() {
+  return array("version" => "3.0");
+}
+
+/**
  * Implements hook_image_default_styles().
  */
 function content_type_slideshow_image_default_styles() {

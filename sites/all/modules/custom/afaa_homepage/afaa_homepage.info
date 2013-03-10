@@ -1,0 +1,10 @@
+name = AFAA: Homepage
+core = 7.x
+package = AFAA
+php = 5.2.4
+version = 7.x-1.0
+project = afaa_homepage
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = whats_new
+features_exclude[dependencies][views] = views
