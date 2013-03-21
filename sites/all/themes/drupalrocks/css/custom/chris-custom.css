@@ -29,3 +29,8 @@
     font-size: 14px;
     line-height: 16px;
 }
+
+#block-views-whats-new-block-whatsnew h2.block-title {
+    color: #004a8d;
+    font-size: 28px;
+}
