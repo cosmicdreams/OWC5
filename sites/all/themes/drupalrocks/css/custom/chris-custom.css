@@ -17,4 +17,8 @@
     padding-left: 5px;
 }
 
+#block-afaa-blocks-afaa-block-tagline h2,
+#block-afaa-blocks-afaa-block-tagline p  {margin: 0;}
+
 .front h1.title {display: none;}
+.error {display:none;}
