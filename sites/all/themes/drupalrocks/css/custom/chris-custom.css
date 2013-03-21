@@ -15,9 +15,14 @@
 #block-afaa-blocks-afaa-block-tagline {
     border-left: 10px solid #cc6633;
     padding-left: 5px;
+
 }
 
 .front h1.title {display: none;}
 
 .region-highlighted {margin: 0 12px;}
-.region-highlighted h2, .region-highlighted div {display: inline;}
+.region-highlighted h2, .region-highlighted p {
+    display: inline;
+    font-size: 14px;
+    line-height: 16px;
+}
