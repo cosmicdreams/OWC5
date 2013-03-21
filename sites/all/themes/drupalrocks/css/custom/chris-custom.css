@@ -17,15 +17,11 @@
     padding-left: 5px;
 }
 
-<<<<<<< HEAD
 #block-afaa-blocks-afaa-block-tagline h2,
 #block-afaa-blocks-afaa-block-tagline p  {margin: 0;}
 
 .front h1.title {display: none;}
 .error {display:none;}
-=======
-.front h1.title {display: none;}
 
 .region-highlighted {margin: 0 12px;}
 .region-highlighted h2, .region-highlighted div {display: inline;}
->>>>>>> 47c328aa5540fec0272a927cddf58bc2f0421d4a
