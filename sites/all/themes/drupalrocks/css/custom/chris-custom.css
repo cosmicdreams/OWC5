@@ -19,6 +19,5 @@
 
 .front h1.title {display: none;}
 
-.region-highlighted {
-    margin: 0 20px;
-}
+.region-highlighted {margin: 0 12px;}
+.region-highlighted h2, .region-highlighted div {display: inline;}
