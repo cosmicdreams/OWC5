@@ -83,7 +83,7 @@
  * @see template_process()
  */
 ?>
-<?php dpm($node); ?>
+<?php // dpm($node); ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if ($view_mode === 'teaser'): ?>
     <header>
