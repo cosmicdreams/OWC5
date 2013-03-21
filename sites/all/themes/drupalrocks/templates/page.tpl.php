@@ -114,7 +114,7 @@
    </div>
 
   </header>
-
+  <div
   <div id="main" class="clearfix">
 
     <div id="navigation" class="clearfix">
@@ -122,10 +122,9 @@
       <?php print render($page['navigation']); ?>
       </nav>
     </div><!-- /#navigation -->
-
-      <div id="content" class="column" role="main">
-
-      <?php print render($page['highlighted']); ?>
+    <?php print render($page['highlighted']); ?>
+    <!-- /#highlighted -->
+    <div id="content" class="column" role="main">
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
