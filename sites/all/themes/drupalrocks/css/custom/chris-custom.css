@@ -18,3 +18,7 @@
 }
 
 .front h1.title {display: none;}
+
+.region-highlighted {
+    margin: 0 20px;
+}
