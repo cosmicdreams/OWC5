@@ -30,7 +30,22 @@
     line-height: 16px;
 }
 
+
+
+#content {margin-left: 1%;}
+.sidebars {
+    margin-left: 4%;
+    margin-right: 1%;
+}
+
+/**
+ * What's New styles
+ */
 #block-views-whats-new-block-whatsnew h2.block-title {
     color: #004a8d;
     font-size: 28px;
+}
+
+#block-views-whats-new-block-whatsnew h2, #block-views-whats-new-block-whatsnew p {
+    margin: 0;
 }
