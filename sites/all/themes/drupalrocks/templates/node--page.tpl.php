@@ -83,7 +83,7 @@
  * @see template_process()
  */
 ?>
-<?php // dpm($node); ?>
+<?php  dpm($node); ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if ($view_mode === 'teaser'): ?>
     <header>
@@ -94,6 +94,7 @@
     <div class="media">
     <?php render($content['field_gallery_image']); ?>
     <?php render($content['field_external_resource']); ?>
+    <?php render($content['field_image']); ?>
     </div>
     <div class="summary">
     <?php print render($content['body']); ?>
