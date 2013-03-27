@@ -732,7 +732,7 @@ input[type=checkbox]:checked + label {
 }
 
 .region-highlighted {
-    margin: 0 12px;
+    margin: 12px;
 }
 
 .region-highlighted h2, .region-highlighted p {
