@@ -83,7 +83,6 @@
  * @see template_process()
  */
 ?>
-<?php dpm($node); ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if ($view_mode === 'teaser'): ?>
     <header>
@@ -110,7 +109,6 @@
 
       <?php if ($display_submitted): ?>
         <p class="submitted">
-          <?php print $user_picture; ?>
           <?php print $submitted; ?>
         </p>
       <?php endif; ?>
