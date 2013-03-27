@@ -778,6 +778,19 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
     }
 }
 
+/**
+ * Views
+ */
+
+
+#block-views-whats-new-block-whatsnew .views-row {
+    clear: both;
+}
+
+#block-views-whats-new-block-whatsnew .views-field-field-featured-media {
+    float: left;
+    padding-right: 10px;
+}
 @media all and (max-width: 880px) {
 
     #page {
