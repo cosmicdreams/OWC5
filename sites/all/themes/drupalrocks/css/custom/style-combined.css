@@ -795,6 +795,15 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
     padding: 10px;
 }
 
+/**
+ * iPad / iOS 5
+ */
+@media all and (max-width: 1024px) {
+    #content {
+        width: 66%;
+    }
+}
+
 @media all and (max-width: 935px) {
     .rotator .blurb {
         top: 50%;
