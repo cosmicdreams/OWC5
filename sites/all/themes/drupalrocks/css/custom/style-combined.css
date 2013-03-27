@@ -772,17 +772,9 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
     position: relative;
 }
 
-@media all and (max-width: 935px) {
-    .rotator .blurb {
-        top: 50%;
-    }
-}
-
 /**
  * Views
  */
-
-
 #block-views-whats-new-block-whatsnew .views-row {
     clear: both;
 }
@@ -791,6 +783,22 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
     float: left;
     padding-right: 10px;
 }
+
+#block-views-whats-new-block-whatsnew .views-field-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+#block-views-whats-new-block-whatsnew .views-field-field-download-file,
+#block-views-whats-new-block-whatsnew .views-field-view-node {
+    float: right;
+}
+
+@media all and (max-width: 935px) {
+    .rotator .blurb {
+        top: 50%;
+    }
+}
+
 @media all and (max-width: 880px) {
 
     #page {
