@@ -820,8 +820,6 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
     header .socialandsearch{
         display: none;
     }
-	header nav li {
-        display: none !important;
 
     footer {
         height: auto;
