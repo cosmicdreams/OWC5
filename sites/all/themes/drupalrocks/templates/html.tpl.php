@@ -88,7 +88,10 @@
 
   <?php print $styles; ?>
   <?php print $scripts; ?>
-  <link href='http://fonts.googleapis.com/css?family=Muli:400,400italic|Merriweather+Sans:400,700' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Muli:300,300italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="<?php print $base_path; ?>sites/all/themes/drupalrocks/js/menuscript.js"></script>
   <?php if ($add_respond_js): ?>
     <!--[if lt IE 9]>
     <script src="<?php print $base_path . $path_to_zen; ?>/js/html5-respond.js"></script>
