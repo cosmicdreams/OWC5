@@ -31,6 +31,7 @@ a {
 
 #page {
     width: 80%;
+	max-width: 1160px;
     position: relative;
     background: #FFF;
     margin: 40px auto 0;
@@ -284,34 +285,8 @@ header .socialandsearch form {
 
 aside {
     float: left;
-    width: 250px;
+    width: 244px;
     margin-left: 5%;
-}
-
-.socialConnect {
-    display: block;
-    width: 250px;
-    font-size: 14px;
-    margin-bottom: 20px;
-    padding: 5px;
-}
-
-.socialConnect h2 {
-    color: #369;
-    margin: 0;
-}
-
-.socialConnect a {
-    display: block;
-    width: 100%;
-    height: 30px;
-    background: url(../../images/sprite.png) no-repeat 0 -242px;
-    text-indent: -999em;
-    margin-top: 10px;
-}
-
-.socialConnect a.tw {
-    background-position: 0 -282px;
 }
 
 footer {
@@ -357,6 +332,15 @@ footer .copywrite {
     width: 100%;
     text-align: center;
     color: #004a8d;
+}
+
+footer input {
+width: 100%;
+
+}
+
+footer input[type=submit]  {
+width: 80px;
 }
 
 fieldset legend {
@@ -410,6 +394,73 @@ input[type=checkbox] + label {
 input[type=checkbox]:checked + label {
     background: transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
 }
+.socialConnect {
+    display: block;
+    width: 244px;
+    font-size: 14px;
+    margin-bottom: 40px;
+	margin-top: 40px;
+    padding: 0;
+	border-style: solid;
+	border-color: #004a8d;
+}
+
+.socialConnect h2 {
+    color: #fff;
+	background-color: #004a8d;
+    margin: 0;
+	padding-left: 10px;
+}
+
+.socialConnect p {
+padding: 10px;
+}
+
+.socialConnect a {
+    display: block;
+    width: 100%;
+    height: 30px;
+    background: url(../../images/sprite.png) no-repeat 0 -242px;
+    text-indent: -999em;
+    margin-top: 10px;
+}
+
+.socialConnect a.tw {
+    background-position: 0 -282px;
+}
+
+.block_yellow {
+    background: #f3d426;
+    border: 1px solid #dec32c;
+}
+
+.supportUs_wrap {
+    background: #dec32c;
+    padding: 8px 11px;
+}
+
+.supportUs_title {
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+}
+
+.supportUs_body {
+    margin: 0 0 14px;
+}
+
+.supportUs_body p {
+margin: 0 0 14px 0;
+}
+
+.supportUs_body a {
+    color: #fff;
+	font-weight: bold;
+}
+
+.supportUs_btnWrap {
+    text-align: right;
+}
 
 .upcomingEventsblock_title {
     line-height: 1;
@@ -450,35 +501,6 @@ input[type=checkbox]:checked + label {
 .upcomingEventsBlock_linkOut {
     width: 100%;
     display: block;
-    text-align: right;
-}
-
-.block_yellow {
-    background: #f3d426;
-    border: 1px solid #dec32c;
-}
-
-.supportUs_wrap {
-    background: #f3d426;
-    border: 1px solid #dec32c;
-    padding: 8px 11px;
-}
-
-.supportUs_title {
-    color: #FFF;
-    margin: 0;
-    padding: 0;
-}
-
-.supportUs_body {
-    margin: 8px 0 14px;
-}
-
-.supportUs_body a {
-    color: #000;
-}
-
-.supportUs_btnWrap {
     text-align: right;
 }
 
@@ -577,7 +599,7 @@ input[type=checkbox]:checked + label {
 }
 
 .rotator-pager {
-    display: block;
+    display: table;
     margin: 0 auto;
     padding: 10px 0 0;
 }
@@ -585,7 +607,7 @@ input[type=checkbox]:checked + label {
 .rotator-pager li {
     cursor: pointer;
     list-style: none;
-    display: block;
+    display: inline;
     float: left;
     width: 20px;
     height: 20px;
@@ -672,7 +694,7 @@ input[type=checkbox]:checked + label {
     position: absolute;
     top: 0;
     left: 0;
-    background: #FF0;
+    background: #dec32c;
     color: #000;
     font-size: 14px;
     opacity: 0;
@@ -750,6 +772,7 @@ input[type=checkbox]:checked + label {
 #block-views-whats-new-block-whatsnew h2.block-title {
     color: #004a8d;
     font-size: 28px;
+	padding-top: 20px;
 }
 
 #skip-link, #main #navigation nav h2, .fieldset-legend .summary, .rotator .field-collection-view .field-collection-view-links, .rotator .description, .rotator .action-links, .rotator header, .block-constant-contact h2, .front h1.title, .error {
@@ -778,12 +801,13 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
  */
 #block-views-whats-new-block-whatsnew .views-row {
     clear: both;
-    margin-bottom: 2em;
+    margin-bottom: 40px;
 }
 
 #block-views-whats-new-block-whatsnew .views-field-field-featured-media {
     float: left;
     padding-right: 10px;
+	padding-bottom: 10px;
 }
 
 #block-views-whats-new-block-whatsnew .views-field-title {
@@ -794,25 +818,6 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
 #block-views-whats-new-block-whatsnew .views-field-view-node {
     float: right;
     padding: 10px;
-}
-
-/**
- * iPad / iOS 5
- */
-@media all and (max-width: 1024px) {
-    #content {
-        width: 66%;
-    }
-
-    footer .block-constant-contact .form-text {
-        width: 98%;
-    }
-}
-
-@media all and (max-width: 935px) {
-    .rotator .blurb {
-        top: 50%;
-    }
 }
 
 @media all and (max-width: 880px) {
@@ -847,6 +852,26 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
         position: absolute;
 		margin-right: 0px;
     }
+	
+	.socialConnect {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 40px;
+	margin-top: 40px;
+    padding: 0;
+	border-style: solid;
+	border-color: #004a8d;
+	}
+	
+	aside {
+    float: left;
+    width: 100%;
+	}
+	.sidebars {
+    margin-left: 0;
+    margin-right: 0;
+	}
 
     footer {
         height: auto;
@@ -885,9 +910,9 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
         background: url(../../images/sprite-icons.png) no-repeat 100% -2294px #004a8d;
         padding: 0;
     }
-#main #navigation nav ul li ul.menu li a:hover {
+	#main #navigation nav ul li ul.menu li a:hover {
     color: #cc6600;
-}
+	}
     #main #navigation nav ul li a, #main #navigation nav ul li.active-trail a {
         display: block;
         padding: 10px 0 5px 10px;
