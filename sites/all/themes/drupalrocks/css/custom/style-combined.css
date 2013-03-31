@@ -52,7 +52,7 @@ body, html {
 
 header h1 {
     text-indent: -999em;
-    background: url(../../images/sprite.png) no-repeat 0 0;
+    background: url(../../images/AFAA_logo_3.png) no-repeat 0 0;
     background-size: 100%;
     height: 150px;
     max-width: 290px;
@@ -73,9 +73,9 @@ header h1 a {
 }
 
 header nav {
-    width: 50%;
+    width: 75%;
     position: absolute;
-    top: 25px;
+    top: 15px;
     right: 25px;
 }
 
@@ -113,6 +113,13 @@ header nav ul li.last a {
     padding: 4px 15px;
 }
 
+header .socialandsearch #searchbox {
+float: right;
+position: relative;
+left: 35px;
+top: 3px;
+}
+
 header .socialandsearch {
     position: absolute;
     top: 60px;
@@ -127,18 +134,10 @@ header .socialandsearch input[type=text] {
     padding: 4px;
 }
 
-header .socialandsearch form {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 header .socialandsearch li {
-    width: 33px;
-    height: 33px;
     display: block;
-    float: left;
-    margin-left: 16px;
+    float: right;
+    margin-left: 10px;
     list-style: none;
     text-indent: -999em;
 }
@@ -173,6 +172,13 @@ header .socialandsearch input.form-submit {
     border: 1px solid #afc6cd;
     color: #FFF;
     padding: 4px 7px;
+}
+
+header .socialandsearch form {
+    position: absolute;
+    top: 0;
+    right: 0;
+	width: 280px;
 }
 
 #main #navigation nav {
@@ -210,7 +216,6 @@ header .socialandsearch input.form-submit {
     font-weight: 700;
     font-size: 16px;
     display: block;
-    withd: 16%;
     padding: 0 20px 7px;
 }
 
@@ -248,8 +253,7 @@ header .socialandsearch input.form-submit {
 }
 
 #main #navigation nav ul li.active-trail {
-    position: static;
-    background: url(../../images/active-nav.gif) no-repeat 49% 20px;
+    display: none;
 }
 
 #main #navigation nav ul li.active-trail a {
@@ -270,7 +274,7 @@ header .socialandsearch input.form-submit {
     display: block;
     float: left;
     width: auto;
-    margin: 0 20px;
+    margin: 0;
 }
 
 #main #navigation nav ul li.active-trail ul.menu li a {
@@ -820,6 +824,29 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
     header .socialandsearch{
         display: none;
     }
+	
+	 header nav {
+        right: 10px;
+        top: 10px;
+    }
+
+    header nav li:first-child {
+        position: absolute;
+        left: 20px;
+        top: 0;
+    }
+
+    header nav li {
+        display: none !important;
+    }
+
+    header nav li.last {
+        display: block !important;
+        right: 0;
+        top: 0;
+        position: absolute;
+		margin-right: 0px;
+    }
 
     footer {
         height: auto;
@@ -855,17 +882,19 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
         display: block;
         float: none;
         border-top: 1px solid #FFF;
-        background: url(../../images/sprite-icons.png) no-repeat 100% -9246px #004a8d;
+        background: url(../../images/sprite-icons.png) no-repeat 100% -2294px #004a8d;
         padding: 0;
     }
-
+#main #navigation nav ul li ul.menu li a:hover {
+    color: #cc6600;
+}
     #main #navigation nav ul li a, #main #navigation nav ul li.active-trail a {
         display: block;
         padding: 10px 0 5px 10px;
     }
 
     #main #navigation nav ul li:hover, #main #navigation nav ul li.active-trail:hover {
-        background: url(../../images/sprite-icons.png) no-repeat 100% -9246px #004a8d;
+        background: url(../../images/sprite-icons.png) no-repeat 100% -2294px #004a8d;
     }
 
     #main #navigation nav ul li ul.menu, #main #navigation nav ul li.active-trail ul.menu {
@@ -888,6 +917,7 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
         background: #e8f8fc;
         color: #333;
         padding-left: 10px;
+		
     }
 
     #main #navigation nav ul li a:hover, #main #navigation nav ul li.active-trail a:hover {
@@ -922,9 +952,10 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
 
     header nav li.last {
         display: block !important;
-        left: 20px;
+        right: 0;
         top: 0;
         position: absolute;
+		margin-right: 0px;
     }
 
     .rotator {
@@ -955,7 +986,7 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
         display: block;
         float: none;
         border-top: 1px solid #FFF;
-        background: url(../../images/sprite-icons.png) no-repeat 102% -9246px #004a8d;
+        background: url(../../images/sprite-icons.png) no-repeat 100% -2294px #004a8d;
         padding: 0;
     }
 
@@ -965,7 +996,7 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
     }
 
     #main #navigation nav ul li:hover, #main #navigation nav ul li.active-trail:hover {
-        background: url(../../images/sprite-icons.png) no-repeat 102% -9246px #004a8d;
+        background: url(../../images/sprite-icons.png) no-repeat 100% -2294px #004a8d;
     }
 
     #main #navigation nav ul li ul.menu, #main #navigation nav ul li.active-trail ul.menu {
@@ -987,7 +1018,7 @@ header nav ul, header nav ul li:first-child, header .socialandsearch ul, #main #
     #main #navigation nav ul li ul.menu li a, #main #navigation nav ul li.active-trail ul.menu li a {
         background: #e8f8fc;
         color: #333;
-        padding: 0;
+        padding: 5px 0 5px 5px;
     }
 
     #main #navigation nav ul li a:hover, #main #navigation nav ul li.active-trail a:hover {
