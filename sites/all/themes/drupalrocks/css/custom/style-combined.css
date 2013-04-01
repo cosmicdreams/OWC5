@@ -222,10 +222,6 @@ header .socialandsearch form {
     padding: 0 20px 7px;
 }
 
-#main #navigation nav ul li:first-child a {
-  padding-left: 0;
-}
-
 #main #navigation nav ul li ul.menu {
     min-width: 100%;
     display: none;
@@ -391,12 +387,13 @@ input[type=checkbox] + label {
 input[type=checkbox]:checked + label {
     background: transparent url(../../images/checkbox_on.png) 0 50% no-repeat;
 }
+
 .socialConnect {
     display: block;
     width: 100%;
     font-size: 14px;
-    margin-bottom: 40px;
-	margin-top: 40px;
+    margin-bottom: 20px;
+	margin-top: 20px;
     padding: 0;
 	border-style: solid;
 	border-color: #004a8d;
@@ -470,13 +467,33 @@ padding: 10px;
 margin-bottom: 0px;
 }
 
-.upcomingEventsblock_title {
+#block-views-upcoming-events-upcoming-events {
+	border-style: solid;
+	border-color: #0048ad;
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #dbf2f8;
+}
+
+#block-views-upcoming-events-upcoming-events h2 {
     line-height: 1;
     color: #004a8d;
-    font-size: 28px;
+    text-transform: uppercase;
+    font-size: 24px;
     font-weight: 400;
     font-family: 'Merriweather Sans', Arial, sans-serif;
     margin: 0 0 18px;
+    padding: 0;
+}
+
+#block-views-upcoming-events-upcoming-events h3 {
+    line-height: 1;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Merriweather Sans', Arial, sans-serif;
+    margin: 0;
     padding: 0;
 }
 
@@ -686,6 +703,7 @@ margin-bottom: 0px;
     left: 0;
     width: 100%;
     height: auto;
+    padding-top: 20px;
 }
 
 .rotator .blurb {
@@ -770,6 +788,7 @@ margin-bottom: 0px;
     display: inline;
     font-size: 14px;
     line-height: 16px;
+    padding-bottom: 20px;
 }
 
 .sidebars {
