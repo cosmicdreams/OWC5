@@ -8,7 +8,7 @@
 
 // JavaScript should be made compatible with libraries other than jQuery by
 // wrapping it with an "anonymous closure". See:
-// - http://drupal.org/node/1446420
+// - http://drupal.org/node/1446820
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
 
@@ -29,7 +29,7 @@
 			}
 		};
 		var responsiveMenus = function(){
-			if(windowSize < 420){
+			if(windowSize < 820){
 				$('#navigation nav li').bind('click', mobileNav);
 			} else {
 				$('#navigation nav li').unbind('click', mobileNav);
@@ -41,11 +41,12 @@
 
 		//Main Menu things
 		$('#navigation nav li').hover(function(){
-			if(!$(this).hasClass('active-trail') && windowSize > 420){
+			if(!$(this).hasClass('active-trail') && windowSize > 820){
 				$(this).find('.menu').slideDown();
+				
 			}
 		}, function(){
-			if(!$(this).hasClass('active-trail') && windowSize > 420){
+			if(!$(this).hasClass('active-trail') && windowSize > 820){
 				$(this).find('.menu').hide();
 			}
 		});
