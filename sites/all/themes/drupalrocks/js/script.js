@@ -30,7 +30,10 @@
 		};
 		var responsiveMenus = function(){
 			if(windowSize < 820){
-				$('#navigation nav li').bind('click', mobileNav);
+				$('#navigation nav li.expanded').bind('click', mobileNav);
+			    $('#navigation nav li.expanded ul a').bind('click', function () {
+				  window.location.href = $(this).attr("href");
+				});
 			} else {
 				$('#navigation nav li').unbind('click', mobileNav);
 				$('#navigation nav li').removeClass('minus');
@@ -89,3 +92,4 @@
 	});
 
 })(jQuery, Drupal, this, this.document);
+
